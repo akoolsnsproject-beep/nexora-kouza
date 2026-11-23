@@ -10,6 +10,16 @@
   if (m) { n = +m[1]; os = m[2]; osName = os === 'win' ? 'Windows' : 'Mac'; MSG = '✅ STEP' + n + 'クリア' + (os === 'mac' ? '！' : ''); KEY = 'nx_s' + n + os; LBL = 'STEP' + n; }
   else if (ma) { n = +ma[1]; os = ''; osName = ''; MSG = '✅ 応用' + n + 'クリア'; KEY = 'nx_a' + n; LBL = '応用' + n; }
   else { n = 0; os = ''; osName = ''; MSG = ''; KEY = 'nx_rules'; LBL = 'ルール'; }
+  /* 表示名：STEP5〜8は応用1〜4、応用1〜4は応用5〜8 */
+  var NM = {s1:'STEP1',s2:'STEP2',s3:'STEP3',s4:'STEP4',s5:'応用1',s6:'応用2',s7:'応用3',s8:'応用4',a1:'応用5',a2:'応用6',a3:'応用7',a4:'応用8'};
+  var ID = m ? 's' + n : (ma ? 'a' + n : '');
+  if (NM[ID]) { LBL = NM[ID]; MSG = '✅ ' + LBL + 'クリア' + (os === 'mac' ? '！' : ''); }
+  /* パソコンの種類をおぼえて、応用1〜4は自分のパソコン用ページへ */
+  try {
+    if (m && n <= 4) localStorage.setItem('nx_os', os);
+    var sv = localStorage.getItem('nx_os');
+    if (m && n >= 5 && sv && sv !== os && !/[?&]os=keep/.test(location.search)) { location.replace('step' + n + '-' + sv + '.html'); return; }
+  } catch (e) {}
 
 
   /* 使うサイトのリンク（上に並べる）＋本文のサイト名をリンクに */
@@ -26,7 +36,7 @@
   (function () {
     var ht = document.querySelector('.ht'); if (!ht || isRules) return;
     var r = document.createElement('div'); r.className = 'chips';
-    r.innerHTML = '<a href="rules.html" style="border-color:#ff8a24">📕 はじめに読むルール（いつでも）</a>';
+    r.innerHTML = '<a href="rules.html" style="border-color:#ff8a24">📕 はじめに読むルール（いつでも）</a>' + (m && n >= 5 ? '<a href="step' + n + '-' + (os === 'win' ? 'mac' : 'win') + '.html?os=keep">💻 ' + (os === 'win' ? 'Mac' : 'Windows') + 'の人はこちら</a>' : '');
     ht.appendChild(r);
     if (m && n === 5) {
       var nb = document.createElement('div');
