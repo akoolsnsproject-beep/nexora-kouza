@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<html lang="ja"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="robots" content="noindex">
+<title>応用2｜インスタを自動投稿（Mac）</title><style>
+*{box-sizing:border-box;margin:0;padding:0}
+body{font-family:"Hiragino Sans","Noto Sans JP","Noto Sans CJK JP",sans-serif;background:#0b0b0d;color:#fff;line-height:1.7;-webkit-text-size-adjust:100%}
+.wrap{max-width:560px;margin:0 auto}
+.top{position:sticky;top:0;z-index:5;background:#0b0b0dee;backdrop-filter:blur(6px);padding:10px 18px 8px;border-bottom:1px solid #222}
+.top .l{font-size:12px;color:#ff9a3d;font-weight:800;display:flex;justify-content:space-between}
+.bar{height:6px;background:#2a2a2e;border-radius:3px;margin-top:6px;overflow:hidden}
+.bar i{display:block;height:100%;width:0;background:linear-gradient(90deg,#ff8a1f,#ff5a00);box-shadow:0 0 10px #ff6a00;transition:width .2s}
+.hero{position:relative;background:#000}
+.hero img{width:100%;display:block;aspect-ratio:900/560;object-fit:cover;object-position:center 30%}
+.hero:after{content:"";position:absolute;inset:auto 0 0 0;height:60%;background:linear-gradient(transparent,#0b0b0d)}
+.ht{padding:0 20px 8px;margin-top:-56px;position:relative;z-index:1}
+.ht .s{color:#ff9a3d;font-weight:900;font-size:14px}
+.ht h1{font-size:26px;line-height:1.35;font-weight:900;margin:4px 0 12px}
+.chips{display:flex;gap:8px;flex-wrap:wrap}
+.chip{font-size:13px;background:#1b1b1f;border:1px solid #3a3a3a;border-radius:20px;padding:4px 12px;color:#ddd}
+.sec{padding:26px 20px 6px}
+.st{display:flex;align-items:center;gap:10px;font-weight:900;font-size:19px;margin-bottom:12px}
+.st b{background:#ff6a00;border-radius:9px;min-width:32px;height:32px;display:inline-flex;align-items:center;justify-content:center;font-size:16px;box-shadow:0 0 12px #ff6a0088}
+.tx{font-size:15.5px;color:#e4e4e4;margin-top:12px}
+.tx .k{color:#ffad5c;font-weight:800}
+.tip{margin-top:10px;font-size:13.5px;background:#1a1410;border-left:4px solid #ff7a1a;border-radius:6px;padding:8px 12px;color:#ffd9b3}
+/* illustrations */
+.shot{position:relative;width:100%;aspect-ratio:380/210;border-radius:12px;overflow:hidden;border:1px solid #3a3a3a;background:#1e1e1e}
+.stage{position:absolute;left:0;top:0;width:380px;height:210px;transform-origin:0 0;font-family:"Segoe UI","Hiragino Sans","Noto Sans JP",sans-serif;background:#1e1e1e;color:#eee}
+.ring{position:absolute;border:3px solid #ff7a1a;border-radius:9px;box-shadow:0 0 14px #ff6a00,inset 0 0 8px #ff6a0055}
+.tag{position:absolute;background:#ff6a00;color:#fff;font-weight:900;font-size:12.5px;padding:3px 9px;border-radius:8px;white-space:nowrap;box-shadow:0 2px 8px #0008}
+.desk{background:linear-gradient(160deg,#1c4a8a,#0a1a36)}
+.menu{position:absolute;background:#2b2b2b;border:1px solid #555;border-radius:8px;padding:5px 0;font-size:12.5px;color:#eee;box-shadow:0 6px 18px #0009}
+.menu div{padding:0 14px;height:26px;line-height:26px;white-space:nowrap}
+.menu .on{background:#3d3d3d}
+.folder{position:absolute;text-align:center;font-size:12px;color:#fff}
+.folder .ic{width:46px;height:36px;background:#f3c043;border-radius:3px 6px 4px 4px;margin:0 auto 4px;position:relative}
+.folder .ic:before{content:"";position:absolute;left:0;top:-6px;width:20px;height:8px;background:#f3c043;border-radius:3px 3px 0 0}
+.vs .tb{height:24px;background:#2d2d2d;display:flex;font-size:12px;color:#ccc;align-items:center;padding-left:6px;gap:12px}
+.vs .ab{position:absolute;left:0;top:24px;bottom:0;width:40px;background:#252526}
+.vs .ex{position:absolute;left:40px;top:24px;bottom:0;width:130px;background:#1f1f22;font-size:11.5px;color:#ccc;padding:6px 8px}
+.dlg{position:absolute;background:#252526;border:1px solid #555;border-radius:8px;padding:12px 14px;font-size:12px;color:#ddd;box-shadow:0 8px 24px #000a}
+.dlg .bt{display:inline-block;margin-top:8px;padding:3px 12px;border-radius:4px;background:#0e639c;color:#fff;font-weight:700}
+.cl{background:#f5f3ee;color:#222}
+.cl .box{position:absolute;left:16px;right:16px;bottom:18px;background:#fff;border:1px solid #ddd;border-radius:14px;padding:12px 50px 12px 14px;font-size:12px;line-height:1.5;color:#333;box-shadow:0 2px 8px #0001}
+.cl .send{position:absolute;right:10px;bottom:10px;width:30px;height:30px;border-radius:8px;background:#c96442;color:#fff;display:flex;align-items:center;justify-content:center;font-weight:900}
+.code{position:absolute;background:#1a1a1a;border-radius:8px;font-family:Consolas,monospace;font-size:11.5px;color:#9cdcfe;padding:26px 12px 10px;line-height:1.5}
+.code .cp{position:absolute;right:8px;top:5px;font-family:sans-serif;font-size:11px;color:#ddd;background:#333;border-radius:5px;padding:1px 8px}
+.term{background:#0c0c0c;font-family:Consolas,monospace;font-size:13px;color:#ccc;padding:30px 14px}
+.term .p{color:#7CFF8A}
+.copy{position:relative;margin-top:14px;background:#141417;border:1.5px solid #ff7a1a;border-radius:12px;padding:14px 14px 14px;font-size:14.5px;color:#eee;line-height:1.65}
+.copy button{position:absolute;right:10px;top:-15px;background:#ff6a00;color:#fff;border:0;border-radius:10px;font-weight:900;font-size:13.5px;padding:6px 14px;box-shadow:0 0 12px #ff6a0099;font-family:inherit}
+.cmd{display:flex;align-items:center;justify-content:space-between;margin-top:12px;background:#0c0c0c;border:1px solid #333;border-radius:10px;padding:10px 12px;font-family:Consolas,monospace;font-size:16px;color:#7CFF8A}
+.cmd button{background:#333;color:#fff;border:0;border-radius:8px;font-size:12.5px;padding:5px 10px;font-family:"Noto Sans JP",sans-serif}
+.goal{margin:28px 20px 0;border-radius:16px;padding:18px;background:radial-gradient(circle at 85% 0,#ff6a0055,transparent 60%),#16161a;border:1px solid #ff7a1a66;text-align:center}
+.goal .b{font-size:20px;font-weight:900}
+.help{margin:18px 20px 0;background:#16161a;border:1px solid #333;border-radius:14px;padding:16px;font-size:14.5px;color:#ddd}
+.help h3{font-size:16px;margin-bottom:6px}
+.back{display:block;margin:22px 20px 40px;background:#06c755;color:#fff;text-align:center;border-radius:14px;padding:15px 0;font-weight:900;font-size:16.5px;text-decoration:none}
+.toast{position:fixed;left:50%;bottom:24px;transform:translateX(-50%);background:#ff6a00;color:#fff;font-weight:900;padding:8px 18px;border-radius:20px;opacity:0;transition:.2s;z-index:9}
+.toast.on{opacity:1}
+
+.ht .sub{color:#bbb;font-size:14px;margin:-4px 0 12px}
+.warn{margin-top:10px;font-size:14px;background:#2a1408;border:1px solid #ff6a00;border-radius:8px;padding:8px 12px;color:#ffcf9e;font-weight:700}
+.four{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-top:10px}
+.four div{background:#16161a;border:1px solid #ff7a1a66;border-radius:10px;padding:8px 10px;font-size:13px;color:#bbb}
+.four b{display:block;color:#ffad5c;font-size:15px}
+.g2{font-size:14px;color:#ccc;margin-top:4px}
+.copy span{white-space:pre-wrap}
+.desk.mac{background:linear-gradient(160deg,#6b3fa0,#1d1640)}
+.vs{background:#1e1e1e}
+.cl{background:#f5f3ee;color:#222}
+.term{background:#0c0c0c;font-family:Consolas,Menlo,monospace;font-size:12.5px;color:#ccc;padding:30px 14px}
+.tt{position:absolute;left:0;right:0;top:0;height:22px;background:#2d2d2d;font-family:sans-serif;font-size:11px;color:#ccc;padding:3px 10px}
+.fvw{background:#202020}.fvw.mac{background:#ececec;color:#222}
+.fv-top{height:30px;background:#2b2b2b;font-size:12px;color:#ddd;padding:7px 12px}
+.fvw.mac .fv-top{background:#d8d8d8;color:#333}
+.fv{display:flex;gap:4px;padding:14px 14px}
+.fi{width:84px;text-align:center;font-size:12px}
+.fic{font-size:44px;line-height:64px}
+.br{background:#fff;color:#222}
+.url{height:26px;background:#e9e9ec;color:#555;font-size:11.5px;padding:5px 12px;border-bottom:1px solid #ccc}
+.bp{padding:12px 18px;height:184px}
+.bp.dk{background:#0d1117;color:#e6edf3}
+.bh{font-size:19px;font-weight:800;margin-bottom:6px}
+.bbtn{position:absolute;left:26px;top:140px;height:36px;line-height:36px;padding:0 18px;border-radius:8px;background:#ffd23f;color:#222;font-weight:800;font-size:14px;white-space:nowrap}
+.bp.dk ~ .bbtn,.bp.dk .bbtn{background:#2da44e;color:#fff}
+.fld{margin-top:6px;font-size:11.5px;color:#666}
+.fld div{margin-top:3px;border:1px solid #ccc;border-radius:6px;padding:5px 9px;font-size:13px;color:#222;background:#fff}
+.fld.dk{color:#aaa}.fld.dk div{background:#0d1117;border-color:#30363d;color:#e6edf3}
+.sbtn{margin-top:12px;display:inline-block;padding:7px 14px;border-radius:7px;background:#1877f2;color:#fff;font-weight:700;font-size:13px}
+.sbtn.gh{background:#238636}
+.uc{border:1px solid #ccc;border-radius:8px;padding:7px 10px;font-size:13px;margin-top:6px}
+.uc.on{border-color:#1877f2;background:#eef4ff;font-weight:700}
+.chips2{display:flex;flex-wrap:wrap;gap:5px;margin-top:4px}
+.chips2 span{background:#e7f0ff;color:#1356b8;border-radius:12px;font-size:11.5px;padding:2px 9px}
+.wbg{background:linear-gradient(160deg,#1c4a8a,#0a1a36)}
+.wbg.mac{background:linear-gradient(160deg,#6b3fa0,#1d1640)}
+.wbg.dark{background:#141418}
+.win-dlg{position:absolute;left:14px;top:12px;width:352px;height:186px;background:#f3f3f3;color:#222;border-radius:6px;padding:10px 14px;box-shadow:0 8px 24px #0008}
+.wt{font-size:11.5px;color:#555;border-bottom:1px solid #ddd;padding-bottom:4px}
+.opt{border:1px solid #ccc;background:#fff;border-radius:4px;padding:6px 10px;width:160px;font-size:13px;color:#0a58ca}
+.mac-dlg{position:absolute;left:14px;top:14px;width:250px;height:182px;background:#f2f2f2;border-radius:10px;box-shadow:0 8px 24px #0008}
+.mac-dlg .wt{padding:6px 10px}
+.mb{display:inline-block;border:1px solid #bbb;background:#fff;color:#222;border-radius:6px;font-size:12px;padding:3px 12px}
+.mb.pri{background:#0a63d6;border-color:#0a63d6;color:#fff}
+.vsico{width:64px;height:64px;border-radius:14px;background:#0a73c4;color:#fff;font-weight:900;font-size:22px;line-height:64px;margin:0 auto 4px}
+.phbg{background:linear-gradient(160deg,#1a1a1f,#0b0b0d)}
+.ph{position:absolute;left:60px;top:6px;width:214px;height:240px;background:#000;border:3px solid #444;border-radius:22px;padding:14px 10px;color:#fff}
+.pt{font-size:11px;color:#aaa;text-align:center}
+.ph2{font-size:14px;font-weight:800;margin:6px 0 8px}
+.pr{display:flex;justify-content:space-between;font-size:12px;height:30px;line-height:30px;border-bottom:1px solid #222}
+.pr span{color:#666}
+.ghside{width:136px;background:#0d1117;border-right:1px solid #30363d;padding:8px 6px;font-size:11.5px;color:#aaa;line-height:2}
+.ghside .on{color:#fff;font-weight:700}.ghside .on2{color:#fff;background:#1f2937;border-radius:5px}
+.ghb{border:1px solid #30363d;border-radius:6px;padding:2px 10px;font-size:12px;background:#21262d}
+.np{position:absolute;left:14px;top:10px;width:352px;height:190px;background:#fff;color:#222;border-radius:6px;box-shadow:0 8px 24px #0008;overflow:hidden}
+.npt{background:#eee;font-size:11.5px;padding:4px 10px;color:#444}
+.npm{font-size:11.5px;padding:3px 10px;border-bottom:1px solid #ddd;color:#333}
+.npb{padding:8px 12px;font-size:12px;line-height:1.55}
+.sm{position:absolute;left:60px;top:12px;width:262px;height:186px;background:#202020ee;border-radius:10px;padding:12px;box-shadow:0 8px 24px #0008}
+.sms{background:#2d2d2d;border-radius:16px;padding:5px 12px;font-size:13px}
+.smr{display:flex;gap:10px;align-items:center;margin-top:12px;background:#333;border-radius:8px;padding:8px;font-size:13px}
+.ubub{position:absolute;right:14px;top:36px;max-width:260px;background:#e8e3d8;border-radius:12px;padding:6px 10px;font-size:12px}
+.abub{position:absolute;left:14px;top:108px;width:350px;font-size:12px;line-height:1.55;color:#333}
+.vid{position:absolute;left:30px;top:12px;width:110px;height:186px;background:linear-gradient(160deg,#334,#112);border-radius:10px;overflow:hidden}
+.vsub{position:absolute;left:4px;right:4px;bottom:44px;text-align:center;font-weight:900;font-size:12px;color:#fff;text-shadow:0 0 3px #000,0 0 3px #000}
+.vbar{position:absolute;left:8px;right:8px;bottom:14px;height:4px;background:#555;border-radius:2px}
+.vbar i{display:block;width:40%;height:100%;background:#ff7a1a}
+.jv{position:absolute;left:0;right:0;top:26px;bottom:0;background:#02040a;display:flex;flex-direction:column;align-items:center;justify-content:center}
+.jc{width:76px;height:76px;border-radius:50%;border:4px solid #39b6ff;box-shadow:0 0 22px #39b6ff,inset 0 0 18px #39b6ff}
+.jt{color:#9fdcff;font-size:12px;margin-top:12px}
+.perm{position:absolute;right:10px;top:32px;width:220px;background:#fff;color:#222;border-radius:8px;padding:8px 10px;font-size:11px;box-shadow:0 6px 18px #000a}
+.cmdl{margin-top:16px;display:flex;justify-content:space-between;background:#f6f6f6;border:1px solid #ddd;border-radius:6px;padding:7px 9px;font-family:Menlo,monospace;font-size:10.5px}
+
+.hx{display:inline-block}
+.th{width:64px;height:52px;border-radius:6px;margin:6px auto 4px}
+.fvw.mac .fi{color:#222}
+.appf{width:60px;height:60px;border-radius:12px;background:linear-gradient(135deg,#5ac8fa,#007aff);color:#fff;font-size:30px;font-weight:900;line-height:60px;margin:0 auto 4px}
+.bbtn{position:static;display:inline-block}
+.bbtn.g{background:#2da44e;color:#fff}
+.sbtn.rw{background:#21262d;border:1px solid #444;color:#fff}
+.cl .box{padding-right:50px}
+.cl .box .send{right:8px;bottom:8px}
+.ex .hx{padding:0 2px}
+.folder{color:#fff}
+.dlg .bt{display:inline-block}
+.ghside .hx{display:block}
+.fv .hx{display:flex}
+.fi.hx{display:block}
+
+.sms.hx{display:block}.smr.hx{display:flex}
+.abub{top:80px}
+.ubub{top:30px}
+.jv{justify-content:flex-start;align-items:flex-start;padding:30px 0 0 24px}
+.perm{width:170px;top:40px}
+
+.sm{top:40px;height:160px}
+.perm{top:120px}
+.chips2 span{margin-bottom:3px}
+</style><style>.omk{margin:26px 16px 10px;padding:18px 14px 12px;border:2px dashed #ff8a24;border-radius:18px;background:#120c08}.omk .omh{color:#ffb066;font-weight:900;font-size:14px;margin-bottom:10px}</style></head><body><div class="wrap">
+<div class="top"><div class="l"><span>応用2 ｜ Mac</span><span id="pc">0 / 10</span></div><div class="bar"><i id="pb"></i></div></div>
+<div class="hero"><img src="../img/s6.jpg" alt=""></div>
+<div class="ht"><div class="s">STEP 6 ｜ Mac</div><h1>インスタを<br>自動投稿</h1><div class="sub">画像を予約して投稿</div>
+<div class="chips"><span class="chip">⏱ 70分</span><span class="chip">🎯 インスタに自動で投稿されたらOK</span><span class="chip">📋 10ステップ</span></div></div>
+<div class="sec" data-n="1"><div class="st"><b>1</b>プロアカウントにする</div><div class="shot"><div class="stage phbg"><div class="ph"><div class="pt">Instagram</div><div class="ph2">設定</div><div class="pr">お知らせ<span>›</span></div><div class="hx pr" data-t="ここ" data-p="r" style="display:flex">アカウントの種類とツール<span>›</span></div><div class="pr">プライバシー<span>›</span></div></div></div></div><div class="tx">インスタアプリ →「設定」→「アカウントの種類とツール」→「<span class="k">プロアカウントに切り替える</span>」（クリエイターかビジネス）。</div></div>
+<div class="sec" data-n="2"><div class="st"><b>2</b>Facebookページとつなぐ</div><div class="shot"><div class="stage br"><div class="url">🔒 facebook.com/pages/create</div><div class="bp"><div class="bh">Facebookページを作成</div><div class="bb"><span style="font-size:12px;color:#555">ページ名を入力</span></div><div style="margin-top:18px"><span class="hx bbtn" data-t="ここ" data-p="r" style="">ページを作成</span></div></div></div></div><div class="tx"><span class="k">facebook.com/pages/create</span> でページを作ります。<br>インスタの「プロフィールを編集」→「ページ」で、作ったページとつなぎます。</div></div>
+<div class="sec" data-n="3"><div class="st"><b>3</b>Metaでアプリを作る</div><div class="shot"><div class="stage br"><div class="url">🔒 developers.facebook.com/apps</div><div class="bp"><div class="bh" style="color:#1c2b33">アプリを作成</div><div style="font-size:12px;color:#555;margin-bottom:2px">ユースケースを選択</div><div class="hx uc on" data-t="使い道はこれ" data-p="r" style="display:block;width:220px">◉ Instagramで投稿する</div><div class="uc">○ その他</div></div></div></div><div class="tx"><span class="k">developers.facebook.com/apps</span> →「アプリを作成」。</div></div>
+<div class="sec" data-n="4"><div class="st"><b>4</b>トークンを作る</div><div class="shot"><div class="stage br"><div class="url">🔒 developers.facebook.com/tools/explorer</div><div class="bp"><div class="bh" style="color:#1c2b33;font-size:17px">グラフAPIエクスプローラ</div><div style="font-size:11.5px;color:#555">権限</div><div class="hx chips2" data-t="① この3つ" data-p="t" style="display:flex;max-width:290px"><span>instagram_basic</span><span>instagram_content_publish</span><span>pages_show_list</span></div><div style="margin-top:12px"><span class="hx sbtn" data-t="② トークンを作る" data-p="r" style="">Generate Access Token</span></div></div></div></div><div class="tx"><span class="k">グラフAPIエクスプローラ</span> を開いて、権限を3つ付けてトークンを作ります。</div><div class="warn">⚠️ トークンは合いカギ。LINE・チャット・コードには貼らない！</div></div>
+<div class="sec" data-n="5"><div class="st"><b>5</b>アカウントIDを調べる</div><div class="shot"><div class="stage cl"><div style="position:absolute;left:16px;top:12px;font-weight:800;font-size:13px;color:#c96442">✳ Claude</div><div class="ubub">InstagramのアカウントIDの調べ方を教えて</div><div class="hx abub" data-t="こんな風に教えてくれる" data-p="b" style="">グラフAPIエクスプローラで<br>me/accounts → … の順に調べます。<br>① …　② …</div></div></div><div class="tx">Claudeに「InstagramのアカウントIDの調べ方」を聞いて、IDを取ります。</div><div class="tip">画面がちがうときは、スクショをClaudeに見せて「次どこを押す？」と聞けばOK</div></div>
+<div class="sec" data-n="6"><div class="st"><b>6</b>画像をネットに置く</div><div class="shot"><div class="stage br"><div class="url">🔒 github.com/you/images/blob/main/1.jpg</div><div class="bp dk"><div style="display:flex;justify-content:space-between;align-items:center;font-size:12.5px"><b>1.jpg</b><div style="display:flex;gap:6px"><span class="hx ghb" data-t="「Raw」のURLを使う" data-p="l" style="">Raw</span><span class="ghb">⬇</span></div></div><div style="margin:16px auto 0;width:120px;height:100px;border-radius:8px;background:linear-gradient(135deg,#ff9a3d,#7a3cff)"></div></div></div></div><div class="tx">画像はネット上のURLが必要です。GitHubの公開リポジトリに入れて、画像を開いて「<span class="k">Raw</span>」のURLを使います。</div></div>
+<div class="sec" data-n="7"><div class="st"><b>7</b>トークンとIDを金庫に入れる</div><div class="shot"><div class="stage br"><div class="url">🔒 github.com/you/…/settings/secrets/actions</div><div class="bp dk" style="display:flex;gap:10px;padding:0"><div class="ghside"><div>General</div><div>Collaborators</div><div class="hx on" data-t="①" data-p="b" style="line-height:1.6">🔑 Secrets and variables<br>　› Actions</div></div><div style="flex:1;padding:10px 8px 0 0"><div class="bh" style="font-size:14px">Actions secrets</div><div class="hx sbtn gh" data-t="②" data-p="r" style="">New repository secret</div><div class="fld dk" style="margin-top:6px"><span>Name</span><div>IG_TOKEN ／ IG_USER_ID</div></div></div></div></div></div><div class="tx">応用1と同じように、Secretsに <span class="k">IG_TOKEN</span> と <span class="k">IG_USER_ID</span> を保存。</div></div>
+<div class="sec" data-n="8"><div class="st"><b>8</b>Claudeに頼む</div><div class="shot"><div class="stage cl"><div style="position:absolute;left:16px;top:14px;font-weight:800;font-size:14px;color:#c96442">✳ Claude</div><div style="position:absolute;left:16px;top:44px;font-size:16px;color:#444">こんにちは！何をお手伝いしましょう？</div><div class="hx box" data-t="① 貼って送信" data-p="t" style="">初心者です。Macを使っています。Instagram Graph APIで画像を…<div class="send">↑</div></div></div></div><div class="tx"><span class="k">claude.ai</span> に下の文を送って、言われたとおりに進めます。</div><div class="mk" data-tpl="初心者です。Macを使っています。Instagram Graph APIで画像を自動投稿するPythonプログラムを作ってください。&#10;・schedule.csv に「画像URL,キャプション」を書き、まだ投稿していない1件を投稿&#10;・トークンとIDはGitHubのSecrets（IG_TOKEN、IG_USER_ID）から読む&#10;・GitHub Actionsで毎日{t}（日本時間）に動かす&#10;・短期トークンを長期トークンに交換する方法も教えてください&#10;&#10;あわせて、schedule.csv に入れるキャプションも{n}個作ってください（画像URLのところは空けておく）。&#10;【アカウントのコンセプト】{c}&#10;【見てほしい人】{w}&#10;【口調】{tone}&#10;【ハッシュタグ】{tag}個くらい&#10;【その他】{etc}"><div class="mkh">✏️ 自分用にカスタマイズ</div><div class="mks">□の中を自分好みに書きかえると、下の頼み文が自動で変わります（そのままでもOK）</div><label><span>⏰ 投稿する時間（いくつでもOK）</span><input data-k="t" value="19時" placeholder="19時"></label><label><span>💡 アカウントのコンセプト</span><input data-k="c" value="毎日のおうちカフェ写真" placeholder="おうちカフェ写真"></label><label><span>👤 見てほしい人</span><input data-k="w" value="おうち時間を楽しみたい人" placeholder="おうち時間を楽しみたい人"></label><label><span>🗣 キャプションの口調</span><select data-k="tone"><option selected>やさしく親しみやすい</option><option>元気で前向き</option><option>ていねいで落ち着いた</option><option>ゆるくて面白い</option></select></label><label><span>#️⃣ ハッシュタグの数</span><input data-k="tag" value="5" placeholder="5"></label><label><span>🔢 最初に作ってもらうキャプションの数</span><input data-k="n" value="10" placeholder="10"></label><label><span>その他の希望（なければ空のまま）</span><textarea data-k="etc" placeholder="とくになし"></textarea></label><div class="mkp">▼ できあがった頼み文（これをコピーして claude.ai へ）</div><div class="copy"><button onclick="cp(this)">コピー</button><span class="mko"></span></div></div><div class="tip">📸 自動で投稿されたスクショを撮っておこう</div></div>
+
+<div class="sec" data-n="9"><div class="st"><b>9</b>毎日動いているか確かめる</div><div class="shot"><div class="stage br"><div class="url">🔒 github.com/you/insta-bot/actions</div><div class="bp dk"><div style="display:flex;justify-content:space-between;font-size:13px;color:#fff;font-weight:700"><span>auto-post</span><span style="color:#888">…</span></div><div class="hx " data-t="✅緑＝成功　❌赤＝失敗" data-p="b" style="margin-top:10px;font-size:12px;line-height:2;color:#ddd">✅ auto-post #12　<span style="color:#888">今日 8:03</span><br>✅ auto-post #11　<span style="color:#888">昨日 20:02</span><br>❌ auto-post #10　<span style="color:#888">昨日 8:01</span></div></div></div></div><div class="tx"><span class="k">リポジトリ</span>＝GitHubの中の、プログラムを入れたフォルダ（応用2で作った <span class="k">インスタ用のリポジトリ</span>）のことです。<br>① github.com で <span class="k">インスタ用のリポジトリ</span> を開く<br>② 上にある「<span class="k">Actions</span>」タブを押す<br>③ 動いた記録が新しい順に並びます。<span class="k">✅緑</span>なら成功、<span class="k">❌赤</span>なら失敗<br>④ ❌のときは、その行を押す → 出てきた四角（buildなど）を押す → 赤い×の行を開くとエラーが出ます。そこを全部コピーして、claude.ai に「このエラーの直し方を教えて」と貼ればOK</div><div class="tip">「Run workflow」で動かしたときの記録もここに出ます</div></div>
+
+<div class="sec" data-n="10"><div class="st"><b>10</b>投稿の時間を変える・止める</div><div class="shot"><div class="stage br"><div class="url">🔒 github.com/you/insta-bot/blob/main/.github/workflows/…</div><div class="bp dk"><div style="display:flex;justify-content:space-between;font-size:12.5px;color:#ddd"><span>.github / workflows / auto-post.yml</span><span class="hx sbtn rw" data-t="② えんぴつで書きかえ" data-p="l" style="">✏️</span></div><div style="margin-top:10px;font-family:Menlo,monospace;font-size:11.5px;color:#9fdcff;line-height:1.7">on:<br>&nbsp;&nbsp;schedule:<br>&nbsp;&nbsp;&nbsp;&nbsp;- cron: <span class="hx " data-t="① ここが時間" data-p="r" style="color:#ffb066">'0 23 * * *'</span></div><div style="margin-top:8px;text-align:right"><span class="hx sbtn" data-t="③ 保存" data-p="l" style="background:#2da44e;color:#fff">Commit changes</span></div></div></div></div><div class="tx"><span class="k">ワークフロー</span>＝「いつ・何を動かすか」を書いた設定ファイルのこと。時間を変えるときは、このファイルを書きかえます。<br>① 下の文を claude.ai に送り、どこをどう書きかえるか教えてもらう<br>② github.com の <span class="k">インスタ用のリポジトリ</span> →「<span class="k">.github</span>」→「<span class="k">workflows</span>」→ 中のファイルを押す<br>③ 右上の <span class="k">✏️（えんぴつ）</span>を押し、Claudeに言われたとおり書きかえる<br>④ 右上の緑の「<span class="k">Commit changes</span>」→ もう一度「Commit changes」で保存<br><br><b>止めたいとき</b>：「Actions」タブ → 左の一覧で自分のワークフロー（auto-post など）を押す → 右上の「<span class="k">…</span>」→「<span class="k">Disable workflow</span>」。また動かすときは同じ場所の「Enable workflow」</div><div class="mk" data-tpl="インスタの自動投稿の時間を、毎日{t}（日本時間）に変えたいです。&#10;.github/workflows のファイルのどこをどう書きかえればいいか、書きかえたあとのファイルを全部書いて教えてください。"><div class="mkh">✏️ 好きな時間にする</div><div class="mks">□の中を自分好みに書きかえると、下の頼み文が自動で変わります（そのままでもOK）</div><label><span>⏰ 新しい投稿時間</span><input data-k="t" value="7時と21時" placeholder="7時と21時"></label><div class="mkp">▼ できあがった頼み文（これをコピーして claude.ai へ）</div><div class="copy"><button onclick="cp(this)">コピー</button><span class="mko"></span></div></div><div class="tip">GitHubの時計は世界の標準時（日本より9時間おそい）なので、時間の計算はClaudeにまかせてOK。混んでいると数分おくれて動くこともあります。公開（Public）のリポジトリは、60日なにも更新がないと自動で止まります。止まっていたら「Enable workflow」で再開</div></div>
+
+<div class="goal"><div class="b">🎉 応用2クリア！</div><div class="g2">できたら、LINEにもどって［✅ 応用2 できた！］を押してね</div></div>
+<div class="omk"><div class="omh">🎁 おまけ｜やってみたい人へ</div>
+<div class="st"><b>＋</b>成功・失敗をスマホに通知する</div>
+<div class="shot"><div class="stage" style="background:#1d1d22;height:150px;position:relative"><div style="position:absolute;left:14px;right:14px;top:16px;background:#2c2c32;border-radius:14px;padding:10px 12px;font-size:12.5px;color:#fff"><b>ntfy</b>　<span style="color:#aaa">いま</span><br>✅ インスタの自動投稿ができました</div><div style="position:absolute;left:14px;right:14px;top:84px;background:#2c2c32;border-radius:14px;padding:10px 12px;font-size:12.5px;color:#fff"><b>ntfy</b>　<span style="color:#aaa">19:01</span><br>❌ インスタの自動投稿に失敗しました</div></div></div>
+<div class="tx"><span class="k">ntfy</span>（エヌティーエフワイ）は、スマホに通知を届けてくれるアプリです。これを使うと、自動投稿が動くたびに「できた／失敗した」がスマホに届くので、Actionsを見に行かなくても分かります。<br><br>
+① スマホに「<span class="k">ntfy</span>」アプリを入れる（App Store／Google Play）<br>
+② アプリの「<span class="k">＋</span>」を押し、<span class="k">トピック名</span>（通知の受け取り口の名前）を入れて登録。人に当てられない名前にします（例：<span class="k">nexora-ig-7k2q9x</span>）<br>
+③ github.com の <span class="k">インスタ用のリポジトリ</span> →「Settings」→「Secrets and variables」→「Actions」→「New repository secret」。名前を <span class="k">NTFY_TOPIC</span>、中身にトピック名を入れて保存<br>
+④ 下の文を claude.ai に送り、言われたとおりにワークフローのファイルを書きかえる（書きかえ方は「投稿の時間を変える」と同じ）<br>
+⑤「Actions」→「Run workflow」で動かして、スマホに通知が来ればOK</div>
+<div class="mk" data-tpl="初心者です。GitHub Actionsで動かしているインスタの自動投稿で、成功したら「{ok}」、失敗したら「{ng}」とスマホに通知が来るようにしたいです。&#10;・通知は ntfy.sh を使う&#10;・トピック名はGitHubのSecrets「NTFY_TOPIC」から読む&#10;.github/workflows のファイルを書きかえたあとの全文と、GitHubでの書きかえ方を1つずつ教えてください。"><div class="mkh">✏️ 通知の文を自分好みに</div><div class="mks">□の中を自分好みに書きかえると、下の頼み文が自動で変わります（そのままでもOK）</div><label><span>✅ 成功したときの通知の文</span><input data-k="ok" value="✅ インスタの自動投稿ができました" placeholder=""></label><label><span>❌ 失敗したときの通知の文</span><input data-k="ng" value="❌ インスタの自動投稿に失敗しました" placeholder=""></label><div class="mkp">▼ できあがった頼み文（これをコピーして claude.ai へ）</div><div class="copy"><button onclick="cp(this)">コピー</button><span class="mko"></span></div></div>
+<div class="tip">⚠️ トピック名を知っている人は、通知を見たり送ったりできます。トークンと同じく、LINE・チャット・コードには書かないでね。失敗の通知が来たら、上の「毎日動いているか確かめる」の④でエラーを見てClaudeに聞けばOK</div></div>
+<div class="help"><h3>🆘 うまくいかないとき</h3>赤い文字のエラーや画面のスクショを <span class="k">claude.ai</span> に貼って「初心者にも分かるように直し方を教えて」と送ればOK。<br>それでもダメなら、この画面の右下にある［🆘 困った］を押して問い合わせてね。</div>
+<a class="back" href="#" onclick="history.length>1?history.back():window.close();return false">LINEにもどる</a>
+</div><div class="toast" id="t">コピーしました</div>
+<script>function cp(b){var t=b.parentNode.querySelector('span').innerText;var d=function(){var e=document.getElementById('t');e.classList.add('on');setTimeout(function(){e.classList.remove('on')},1200)};
+if(navigator.clipboard&&navigator.clipboard.writeText){navigator.clipboard.writeText(t).then(d,function(){f(t);d()})}else{f(t);d()}}
+function f(t){var a=document.createElement('textarea');a.value=t;a.style.position='fixed';a.style.opacity='0';document.body.appendChild(a);a.select();try{document.execCommand('copy')}catch(e){}a.remove()}
+var secs=[].slice.call(document.querySelectorAll('.sec'));
+function upd(){var n=0;secs.forEach(function(s){if(s.getBoundingClientRect().top<window.innerHeight*0.55)n=+s.dataset.n});
+document.getElementById('pb').style.width=(n/8*100)+'%';document.getElementById('pc').textContent=n+' / 8'}
+function place(st){[].forEach.call(st.querySelectorAll('.auto'),function(e){e.remove()});var W=380,Hh=210,used=[];
+[].forEach.call(st.querySelectorAll('.hx'),function(el){var x=0,y=0,e=el;while(e&&e!==st){x+=e.offsetLeft;y+=e.offsetTop;e=e.offsetParent}var w=el.offsetWidth,h=el.offsetHeight,p=4;var R={x:x-p,y:y-p,w:w+2*p,h:h+2*p};
+var r=document.createElement('div');r.className='ring auto';r.style.cssText='left:'+R.x+'px;top:'+R.y+'px;width:'+R.w+'px;height:'+R.h+'px';st.appendChild(r);
+var t=document.createElement('div');t.className='tag auto';t.textContent=el.dataset.t;st.appendChild(t);var tw=t.offsetWidth,th=t.offsetHeight,g=6;
+var cy=Math.max(2,Math.min(Hh-th-2,R.y+R.h/2-th/2)),cx=Math.max(2,Math.min(W-tw-2,R.x+R.w/2-tw/2));var C={r:[R.x+R.w+g,cy],l:[R.x-g-tw,cy],b:[cx,R.y+R.h+g],t:[cx,R.y-g-th]};var order=[el.dataset.p||'r','r','b','t','l'];var best=null;
+function ok(c){if(c[0]<2||c[1]<2||c[0]+tw>W-2||c[1]+th>Hh-2)return false;for(var i=0;i<used.length;i++){var u=used[i];if(c[0]<u[0]+u[2]&&c[0]+tw>u[0]&&c[1]<u[1]+u[3]&&c[1]+th>u[1])return false}return true}
+for(var i=0;i<order.length;i++){var c=C[order[i]];if(ok(c)){best=c;break}}
+if(!best){var c=C[order[0]];best=[Math.max(2,Math.min(W-tw-2,c[0])),Math.max(2,Math.min(Hh-th-2,c[1]))]}
+t.style.left=best[0]+'px';t.style.top=best[1]+'px';used.push([best[0],best[1],tw,th])})}
+function fit(){[].forEach.call(document.querySelectorAll('.shot'),function(s){var st=s.firstElementChild;st.style.transform='scale('+(s.clientWidth/380)+')';if(!st.dataset.pl){place(st);st.dataset.pl=1}})}
+window.addEventListener('scroll',upd,{passive:true});window.addEventListener('resize',fit);if(document.fonts&&document.fonts.ready){document.fonts.ready.then(function(){[].forEach.call(document.querySelectorAll('.stage'),function(st){place(st)})})}fit();upd();</script><script src="kouza.js?v=7"></script></body></html>

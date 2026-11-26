@@ -1,0 +1,261 @@
+<!DOCTYPE html>
+<html lang="ja"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="robots" content="noindex">
+<title>応用4｜自分だけのAI「ジャービス」（Windows）</title><style>
+*{box-sizing:border-box;margin:0;padding:0}
+body{font-family:"Hiragino Sans","Noto Sans JP","Noto Sans CJK JP",sans-serif;background:#0b0b0d;color:#fff;line-height:1.7;-webkit-text-size-adjust:100%}
+.wrap{max-width:560px;margin:0 auto}
+.top{position:sticky;top:0;z-index:5;background:#0b0b0dee;backdrop-filter:blur(6px);padding:10px 18px 8px;border-bottom:1px solid #222}
+.top .l{font-size:12px;color:#ff9a3d;font-weight:800;display:flex;justify-content:space-between}
+.bar{height:6px;background:#2a2a2e;border-radius:3px;margin-top:6px;overflow:hidden}
+.bar i{display:block;height:100%;width:0;background:linear-gradient(90deg,#ff8a1f,#ff5a00);box-shadow:0 0 10px #ff6a00;transition:width .2s}
+.hero{position:relative;background:#000}
+.hero img{width:100%;display:block;aspect-ratio:900/560;object-fit:cover;object-position:center 30%}
+.hero:after{content:"";position:absolute;inset:auto 0 0 0;height:60%;background:linear-gradient(transparent,#0b0b0d)}
+.ht{padding:0 20px 8px;margin-top:-56px;position:relative;z-index:1}
+.ht .s{color:#ff9a3d;font-weight:900;font-size:14px}
+.ht h1{font-size:26px;line-height:1.35;font-weight:900;margin:4px 0 12px}
+.chips{display:flex;gap:8px;flex-wrap:wrap}
+.chip{font-size:13px;background:#1b1b1f;border:1px solid #3a3a3a;border-radius:20px;padding:4px 12px;color:#ddd}
+.sec{padding:26px 20px 6px}
+.st{display:flex;align-items:center;gap:10px;font-weight:900;font-size:19px;margin-bottom:12px}
+.st b{background:#ff6a00;border-radius:9px;min-width:32px;height:32px;display:inline-flex;align-items:center;justify-content:center;font-size:16px;box-shadow:0 0 12px #ff6a0088}
+.tx{font-size:15.5px;color:#e4e4e4;margin-top:12px}
+.tx .k{color:#ffad5c;font-weight:800}
+.tip{margin-top:10px;font-size:13.5px;background:#1a1410;border-left:4px solid #ff7a1a;border-radius:6px;padding:8px 12px;color:#ffd9b3}
+/* illustrations */
+.shot{position:relative;width:100%;aspect-ratio:380/210;border-radius:12px;overflow:hidden;border:1px solid #3a3a3a;background:#1e1e1e}
+.stage{position:absolute;left:0;top:0;width:380px;height:210px;transform-origin:0 0;font-family:"Segoe UI","Hiragino Sans","Noto Sans JP",sans-serif;background:#1e1e1e;color:#eee}
+.ring{position:absolute;border:3px solid #ff7a1a;border-radius:9px;box-shadow:0 0 14px #ff6a00,inset 0 0 8px #ff6a0055}
+.tag{position:absolute;background:#ff6a00;color:#fff;font-weight:900;font-size:12.5px;padding:3px 9px;border-radius:8px;white-space:nowrap;box-shadow:0 2px 8px #0008}
+.desk{background:linear-gradient(160deg,#1c4a8a,#0a1a36)}
+.menu{position:absolute;background:#2b2b2b;border:1px solid #555;border-radius:8px;padding:5px 0;font-size:12.5px;color:#eee;box-shadow:0 6px 18px #0009}
+.menu div{padding:0 14px;height:26px;line-height:26px;white-space:nowrap}
+.menu .on{background:#3d3d3d}
+.folder{position:absolute;text-align:center;font-size:12px;color:#fff}
+.folder .ic{width:46px;height:36px;background:#f3c043;border-radius:3px 6px 4px 4px;margin:0 auto 4px;position:relative}
+.folder .ic:before{content:"";position:absolute;left:0;top:-6px;width:20px;height:8px;background:#f3c043;border-radius:3px 3px 0 0}
+.vs .tb{height:24px;background:#2d2d2d;display:flex;font-size:12px;color:#ccc;align-items:center;padding-left:6px;gap:12px}
+.vs .ab{position:absolute;left:0;top:24px;bottom:0;width:40px;background:#252526}
+.vs .ex{position:absolute;left:40px;top:24px;bottom:0;width:130px;background:#1f1f22;font-size:11.5px;color:#ccc;padding:6px 8px}
+.dlg{position:absolute;background:#252526;border:1px solid #555;border-radius:8px;padding:12px 14px;font-size:12px;color:#ddd;box-shadow:0 8px 24px #000a}
+.dlg .bt{display:inline-block;margin-top:8px;padding:3px 12px;border-radius:4px;background:#0e639c;color:#fff;font-weight:700}
+.cl{background:#f5f3ee;color:#222}
+.cl .box{position:absolute;left:16px;right:16px;bottom:18px;background:#fff;border:1px solid #ddd;border-radius:14px;padding:12px 50px 12px 14px;font-size:12px;line-height:1.5;color:#333;box-shadow:0 2px 8px #0001}
+.cl .send{position:absolute;right:10px;bottom:10px;width:30px;height:30px;border-radius:8px;background:#c96442;color:#fff;display:flex;align-items:center;justify-content:center;font-weight:900}
+.code{position:absolute;background:#1a1a1a;border-radius:8px;font-family:Consolas,monospace;font-size:11.5px;color:#9cdcfe;padding:26px 12px 10px;line-height:1.5}
+.code .cp{position:absolute;right:8px;top:5px;font-family:sans-serif;font-size:11px;color:#ddd;background:#333;border-radius:5px;padding:1px 8px}
+.term{background:#0c0c0c;font-family:Consolas,monospace;font-size:13px;color:#ccc;padding:30px 14px}
+.term .p{color:#7CFF8A}
+.copy{position:relative;margin-top:14px;background:#141417;border:1.5px solid #ff7a1a;border-radius:12px;padding:14px 14px 14px;font-size:14.5px;color:#eee;line-height:1.65}
+.copy button{position:absolute;right:10px;top:-15px;background:#ff6a00;color:#fff;border:0;border-radius:10px;font-weight:900;font-size:13.5px;padding:6px 14px;box-shadow:0 0 12px #ff6a0099;font-family:inherit}
+.cmd{display:flex;align-items:center;justify-content:space-between;margin-top:12px;background:#0c0c0c;border:1px solid #333;border-radius:10px;padding:10px 12px;font-family:Consolas,monospace;font-size:16px;color:#7CFF8A}
+.cmd button{background:#333;color:#fff;border:0;border-radius:8px;font-size:12.5px;padding:5px 10px;font-family:"Noto Sans JP",sans-serif}
+.goal{margin:28px 20px 0;border-radius:16px;padding:18px;background:radial-gradient(circle at 85% 0,#ff6a0055,transparent 60%),#16161a;border:1px solid #ff7a1a66;text-align:center}
+.goal .b{font-size:20px;font-weight:900}
+.help{margin:18px 20px 0;background:#16161a;border:1px solid #333;border-radius:14px;padding:16px;font-size:14.5px;color:#ddd}
+.help h3{font-size:16px;margin-bottom:6px}
+.back{display:block;margin:22px 20px 40px;background:#06c755;color:#fff;text-align:center;border-radius:14px;padding:15px 0;font-weight:900;font-size:16.5px;text-decoration:none}
+.toast{position:fixed;left:50%;bottom:24px;transform:translateX(-50%);background:#ff6a00;color:#fff;font-weight:900;padding:8px 18px;border-radius:20px;opacity:0;transition:.2s;z-index:9}
+.toast.on{opacity:1}
+
+.ht .sub{color:#bbb;font-size:14px;margin:-4px 0 12px}
+.warn{margin-top:10px;font-size:14px;background:#2a1408;border:1px solid #ff6a00;border-radius:8px;padding:8px 12px;color:#ffcf9e;font-weight:700}
+.four{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-top:10px}
+.four div{background:#16161a;border:1px solid #ff7a1a66;border-radius:10px;padding:8px 10px;font-size:13px;color:#bbb}
+.four b{display:block;color:#ffad5c;font-size:15px}
+.g2{font-size:14px;color:#ccc;margin-top:4px}
+.copy span{white-space:pre-wrap}
+.desk.mac{background:linear-gradient(160deg,#6b3fa0,#1d1640)}
+.vs{background:#1e1e1e}
+.cl{background:#f5f3ee;color:#222}
+.term{background:#0c0c0c;font-family:Consolas,Menlo,monospace;font-size:12.5px;color:#ccc;padding:30px 14px}
+.tt{position:absolute;left:0;right:0;top:0;height:22px;background:#2d2d2d;font-family:sans-serif;font-size:11px;color:#ccc;padding:3px 10px}
+.fvw{background:#202020}.fvw.mac{background:#ececec;color:#222}
+.fv-top{height:30px;background:#2b2b2b;font-size:12px;color:#ddd;padding:7px 12px}
+.fvw.mac .fv-top{background:#d8d8d8;color:#333}
+.fv{display:flex;gap:4px;padding:14px 14px}
+.fi{width:84px;text-align:center;font-size:12px}
+.fic{font-size:44px;line-height:64px}
+.br{background:#fff;color:#222}
+.url{height:26px;background:#e9e9ec;color:#555;font-size:11.5px;padding:5px 12px;border-bottom:1px solid #ccc}
+.bp{padding:12px 18px;height:184px}
+.bp.dk{background:#0d1117;color:#e6edf3}
+.bh{font-size:19px;font-weight:800;margin-bottom:6px}
+.bbtn{position:absolute;left:26px;top:140px;height:36px;line-height:36px;padding:0 18px;border-radius:8px;background:#ffd23f;color:#222;font-weight:800;font-size:14px;white-space:nowrap}
+.bp.dk ~ .bbtn,.bp.dk .bbtn{background:#2da44e;color:#fff}
+.fld{margin-top:6px;font-size:11.5px;color:#666}
+.fld div{margin-top:3px;border:1px solid #ccc;border-radius:6px;padding:5px 9px;font-size:13px;color:#222;background:#fff}
+.fld.dk{color:#aaa}.fld.dk div{background:#0d1117;border-color:#30363d;color:#e6edf3}
+.sbtn{margin-top:12px;display:inline-block;padding:7px 14px;border-radius:7px;background:#1877f2;color:#fff;font-weight:700;font-size:13px}
+.sbtn.gh{background:#238636}
+.uc{border:1px solid #ccc;border-radius:8px;padding:7px 10px;font-size:13px;margin-top:6px}
+.uc.on{border-color:#1877f2;background:#eef4ff;font-weight:700}
+.chips2{display:flex;flex-wrap:wrap;gap:5px;margin-top:4px}
+.chips2 span{background:#e7f0ff;color:#1356b8;border-radius:12px;font-size:11.5px;padding:2px 9px}
+.wbg{background:linear-gradient(160deg,#1c4a8a,#0a1a36)}
+.wbg.mac{background:linear-gradient(160deg,#6b3fa0,#1d1640)}
+.wbg.dark{background:#141418}
+.win-dlg{position:absolute;left:14px;top:12px;width:352px;height:186px;background:#f3f3f3;color:#222;border-radius:6px;padding:10px 14px;box-shadow:0 8px 24px #0008}
+.wt{font-size:11.5px;color:#555;border-bottom:1px solid #ddd;padding-bottom:4px}
+.opt{border:1px solid #ccc;background:#fff;border-radius:4px;padding:6px 10px;width:160px;font-size:13px;color:#0a58ca}
+.mac-dlg{position:absolute;left:14px;top:14px;width:250px;height:182px;background:#f2f2f2;border-radius:10px;box-shadow:0 8px 24px #0008}
+.mac-dlg .wt{padding:6px 10px}
+.mb{display:inline-block;border:1px solid #bbb;background:#fff;color:#222;border-radius:6px;font-size:12px;padding:3px 12px}
+.mb.pri{background:#0a63d6;border-color:#0a63d6;color:#fff}
+.vsico{width:64px;height:64px;border-radius:14px;background:#0a73c4;color:#fff;font-weight:900;font-size:22px;line-height:64px;margin:0 auto 4px}
+.phbg{background:linear-gradient(160deg,#1a1a1f,#0b0b0d)}
+.ph{position:absolute;left:60px;top:6px;width:214px;height:240px;background:#000;border:3px solid #444;border-radius:22px;padding:14px 10px;color:#fff}
+.pt{font-size:11px;color:#aaa;text-align:center}
+.ph2{font-size:14px;font-weight:800;margin:6px 0 8px}
+.pr{display:flex;justify-content:space-between;font-size:12px;height:30px;line-height:30px;border-bottom:1px solid #222}
+.pr span{color:#666}
+.ghside{width:136px;background:#0d1117;border-right:1px solid #30363d;padding:8px 6px;font-size:11.5px;color:#aaa;line-height:2}
+.ghside .on{color:#fff;font-weight:700}.ghside .on2{color:#fff;background:#1f2937;border-radius:5px}
+.ghb{border:1px solid #30363d;border-radius:6px;padding:2px 10px;font-size:12px;background:#21262d}
+.np{position:absolute;left:14px;top:10px;width:352px;height:190px;background:#fff;color:#222;border-radius:6px;box-shadow:0 8px 24px #0008;overflow:hidden}
+.npt{background:#eee;font-size:11.5px;padding:4px 10px;color:#444}
+.npm{font-size:11.5px;padding:3px 10px;border-bottom:1px solid #ddd;color:#333}
+.npb{padding:8px 12px;font-size:12px;line-height:1.55}
+.sm{position:absolute;left:60px;top:12px;width:262px;height:186px;background:#202020ee;border-radius:10px;padding:12px;box-shadow:0 8px 24px #0008}
+.sms{background:#2d2d2d;border-radius:16px;padding:5px 12px;font-size:13px}
+.smr{display:flex;gap:10px;align-items:center;margin-top:12px;background:#333;border-radius:8px;padding:8px;font-size:13px}
+.ubub{position:absolute;right:14px;top:36px;max-width:260px;background:#e8e3d8;border-radius:12px;padding:6px 10px;font-size:12px}
+.abub{position:absolute;left:14px;top:108px;width:350px;font-size:12px;line-height:1.55;color:#333}
+.vid{position:absolute;left:30px;top:12px;width:110px;height:186px;background:linear-gradient(160deg,#334,#112);border-radius:10px;overflow:hidden}
+.vsub{position:absolute;left:4px;right:4px;bottom:44px;text-align:center;font-weight:900;font-size:12px;color:#fff;text-shadow:0 0 3px #000,0 0 3px #000}
+.vbar{position:absolute;left:8px;right:8px;bottom:14px;height:4px;background:#555;border-radius:2px}
+.vbar i{display:block;width:40%;height:100%;background:#ff7a1a}
+.jv{position:absolute;left:0;right:0;top:26px;bottom:0;background:#02040a;display:flex;flex-direction:column;align-items:center;justify-content:center}
+.jc{width:76px;height:76px;border-radius:50%;border:4px solid #39b6ff;box-shadow:0 0 22px #39b6ff,inset 0 0 18px #39b6ff}
+.jt{color:#9fdcff;font-size:12px;margin-top:12px}
+.perm{position:absolute;right:10px;top:32px;width:220px;background:#fff;color:#222;border-radius:8px;padding:8px 10px;font-size:11px;box-shadow:0 6px 18px #000a}
+.cmdl{margin-top:16px;display:flex;justify-content:space-between;background:#f6f6f6;border:1px solid #ddd;border-radius:6px;padding:7px 9px;font-family:Menlo,monospace;font-size:10.5px}
+
+.hx{display:inline-block}
+.th{width:64px;height:52px;border-radius:6px;margin:6px auto 4px}
+.fvw.mac .fi{color:#222}
+.appf{width:60px;height:60px;border-radius:12px;background:linear-gradient(135deg,#5ac8fa,#007aff);color:#fff;font-size:30px;font-weight:900;line-height:60px;margin:0 auto 4px}
+.bbtn{position:static;display:inline-block}
+.bbtn.g{background:#2da44e;color:#fff}
+.sbtn.rw{background:#21262d;border:1px solid #444;color:#fff}
+.cl .box{padding-right:50px}
+.cl .box .send{right:8px;bottom:8px}
+.ex .hx{padding:0 2px}
+.folder{color:#fff}
+.dlg .bt{display:inline-block}
+.ghside .hx{display:block}
+.fv .hx{display:flex}
+.fi.hx{display:block}
+
+.sms.hx{display:block}.smr.hx{display:flex}
+.abub{top:80px}
+.ubub{top:30px}
+.jv{justify-content:flex-start;align-items:flex-start;padding:30px 0 0 24px}
+.perm{width:170px;top:40px}
+
+.sm{top:40px;height:160px}
+.perm{top:120px}
+.chips2 span{margin-bottom:3px}
+</style><style>.omk{margin:26px 16px 10px;padding:18px 14px 12px;border:2px dashed #ff8a24;border-radius:18px;background:#120c08}.omk .omh{color:#ffb066;font-weight:900;font-size:14px;margin-bottom:10px}</style><style>
+.mk .hn{display:block;font-style:normal;font-size:11.5px;color:#9a9a9a;line-height:1.5;margin:-1px 0 5px}
+.exs{display:flex;flex-wrap:wrap;gap:6px;margin:-2px 0 10px}
+.ex{background:#22190f;color:#ffcf9e;border:1px solid #6b4a26;border-radius:99px;padding:5px 11px;font-size:12.5px;font-family:inherit}
+.ex.on{background:#ff8a24;color:#111;border-color:#ff8a24;font-weight:800}
+.ex i{display:inline-block;width:11px;height:11px;border-radius:50%;margin-right:5px;vertical-align:-1px;border:1px solid #0006}
+.grp{margin:16px 0 4px;padding-top:10px;border-top:1px dashed #5a4026;font-weight:900;color:#ff8a24;font-size:14px}
+.grp:first-of-type{border-top:0;padding-top:0}
+.jvp{margin:10px 0 4px;background:#02040a;border:1px solid #333;border-radius:12px;padding:16px 10px;text-align:center}
+.jvp .jvc{width:70px;height:70px;margin:0 auto;border-radius:50%;border:4px solid var(--c);box-shadow:0 0 22px var(--c),inset 0 0 16px var(--c)}
+.jvp .jvc.ring{width:70px;height:70px;border-width:2px;box-shadow:0 0 0 6px #02040a,0 0 0 8px var(--c),0 0 26px var(--c)}
+.jvp .jvc.wave{border:0;box-shadow:none;height:40px;width:120px;border-radius:0;background:repeating-linear-gradient(90deg,var(--c) 0 4px,transparent 4px 9px);-webkit-mask:linear-gradient(#000,#000);clip-path:polygon(0 45%,10% 30%,20% 55%,30% 10%,40% 60%,50% 0,60% 70%,70% 20%,80% 55%,90% 35%,100% 45%,100% 55%,90% 65%,80% 45%,70% 80%,60% 30%,50% 100%,40% 40%,30% 90%,20% 45%,10% 70%,0 55%)}
+.jvp .jvn{color:var(--c);font-weight:900;font-size:16px;margin-top:10px;letter-spacing:.08em}
+.jvp .jvh{color:#ddd;font-size:12.5px;margin-top:6px}
+.jvp .jvl{color:#777;font-size:10.5px;margin-bottom:8px}
+.cfgc{position:absolute;left:0;right:0;top:26px;bottom:0;background:#1e1e1e;padding:12px 12px;font:12px/1.75 ui-monospace,Menlo,Consolas,monospace;color:#d4d4d4;white-space:pre}
+.cfgc .c{color:#6a9955}.cfgc .s{color:#ce9178}.cfgc .v{color:#9cdcfe}.cfgc .n{color:#b5cea8}
+.vsb{position:absolute;left:0;right:0;top:0;height:26px;background:#323233;color:#ccc;font-size:11.5px;display:flex;align-items:center;padding-left:12px}
+</style><style>
+.mk label.ac{display:flex;gap:10px;align-items:flex-start;background:#0b0b0d;border:1.5px solid #3a2c1d;border-radius:11px;padding:9px 10px;margin:6px 0;cursor:pointer}
+.mk label.ac:has(input:checked){border-color:#ff8a24;background:#1d140b}
+.mk label.ac input{width:20px;height:20px;flex:none;margin:1px 0 0;accent-color:#ff8a24}
+.mk label.ac span{display:block;margin:0;font-size:13.5px;color:#fff}
+.mk label.ac em{display:block;font-style:normal;font-size:11.5px;color:#9a9a9a;font-weight:400;margin-top:2px;line-height:1.5}
+.acx{font-size:12px;color:#ffcf9e;background:#22190f;border-radius:9px;padding:8px 10px;margin:4px 0 8px;line-height:1.6}
+</style></head><body><div class="wrap">
+<div class="top"><div class="l"><span>応用4 ｜ Windows</span><span id="pc">0 / 6</span></div><div class="bar"><i id="pb"></i></div></div>
+<div class="hero"><img src="../img/s8.jpg" alt=""></div>
+<div class="ht"><div class="s">STEP 8 ｜ Windows</div><h1>自分だけのAI<br>「ジャービス」</h1><div class="sub">話しかけると声で答える</div>
+<div class="chips"><span class="chip">⏱ 60分</span><span class="chip">🎯 声で返事が来たらOK</span><span class="chip">📋 6ステップ</span></div></div>
+<div class="sec" data-n="1"><div class="st"><b>1</b>Ollamaを入れる</div><div class="shot"><div class="stage br"><div class="url">🔒 ollama.com/download</div><div class="bp"><div class="bh">Download Ollama</div><div class="bb"></div><div style="margin-top:18px"><span class="hx bbtn" data-t="ここ" data-p="r" style="">⬇ Windows</span></div></div></div></div><div class="tx"><span class="k">ollama.com/download</span> →「Windows」→ インストール。</div><div class="warn">⚠️ メモリ8GB以上のPCがおすすめ</div></div>
+<div class="sec" data-n="2"><div class="st"><b>2</b>AIと話してみる</div><div class="shot"><div class="stage term"><div class="tt">TERMINAL</div><div>PS C:\…\ai-kouza&gt; <span class="p">ollama run qwen2.5:3b</span></div><div style="margin-top:12px"><span class="hx " data-t="返事が来ればOK" data-p="b" style="color:#fff;font-size:14px;display:inline-block;padding:2px 4px">&gt;&gt;&gt; こんにちは<br>こんにちは！何かお手伝いできますか？</span></div></div></div><div class="tx">ターミナルでこれを打ちます。「こんにちは」と打って返事が来ればOK（/bye で終了）。</div><div class="cmd"><span>ollama run qwen2.5:3b</span><button onclick="cp(this)">コピー</button></div></div>
+<div class="sec" data-n="3"><div class="st"><b>3</b>VOICEVOXを入れる</div><div class="shot"><div class="stage br"><div class="url">🔒 voicevox.hiroshiba.jp</div><div class="bp"><div class="bh">VOICEVOX</div><div class="bb"><span style="font-size:12px;color:#555">無料で使える読み上げソフト</span></div><div style="margin-top:18px"><span class="hx bbtn" data-t="ここ" data-p="r" style="">ダウンロード</span></div></div></div></div><div class="tx"><span class="k">voicevox.hiroshiba.jp</span> →「ダウンロード」→ Windows版 → インストール。<br><b>起動したまま</b>にしておきます。<br><br><b>🎧 声をえらぶ（自分色①）</b><br>VOICEVOXを開くと、左にキャラクターの一覧が出ます。キャラを選んで文字を打ち、▶ を押すと声を試せます。気に入った声の<span class="k">キャラクター名</span>をメモしておきましょう（次のSTEP4で使います）。</div><div class="tip">作った声を動画やSNSで使うときは、キャラクターごとの利用規約を確認しよう（「VOICEVOX:ずんだもん」のようなクレジット表記が必要です）</div></div>
+<div class="sec" data-n="4"><div class="st"><b>4</b>「自分色」を決めて Claude に頼む</div><div class="shot"><div class="stage cl"><div style="position:absolute;left:16px;top:14px;font-weight:800;font-size:14px;color:#c96442">✳ Claude</div><div style="position:absolute;left:16px;top:44px;font-size:16px;color:#444">こんにちは！何をお手伝いしましょう？</div><div class="hx box" data-t="① 貼って送信" data-p="t" style="">初心者です。Windowsを使っています。自分のPCだけで動く音声アシスタント…<div class="send">↑</div></div></div></div><div class="tx">ここで、あなただけのジャービスの<b>「自分色」</b>を決めます。決めるのは4つ。<br><b>① 中身</b>：名前・性格・話し方・手伝ってほしいこと<br><b>② 声</b>：VOICEVOXのキャラと速さ<br><b>③ 見た目</b>：光る色と形<br><b>④ 反応のしかた</b>：呼んだときの反応、聞き間違いの直し方、止め方など<br><br>下の□をうめると頼み文ができるので、<span class="k">claude.ai</span> に送って、言われたとおりにファイルを作ります。<br>頼み文には「<b>設定をファイルの一番上にまとめて</b>」と入れてあるので、あとから自分で変えるのもかんたんです（応用2）。</div><div class="mk" id="jvmk" data-tpl="初心者です。Windowsを使っています。自分のPCだけで動く音声アシスタントを作りたいです。&#10;【しくみ】&#10;・Chromeの音声認識で聞き取る&#10;・Ollama（qwen2.5:3b）で返事を作る&#10;・VOICEVOXで読み上げる&#10;・ブラウザから直接呼ぶとブロックされるので、Pythonのserver.pyを間に入れる&#10;【自分色の設定】&#10;・名前（呼びかける言葉）：{name}（「{name}」と呼ぶと反応する）&#10;・私の呼び方：{me}&#10;・キャラクター・話し方：{chara}&#10;・返事の長さ：{len}&#10;・とくに手伝ってほしいこと：{job}&#10;・守ってほしいルール：{rule}&#10;・VOICEVOXの声：{voice}（話す速さ：{speed}）&#10;・画面：黒い背景に、{color}に光る{shape}&#10;・起動したときのあいさつ：{hello}&#10;・その他：{etc}&#10;【反応のしかた】&#10;{act}&#10;【お願い】&#10;・上の設定（名前・色・声・会話が終わるまでの時間など）は、あとから私が自分で変えられるように、ファイルの一番上に「設定」としてまとめ、1行ずつ日本語の説明をつけてください&#10;・VOICEVOXの声の番号（speaker ID）の調べ方も教えてください&#10;・ファイルの作り方と起動方法を、順番に1つずつ教えてください"><div class="mkh">✏️ 自分色のジャービスを決める</div><div class="mks">□に書くか、下の<b>例ボタン</b>を押すだけでOK。頼み文と「できあがりイメージ」が自動で変わります</div><div class="jvp" id="jvp"><div class="jvl">できあがりイメージ</div><div class="jvc"></div><div class="jvn"></div><div class="jvh"></div></div><div class="grp">① 中身（性格）を決める</div><label><span>🤖 名前（呼びかける言葉）</span><em class="hn">2〜4文字の呼びやすい名前が反応しやすいです。「ねえ」など、ふだんの会話によく出る言葉は勝手に反応するのでさけよう</em><input data-k="name" value="ジャービス" placeholder="ジャービス"></label><div class="exs"><button type="button" class="ex" data-v="ジャービス">ジャービス</button><button type="button" class="ex" data-v="ミライ">ミライ</button><button type="button" class="ex" data-v="ハル">ハル</button><button type="button" class="ex" data-v="ノア">ノア</button></div><label><span>🙋 あなたの呼ばれ方</span><em class="hn">ジャービスがあなたを何と呼ぶか</em><input data-k="me" value="あなた" placeholder="あなた"></label><div class="exs"><button type="button" class="ex" data-v="あなた">あなた</button><button type="button" class="ex" data-v="ご主人さま">ご主人さま</button><button type="button" class="ex" data-v="ボス">ボス</button><button type="button" class="ex" data-v="マスター">マスター</button></div><label><span>🎭 キャラクター・話し方</span><em class="hn">どんな人と話したいかを1行で。くわしく書くほど、その人らしくなります</em><input data-k="chara" value="ていねいな執事" placeholder="ていねいな執事"></label><div class="exs"><button type="button" class="ex" data-v="ていねいな執事">ていねいな執事</button><button type="button" class="ex" data-v="元気な友だち">元気な友だち</button><button type="button" class="ex" data-v="関西弁のお笑い担当">関西弁のお笑い担当</button><button type="button" class="ex" data-v="クールな秘書">クールな秘書</button><button type="button" class="ex" data-v="やさしい先生">やさしい先生</button></div><label><span>📏 返事の長さ</span><em class="hn">声で聞くので、短いほうが聞きやすいです</em><input data-k="len" value="1〜2文で短く" placeholder="1〜2文で短く"></label><div class="exs"><button type="button" class="ex" data-v="1〜2文で短く">1〜2文で短く</button><button type="button" class="ex" data-v="3〜4文でくわしく">3〜4文でくわしく</button></div><label><span>💼 とくに手伝ってほしいこと</span><em class="hn">あなたの毎日に合わせて書こう</em><input data-k="job" value="今日やることの整理と、投稿ネタ出し" placeholder="今日やることの整理と、投稿ネタ出し"></label><div class="exs"><button type="button" class="ex" data-v="今日やることの整理と、投稿ネタ出し">今日やることの整理と、投稿ネタ出し</button><button type="button" class="ex" data-v="英会話の練習相手">英会話の練習相手</button><button type="button" class="ex" data-v="勉強の質問">勉強の質問</button><button type="button" class="ex" data-v="雑談・気分転換">雑談・気分転換</button></div><label><span>📌 守ってほしいルール</span><em class="hn">このAIはインターネットを見られません。天気やニュースは分からないので、このルールがおすすめ</em><input data-k="rule" value="知らない事実を作らない（うそを言わない）" placeholder="知らない事実を作らない（うそを言わない）"></label><div class="exs"><button type="button" class="ex" data-v="知らない事実を作らない（うそを言わない）">知らない事実を作らない（うそを言わない）</button><button type="button" class="ex" data-v="ネガティブなことは言わない">ネガティブなことは言わない</button></div><div class="grp">② 声を決める</div><label><span>🔊 VOICEVOXの声</span><em class="hn">STEP3で試聴して気に入ったキャラクター名を書こう</em><input data-k="voice" value="おまかせ" placeholder="おまかせ"></label><div class="exs"><button type="button" class="ex" data-v="おまかせ">おまかせ</button><button type="button" class="ex" data-v="ずんだもん">ずんだもん</button><button type="button" class="ex" data-v="四国めたん">四国めたん</button><button type="button" class="ex" data-v="春日部つむぎ">春日部つむぎ</button><button type="button" class="ex" data-v="青山龍星">青山龍星</button></div><label><span>⏩ 話す速さ</span><input data-k="speed" value="ふつう" placeholder="ふつう"></label><div class="exs"><button type="button" class="ex" data-v="ゆっくり">ゆっくり</button><button type="button" class="ex" data-v="ふつう">ふつう</button><button type="button" class="ex" data-v="少しはやい">少しはやい</button></div><div class="grp">③ 見た目を決める</div><label><span>🎨 光る色</span><em class="hn">色の名前でOK。好きな色を自由に書いてもいいです</em><input data-k="color" value="オレンジ" placeholder="オレンジ"></label><div class="exs"><button type="button" class="ex" data-v="オレンジ" data-c="#ff8a24"><i style="background:#ff8a24"></i>オレンジ</button><button type="button" class="ex" data-v="青" data-c="#2f8bff"><i style="background:#2f8bff"></i>青</button><button type="button" class="ex" data-v="水色" data-c="#38d6ff"><i style="background:#38d6ff"></i>水色</button><button type="button" class="ex" data-v="緑" data-c="#22c55e"><i style="background:#22c55e"></i>緑</button><button type="button" class="ex" data-v="紫" data-c="#a855f7"><i style="background:#a855f7"></i>紫</button><button type="button" class="ex" data-v="ピンク" data-c="#ff5fa2"><i style="background:#ff5fa2"></i>ピンク</button><button type="button" class="ex" data-v="赤" data-c="#ff3b3b"><i style="background:#ff3b3b"></i>赤</button><button type="button" class="ex" data-v="金色" data-c="#f5c542"><i style="background:#f5c542"></i>金色</button><button type="button" class="ex" data-v="白" data-c="#ffffff"><i style="background:#ffffff"></i>白</button></div><label><span>⭕ 光の形</span><input data-k="shape" value="円" placeholder="円"></label><div class="exs"><button type="button" class="ex" data-v="円">円</button><button type="button" class="ex" data-v="リング">リング</button><button type="button" class="ex" data-v="音に合わせて動く波">音に合わせて動く波</button></div><label><span>👋 起動したときのあいさつ</span><input data-k="hello" value="おかえりなさい。今日は何をしますか？" placeholder="おかえりなさい。今日は何をしますか？"></label><div class="exs"><button type="button" class="ex" data-v="おかえりなさい。今日は何をしますか？">おかえりなさい。今日は何をしますか？</button><button type="button" class="ex" data-v="呼んだ？なんでも聞いてね！">呼んだ？なんでも聞いてね！</button><button type="button" class="ex" data-v="準備OKです">準備OKです</button></div><div class="grp">④ 反応のしかたを決める</div><div class="acx">💡 講座の作者が毎日使っているジャービスの設定から、だれでも使えるものを選びました。<br>入れたいものに✅をつけます（はじめから大事なものに✅がついています）。</div><label><span>⏳ だまったら待機にもどるまでの時間</span><em class="hn">会話モードで、何も話さなかったときに終わるまでの時間</em><input data-k="idle" value="90秒" placeholder="90秒"></label><div class="exs"><button type="button" class="ex" data-v="30秒">30秒</button><button type="button" class="ex" data-v="90秒">90秒</button><button type="button" class="ex" data-v="3分">3分</button></div><label class="ac"><input type="checkbox" class="acb" data-p="「{name}」と呼んだら会話モードにして、そのあとは名前を呼ばなくても何往復でも続けて話せるようにする。{idle}だまっていたら待機にもどる" checked><span>💬 呼んだら「会話モード」<em>名前を1回呼べば、そのあとは名前なしで何往復でも話せる</em></span></label><label class="ac"><input type="checkbox" class="acb" data-p="待機中は「{name}」と呼ばれたときだけ反応し、テレビや周りの声には反応しない" checked><span>🙉 待機中は名前にだけ反応<em>テレビや家族の声で勝手に話し出さない</em></span></label><label class="ac"><input type="checkbox" class="acb" data-p="聞き取った文字に誤字・脱字・聞き間違いがあっても、前後の意味から正しい言葉を考えて答える（例：「キャンサル」→キャンセル、「二十字」→20時）。同じ言葉が何回もくり返された文字は1回にまとめる。名前の聞き間違い（例：「{name}」に似た言葉）も呼ばれたことにする" checked><span>✍️ 聞き間違い・誤字脱字を直して読む<em>音声の文字はよくまちがえるので、意味から正しい言葉を考えてくれる</em></span></label><label class="ac"><input type="checkbox" class="acb" data-p="{name}が話している途中に話しかけたら、すぐ読み上げを止めて、新しく言われたことに答える。「やめて」「ストップ」だけなら止めるだけ。自分の読み上げの声を拾わないように、マイクのエコーキャンセルをONにする" checked><span>✋ 話している途中で割り込める<em>長い返事の途中でも、話しかければ止まって聞いてくれる</em></span></label><label class="ac"><input type="checkbox" class="acb" data-p="人と話すテンポで答える。相づちから入ってよい。一度に全部話さず、続きは聞かれたら話す。最後に相手に話を返す" checked><span>🗣 人と話すテンポ<em>相づちから入り、最後にこちらに話を返してくれる</em></span></label><label class="ac"><input type="checkbox" class="acb" data-p="「分かりません」で終わらせず、自分の知識と考えで意見や提案をする。インターネットの最新情報（天気・ニュースなど）は分からないので、そのときだけ正直にそう言う。「〜はできません」と決めつけない" checked><span>🤝 相談相手として考えを言う<em>「分かりません」で終わらず、意見や提案をくれる</em></span></label><label class="ac"><input type="checkbox" class="acb" data-p="「〇〇を覚えて」と言われたことや、会話で分かった好みを memory.txt に保存し、次の会話から使う。覚えていることは聞き返さない。「〇〇を忘れて」で消す" checked><span>🧠 話したことを覚える<em>好みや予定を覚えて、次の会話でも使ってくれる</em></span></label><label class="ac"><input type="checkbox" class="acb" data-p="「ありがとう」「おわり」「もういいよ」と言われたら、何も言わずに待機にもどる" checked><span>👋 終わり方<em>「ありがとう」「おわり」で静かに待機にもどる</em></span></label><label class="ac"><input type="checkbox" class="acb" data-p="画面を1回クリックしたら、話すのも考えるのもすぐやめて待機にもどる（画面が出て1.5秒以内のクリックとダブルクリックは無視する）" checked><span>🖱 画面クリックですぐ止める<em>困ったときの緊急ストップ</em></span></label><label class="ac"><input type="checkbox" class="acb" data-p="メモを消すなど元にもどせないことは、「〇〇しますか？」と聞いて「はい」と言われてからする。返事がなければ1回だけ聞き直す" checked><span>✅ 大事なことは確認してから<em>メモを消すなど、元にもどせないことは先に聞いてくれる</em></span></label><label class="ac"><input type="checkbox" class="acb" data-p="覚えた私の声にだけ反応し、ほかの人の声には反応しない（声を見分ける方法も、初心者に分かるように相談しながら作る）"><span>🔐 自分の声だけに反応（むずかしめ）<em>覚えた自分の声にだけ反応する。作るのが少しむずかしいので、慣れてからがおすすめ</em></span></label><input type="hidden" data-k="act" value=""><div class="tip" style="margin:8px 0 4px">✅が多いほどプログラムが長くなります。うまく動かないときは✅を減らして先に動かし、あとから 応用2 の「方法B」で1つずつ足すと確実です</div><div class="grp">⑤ その他</div><label><span>➕ その他の希望（なければ空のまま）</span><em class="hn">例：話しているあいだは光を強くする／名前を画面の下に出す</em><textarea data-k="etc" placeholder="とくになし"></textarea></label><div class="mkp">▼ できあがった頼み文（これをコピーして claude.ai へ）</div><div class="copy"><button onclick="cp(this)">コピー</button><span class="mko"></span></div></div></div>
+<div class="sec" data-n="5"><div class="st"><b>5</b>起動して話しかける</div><div class="shot"><div class="stage br"><div class="url">🔒 localhost:8000</div><div class="jv"><div class="hx " data-t="② 呼びかけて話す" data-p="t" style="text-align:center;padding:4px"><div class="jc"></div><div class="jt">「ジャービス、投稿のネタを3つ出して」</div></div></div><div class="perm">localhost:8000 がマイクの使用を求めています<div style="text-align:right;margin-top:6px"><span class="mb">ブロック</span> <span class="hx mb pri" data-t="① 許可" data-p="t" style="">許可</span></div></div></div></div><div class="tx">ターミナルでこれを打ち、Chromeで <span class="k">http://localhost:8000</span> を開く → マイクを「許可」→ 話しかけます。</div><div class="cmd"><span>python server.py</span><button onclick="cp(this)">コピー</button></div><div class="tip">名前を呼んでも反応しないときは、マイクが「許可」になっているか、名前をはっきり呼べているかを確認しよう。何度も聞きまちがえる名前は、応用2で呼びやすい名前に変えると直ります</div><div class="tip">📸 会話している画面の録画を撮っておこう</div></div>
+<div class="sec" data-n="6"><div class="st"><b>6</b>あとから「自分色」を変える</div><div class="shot"><div class="stage term" style="padding:0"><div class="vsb">server.py — ai-kouza</div><div class="cfgc"><span class="c"># ===== 設定（ここだけ変えればOK）=====</span>
+<span class="v">NAME</span>  = <span class="hx s" data-t="&quot; &quot; の中だけ変える" data-p="r" style="">"ジャービス"</span>  <span class="c"># 呼びかける名前</span>
+<span class="v">CHARA</span> = <span class="s">"ていねいな執事"</span> <span class="c"># 性格・話し方</span>
+<span class="v">VOICE</span> = <span class="n">13</span>  <span class="c"># 声の番号（VOICEVOX）</span>
+<span class="v">COLOR</span> = <span class="s">"#ff8a24"</span> <span class="c"># 光る色</span>
+<span class="v">IDLE</span>  = <span class="n">90</span>  <span class="c"># だまったら終わる秒数</span></div></div></div><div class="tx">作ったあとでも、名前・性格・声・色はいつでも変えられます。やり方は2つ。<br><br><b>方法A：自分で書きかえる</b><br>① VS Codeで、Claudeが「設定はここ」と教えてくれたファイルを開く（上の画面は例です。ファイル名や書き方は人によってちがいます）<br>② 一番上の「設定」の行の、<span class="k">" "</span> の中や数字だけを書きかえて保存<br>③ ターミナルで <span class="k">Ctrl + C</span> を押して止め、もう一度 <span class="k">python server.py</span><br>④ Chromeの画面を再読み込み（更新ボタン）すると、新しい設定で動きます<br><br><b>書きかえのコツ</b><br>・<span class="k">"</span> や <span class="k">=</span> は消さない。消すと動かなくなります<br>・声は「番号」で書くことが多いです。番号はキャラごとにちがうので、分からなければ方法Bで聞こう<br>・色は <span class="k">#ff8a24</span> のような「カラーコード」のことがあります。「緑のカラーコードは？」とClaudeに聞けばOK<br>・こわいときは、STEP3の「予備（_old）」を作ってから書きかえよう<br><br><b>方法B：Claudeに頼む</b><br>下の□をうめた頼み文を送ると、どこをどう書きかえるかを教えてくれます。</div><div class="mk" data-tpl="前に作ってもらった音声アシスタントの「{what}」を、「{after}」に変えたいです。&#10;どのファイルのどこを、どう書きかえればいいか、「書きかえる前」と「書きかえた後」が分かるように教えてください。&#10;ファイルの中身が必要なら、貼るので言ってください。"><div class="mkh">✏️ 変えたいところを書く</div><div class="mks">□の中を書きかえると、下の頼み文が自動で変わります</div><label><span>🔧 変えたいところ</span><input data-k="what" value="光る色" placeholder="光る色"></label><div class="exs"><button type="button" class="ex" data-v="名前">名前</button><button type="button" class="ex" data-v="光る色">光る色</button><button type="button" class="ex" data-v="声">声</button><button type="button" class="ex" data-v="話し方">話し方</button><button type="button" class="ex" data-v="あいさつ">あいさつ</button><button type="button" class="ex" data-v="返事の長さ">返事の長さ</button><button type="button" class="ex" data-v="反応のしかた（聞き間違いの直し方など）">反応のしかた</button><button type="button" class="ex" data-v="待機にもどるまでの時間">待機までの時間</button></div><label><span>✨ どう変えたい？</span><em class="hn">例：「ハル」／「ずんだもんの声」／「関西弁で元気に」／「途中で割り込めるようにしたい」</em><input data-k="after" value="緑" placeholder="緑"></label><div class="mkp">▼ できあがった頼み文（これをコピーして claude.ai へ）</div><div class="copy"><button onclick="cp(this)">コピー</button><span class="mko"></span></div></div><div class="tip">💡 いきなり全部変えず、1つ変えたら動かして確かめる、をくり返すと失敗しません</div></div>
+
+<div class="goal"><div class="b">🎉 全STEPクリア！おつかれさま！</div><div class="g2">できたら、LINEにもどって［✅ 応用4 できた！］を押してね</div></div>
+<div class="omk"><div class="omh">🎁 おまけ｜全部できた人へ</div>
+<div class="st"><b>＋</b>いつもの作業を「スキル」にする</div>
+<div class="tx"><span class="k">スキル</span>は、Claudeにわたしておく「いつもの手順書」です。たとえば「毎日の投稿文はこの形で作る」という手順をスキルにしておくと、毎回くわしく説明しなくても同じやり方でやってくれます。<br><br><b>① 準備（1回だけ）</b><br>claude.ai の左下の自分の名前 →「<span class="k">設定</span>」→「<span class="k">機能</span>」で、「<span class="k">コード実行とファイル作成</span>」をONにします。<br><br><b>② Claudeといっしょに作る</b><br>下の文を claude.ai に送ります。Claudeが質問してくるので答えていくと、スキルのファイルを作ってくれます。<br><br><b>③ スキルを入れる</b><br>できたファイルを、Claudeに言われたとおり「<span class="k">カスタマイズ</span>」→「<span class="k">スキル</span>」から入れます。</div>
+<div class="mk" data-tpl="初心者です。毎日、{job}をしています。&#10;【いつもの手順】&#10;{steps}&#10;この手順を「スキル」にしたいです。必要なことを質問しながら、スキルのファイルを作ってください。そのあと、claude.aiへの入れ方を、画面のどこを押すかまで1つずつ教えてください。"><div class="mkh">✏️ 自分の作業に書きかえる</div><div class="mks">□の中を自分好みに書きかえると、下の頼み文が自動で変わります（そのままでもOK）</div><label><span>📝 いつもやっている作業</span><input data-k="job" value="Threadsに投稿する文章づくり" placeholder=""></label><label><span>📋 その作業の手順（1行に1つ）</span><textarea data-k="steps" placeholder="">・テーマを1つ決める
+・150文字以内で、最初の1行で興味を引く
+・最後に質問を1つ入れる</textarea></label><div class="mkp">▼ できあがった頼み文（これをコピーして claude.ai へ）</div><div class="copy"><button onclick="cp(this)">コピー</button><span class="mko"></span></div></div>
+<div class="tip">画面の名前や場所がちがうときは、スクショをClaudeに見せて「どこを押す？」と聞けばOK。むずかしければ、ここはとばしても大丈夫です</div></div>
+<div class="omk"><div class="omh">🚀 次のステップ｜もっと楽にしたい人へ</div>
+<div class="st"><b>＋</b>Claude Code で「コピペなし」にする</div>
+<div class="tx">この講座では「Claudeに頼む → コードをコピー → VS Codeに貼る → 動かす」をくり返しました。<span class="k">Claude Code</span> を使うと、この「コピー・貼る・動かす」を Claude が自分でやってくれます。<br><br>
+<b>たとえば、こんなことができます</b><br>
+・フォルダの中のファイルを読んで、まとめて直してくれる<br>
+・エラーが出たら、自分で原因を調べて直してくれる<br>
+・「投稿の時間を7時に変えて」と言うだけで、設定ファイルを書きかえてくれる<br><br>
+<b>始め方</b><br>
+① Claude を有料プラン（<span class="k">Pro以上</span>）にする（Claude Code は無料プランでは使えません）<br>
+② 公式ページ（<span class="k">code.claude.com</span>）の手順どおりにインストール<br>
+③ VS Code の上のメニュー「Terminal」→「New Terminal」 を開き、ai-kouza フォルダで <span class="k">claude</span> と打って Enter<br>
+④ いつも claude.ai で使っているアカウントでログイン<br>
+⑤ あとは日本語でお願いするだけ。下の文はその例です</div>
+<div class="copy"><button onclick="cp(this)">コピー</button><span>このフォルダの中のプログラムを読んで、どんなファイルがあって、それぞれ何をしているか、初心者にも分かるように説明してください。
+まだファイルは書きかえないでください。</span></div>
+<div class="tip">Claude Code はファイルを直接書きかえます。STEP3の「まず計画を見せてもらう」「予備を作っておく」がそのまま役に立ちます。有料なので、無料の claude.ai で足りているうちは、無理に使わなくて大丈夫です</div></div>
+<div class="help"><h3>🆘 うまくいかないとき</h3>赤い文字のエラーや画面のスクショを <span class="k">claude.ai</span> に貼って「初心者にも分かるように直し方を教えて」と送ればOK。<br>それでもダメなら、この画面の右下にある［🆘 困った］を押して問い合わせてね。</div>
+<a class="back" href="#" onclick="history.length>1?history.back():window.close();return false">LINEにもどる</a>
+</div><div class="toast" id="t">コピーしました</div>
+<script>function cp(b){var t=b.parentNode.querySelector('span').innerText;var d=function(){var e=document.getElementById('t');e.classList.add('on');setTimeout(function(){e.classList.remove('on')},1200)};
+if(navigator.clipboard&&navigator.clipboard.writeText){navigator.clipboard.writeText(t).then(d,function(){f(t);d()})}else{f(t);d()}}
+function f(t){var a=document.createElement('textarea');a.value=t;a.style.position='fixed';a.style.opacity='0';document.body.appendChild(a);a.select();try{document.execCommand('copy')}catch(e){}a.remove()}
+var secs=[].slice.call(document.querySelectorAll('.sec'));
+function upd(){var n=0;secs.forEach(function(s){if(s.getBoundingClientRect().top<window.innerHeight*0.55)n=+s.dataset.n});
+document.getElementById('pb').style.width=(n/6*100)+'%';document.getElementById('pc').textContent=n+' / 6'}
+function place(st){[].forEach.call(st.querySelectorAll('.auto'),function(e){e.remove()});var W=380,Hh=210,used=[];
+[].forEach.call(st.querySelectorAll('.hx'),function(el){var x=0,y=0,e=el;while(e&&e!==st){x+=e.offsetLeft;y+=e.offsetTop;e=e.offsetParent}var w=el.offsetWidth,h=el.offsetHeight,p=4;var R={x:x-p,y:y-p,w:w+2*p,h:h+2*p};
+var r=document.createElement('div');r.className='ring auto';r.style.cssText='left:'+R.x+'px;top:'+R.y+'px;width:'+R.w+'px;height:'+R.h+'px';st.appendChild(r);
+var t=document.createElement('div');t.className='tag auto';t.textContent=el.dataset.t;st.appendChild(t);var tw=t.offsetWidth,th=t.offsetHeight,g=6;
+var cy=Math.max(2,Math.min(Hh-th-2,R.y+R.h/2-th/2)),cx=Math.max(2,Math.min(W-tw-2,R.x+R.w/2-tw/2));var C={r:[R.x+R.w+g,cy],l:[R.x-g-tw,cy],b:[cx,R.y+R.h+g],t:[cx,R.y-g-th]};var order=[el.dataset.p||'r','r','b','t','l'];var best=null;
+function ok(c){if(c[0]<2||c[1]<2||c[0]+tw>W-2||c[1]+th>Hh-2)return false;for(var i=0;i<used.length;i++){var u=used[i];if(c[0]<u[0]+u[2]&&c[0]+tw>u[0]&&c[1]<u[1]+u[3]&&c[1]+th>u[1])return false}return true}
+for(var i=0;i<order.length;i++){var c=C[order[i]];if(ok(c)){best=c;break}}
+if(!best){var c=C[order[0]];best=[Math.max(2,Math.min(W-tw-2,c[0])),Math.max(2,Math.min(Hh-th-2,c[1]))]}
+t.style.left=best[0]+'px';t.style.top=best[1]+'px';used.push([best[0],best[1],tw,th])})}
+function fit(){[].forEach.call(document.querySelectorAll('.shot'),function(s){var st=s.firstElementChild;st.style.transform='scale('+(s.clientWidth/380)+')';if(!st.dataset.pl){place(st);st.dataset.pl=1}})}
+window.addEventListener('scroll',upd,{passive:true});window.addEventListener('resize',fit);if(document.fonts&&document.fonts.ready){document.fonts.ready.then(function(){[].forEach.call(document.querySelectorAll('.stage'),function(st){place(st)})})}fit();upd();</script><script src="kouza.js?v=7"></script><script>(function(){
+var C={'オレンジ':'#ff8a24','青':'#2f8bff','水色':'#38d6ff','緑':'#22c55e','紫':'#a855f7','ピンク':'#ff5fa2','赤':'#ff3b3b','金色':'#f5c542','白':'#ffffff','黄色':'#ffd400','黒':'#888888'};
+function col(v){v=(v||'').trim();for(var k in C){if(v.indexOf(k)>=0)return C[k]}var o=new Option().style;o.color=v;return o.color?v:'#ff8a24'}
+[].forEach.call(document.querySelectorAll('.exs'),function(g){var lab=g.previousElementSibling,inp=lab&&lab.querySelector('[data-k]');if(!inp)return;
+ function mark(){[].forEach.call(g.querySelectorAll('.ex'),function(b){b.classList.toggle('on',b.getAttribute('data-v')===inp.value.trim())})}
+ g.addEventListener('click',function(e){var b=e.target.closest('.ex');if(!b)return;inp.value=b.getAttribute('data-v');inp.dispatchEvent(new Event('input',{bubbles:true}));mark()});
+ inp.addEventListener('input',mark);mark()});
+var mk=document.getElementById('jvmk');if(!mk)return;var p=document.getElementById('jvp');
+function v(k){var i=mk.querySelector('[data-k="'+k+'"]');return (i.value||'').trim()||i.placeholder}
+function draw(){p.style.setProperty('--c',col(v('color')));var c=p.querySelector('.jvc'),sh=v('shape');c.className='jvc'+(sh.indexOf('リング')>=0?' ring':(sh.indexOf('波')>=0?' wave':''));
+ p.querySelector('.jvn').textContent=v('name');p.querySelector('.jvh').textContent='「'+v('hello')+'」'}
+mk.addEventListener('input',draw);draw()})();</script><script>(function(){var mk=document.getElementById('jvmk');if(!mk)return;var h=mk.querySelector('[data-k="act"]');
+function g(k){var i=mk.querySelector('[data-k="'+k+'"]');return (i.value||'').trim()||i.placeholder}
+function upd(){var a=[].slice.call(mk.querySelectorAll('.acb:checked')).map(function(b){return '・'+b.getAttribute('data-p').split('{name}').join(g('name')).split('{idle}').join(g('idle'))});
+var v=a.length?a.join('\n'):'・とくになし（ふつうに会話できればOK）';if(h.value!==v){h.value=v;h.dispatchEvent(new Event('input',{bubbles:true}))}}
+mk.addEventListener('change',upd);mk.addEventListener('input',function(e){if(e.target!==h)upd()});
+if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',function(){setTimeout(upd,0)});else upd();upd()})();</script></body></html>
