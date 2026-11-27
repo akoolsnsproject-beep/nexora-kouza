@@ -224,10 +224,30 @@
       '@keyframes nxFloat{0%,100%{transform:translateY(0) scale(1.04)}50%{transform:translateY(-6px) scale(1.04)}}' +
       '@keyframes nxGlow{0%,100%{box-shadow:0 0 10px rgba(255,122,18,.35)}50%{box-shadow:0 0 26px rgba(255,122,18,.85),0 0 46px rgba(255,90,0,.35)}}' +
       '.nx-in{opacity:0;transform:translateY(22px);transition:opacity .6s ease,transform .6s ease}.nx-in.nx-on{opacity:1;transform:none}' +
-      '.hero:has(>img){overflow:hidden}.hero>img,.nx-float{animation:nxFloat 4.5s ease-in-out infinite}' +
+      '.hero:has(>img){overflow:hidden;position:relative}.nx-float{animation:nxFloat 4.5s ease-in-out infinite}' +
+      '.nx-fx{position:absolute;inset:0;pointer-events:none;z-index:1;overflow:hidden;mix-blend-mode:screen}' +
+      '.nx-fx i{position:absolute;bottom:-6px;width:4px;height:4px;border-radius:50%;background:#ffb347;box-shadow:0 0 8px 2px rgba(255,150,40,.9);opacity:0;animation:nxRise linear infinite}' +
+      '.nx-fx i.s{width:2px;height:2px;box-shadow:0 0 5px 1px rgba(255,190,90,.9)}' +
+      '.nx-fx b{position:absolute;top:-20%;bottom:-20%;width:38%;left:-50%;background:linear-gradient(100deg,transparent,rgba(255,210,150,.16),transparent);transform:skewX(-18deg);animation:nxShine 7s ease-in-out infinite}' +
+      '.nx-fx em{position:absolute;left:12%;top:8%;width:55%;height:80%;border-radius:50%;background:radial-gradient(closest-side,rgba(255,130,30,.22),transparent);animation:nxPulse 3.6s ease-in-out infinite}' +
+      '@keyframes nxRise{0%{transform:translateY(0);opacity:0}12%{opacity:1}80%{opacity:.8}100%{transform:translateY(-190px) translateX(14px);opacity:0}}' +
+      '@keyframes nxShine{0%,55%{left:-50%}85%,100%{left:120%}}' +
+      '@keyframes nxPulse{0%,100%{opacity:.35;transform:scale(.96)}50%{opacity:1;transform:scale(1.04)}}' +
       '.go,.nextb,.fin.on .b,.nx-glow{animation:nxGlow 2.2s ease-in-out infinite}' +
-      '@media (prefers-reduced-motion:reduce){.nx-in{opacity:1;transform:none;transition:none}.hero>img,.nx-float,.go,.nextb,.fin.on .b,.nx-glow{animation:none}}';
+      '@media (prefers-reduced-motion:reduce){.nx-in{opacity:1;transform:none;transition:none}.nx-fx{display:none}.nx-float,.go,.nextb,.fin.on .b,.nx-glow{animation:none}}';
     document.head.appendChild(st);
+    function fx() {
+      [].forEach.call(document.querySelectorAll('.hero'), function (h) {
+        if (h.querySelector('.nx-fx') || !h.querySelector(':scope>img')) return;
+        var d = document.createElement('div'); d.className = 'nx-fx'; var html = '<em></em><b></b>';
+        for (var k = 0; k < 16; k++) {
+          var l = (Math.random() * 96).toFixed(1), du = (4 + Math.random() * 4).toFixed(1), de = (-Math.random() * 8).toFixed(1), b0 = (Math.random() * 45).toFixed(0);
+          html += '<i class="' + (k % 3 ? 's' : '') + '" style="left:' + l + '%;bottom:' + b0 + '%;animation-duration:' + du + 's;animation-delay:' + de + 's"></i>';
+        }
+        d.innerHTML = html; h.appendChild(d);
+      });
+    }
+    if (!reduce) { if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', fx); else fx(); }
     if (reduce || !('IntersectionObserver' in window)) return;
     var io = new IntersectionObserver(function (es) {
       es.forEach(function (e) { if (e.isIntersecting) { e.target.classList.add('nx-on'); io.unobserve(e.target); } });
