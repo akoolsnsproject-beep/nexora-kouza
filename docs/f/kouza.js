@@ -1,3 +1,16 @@
+/* 無料版(f)とPro版(p)の切りかえ：?plan=pro / ?plan=free で記憶。Pro版の人が無料版のページを開いたらPro版へ */
+(function () {
+  try {
+    var q = location.search.match(/[?&]plan=(pro|free)/);
+    if (q) localStorage.setItem('nx_plan', q[1]);
+    var inPro = /\/p\/[^\/]*$/.test(location.pathname);
+    if (inPro && !q) localStorage.setItem('nx_plan', 'pro');
+    var plan = localStorage.getItem('nx_plan');
+    var file = location.pathname.split('/').pop() || 'index.html';
+    if (!inPro && plan === 'pro' && !q) { location.replace('../p/' + file + location.hash); }
+    if (inPro && plan === 'free' && q) { location.replace('../f/' + file); }
+  } catch (e) {}
+})();
 /* NEXORA講座：チェック＋クリアボタン（LIFF） */
 (function () {
   var LIFF_ID = '2012700328-ixoZeXYW';
