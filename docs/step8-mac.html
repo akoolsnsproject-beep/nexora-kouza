@@ -242,7 +242,7 @@ for(var i=0;i<order.length;i++){var c=C[order[i]];if(ok(c)){best=c;break}}
 if(!best){var c=C[order[0]];best=[Math.max(2,Math.min(W-tw-2,c[0])),Math.max(2,Math.min(Hh-th-2,c[1]))]}
 t.style.left=best[0]+'px';t.style.top=best[1]+'px';used.push([best[0],best[1],tw,th])})}
 function fit(){[].forEach.call(document.querySelectorAll('.shot'),function(s){var st=s.firstElementChild;st.style.transform='scale('+(s.clientWidth/380)+')';if(!st.dataset.pl){place(st);st.dataset.pl=1}})}
-window.addEventListener('scroll',upd,{passive:true});window.addEventListener('resize',fit);if(document.fonts&&document.fonts.ready){document.fonts.ready.then(function(){[].forEach.call(document.querySelectorAll('.stage'),function(st){place(st)})})}fit();upd();</script><script src="kouza.js?v=9"></script><script>(function(){
+window.addEventListener('scroll',upd,{passive:true});window.addEventListener('resize',fit);if(document.fonts&&document.fonts.ready){document.fonts.ready.then(function(){[].forEach.call(document.querySelectorAll('.stage'),function(st){place(st)})})}fit();upd();</script><script src="kouza.js?v=10"></script><script>(function(){
 var C={'オレンジ':'#ff8a24','青':'#2f8bff','水色':'#38d6ff','緑':'#22c55e','紫':'#a855f7','ピンク':'#ff5fa2','赤':'#ff3b3b','金色':'#f5c542','白':'#ffffff','黄色':'#ffd400','黒':'#888888'};
 function col(v){v=(v||'').trim();for(var k in C){if(v.indexOf(k)>=0)return C[k]}var o=new Option().style;o.color=v;return o.color?v:'#ff8a24'}
 [].forEach.call(document.querySelectorAll('.exs'),function(g){var lab=g.previousElementSibling,inp=lab&&lab.querySelector('[data-k]');if(!inp)return;
