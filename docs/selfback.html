@@ -76,6 +76,46 @@ try{history.replaceState(null,"","#t"+n)}catch(e){}var t=document.getElementById
 [].forEach.call(document.querySelectorAll("#ptabs button"),function(b){b.onclick=function(){tab(b.dataset.t)}});
 tab((location.hash.match(/t(\d)/)||[])[1]||1);
 </script>
+<script>/* NEXORA アニメーション：ふわっと表示・ロボットふわふわ・次のボタンが光る（動きを減らす設定の人は止める） */
+(function () {
+  try {
+    if (window.__nxAnim) return; window.__nxAnim = 1;
+    var reduce = window.matchMedia && matchMedia('(prefers-reduced-motion: reduce)').matches;
+    var st = document.createElement('style');
+    st.textContent =
+      '@keyframes nxFloat{0%,100%{transform:translateY(0) scale(1.04)}50%{transform:translateY(-6px) scale(1.04)}}' +
+      '@keyframes nxGlow{0%,100%{box-shadow:0 0 10px rgba(255,122,18,.35)}50%{box-shadow:0 0 26px rgba(255,122,18,.85),0 0 46px rgba(255,90,0,.35)}}' +
+      '.nx-in{opacity:0;transform:translateY(22px);transition:opacity .6s ease,transform .6s ease}.nx-in.nx-on{opacity:1;transform:none}' +
+      '.hero:has(>img){overflow:hidden}.hero>img,.nx-float{animation:nxFloat 4.5s ease-in-out infinite}' +
+      '.go,.nextb,.fin.on .b,.nx-glow{animation:nxGlow 2.2s ease-in-out infinite}' +
+      '@media (prefers-reduced-motion:reduce){.nx-in{opacity:1;transform:none;transition:none}.hero>img,.nx-float,.go,.nextb,.fin.on .b,.nx-glow{animation:none}}';
+    document.head.appendChild(st);
+    if (reduce || !('IntersectionObserver' in window)) return;
+    var io = new IntersectionObserver(function (es) {
+      es.forEach(function (e) { if (e.isIntersecting) { e.target.classList.add('nx-on'); io.unobserve(e.target); } });
+    }, { threshold: 0.08, rootMargin: '0px 0px -30px 0px' });
+    function scan() {
+      [].forEach.call(document.querySelectorAll('.sec,.card,.it,.next,.prog,.goal,.fin,.help,.col1,.can,.row-ok,.row-now,.row-lock,.row-done'), function (el) {
+        if (el.classList.contains('nx-in') || el.closest('.pg:not(.on)')) return;
+        var r = el.getBoundingClientRect();
+        el.classList.add('nx-in');
+        if (r.top < innerHeight) { requestAnimationFrame(function () { el.classList.add('nx-on'); }); } else io.observe(el);
+      });
+    }
+    if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', scan); else scan();
+    window.nxAnimScan = scan;
+    document.addEventListener('click', function () { setTimeout(scan, 60); }, true);
+  } catch (e) {}
+})();
+/* 数字とメーターが伸びる：nxCount(要素, 目標, 終わったら) */
+function nxCount(el, to, step) {
+  var reduce = window.matchMedia && matchMedia('(prefers-reduced-motion: reduce)').matches;
+  if (reduce || !to) { step && step(to, 1); return; }
+  var t0 = null, d = 1100;
+  function f(t) { if (!t0) t0 = t; var p = Math.min(1, (t - t0) / d), e = 1 - Math.pow(1 - p, 3); step && step(Math.round(to * e), e); if (p < 1) requestAnimationFrame(f); }
+  requestAnimationFrame(f);
+}
+</script>
 <a class="back" href="#" onclick="history.length>1?history.back():window.close();return false">LINEにもどる</a>
 <script>
 var CATS=[["high","🔥 高額"],["free","🆓 無料でできる"],["easy","👍 かんたん"],["up","📈 単価アップ"]],cur="high",D={items:[]};
