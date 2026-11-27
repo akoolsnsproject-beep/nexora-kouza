@@ -1,3 +1,46 @@
 <!DOCTYPE html><html lang="ja"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="robots" content="noindex"><title>NEXORA Claude自動化講座</title>
-<style>body{font-family:"Hiragino Sans","Noto Sans JP",sans-serif;background:#0b0b0d;color:#fff;max-width:560px;margin:0 auto;padding:24px 20px}h1{font-size:22px}a{display:flex;justify-content:space-between;color:#fff;text-decoration:none;background:#16161a;border:1px solid #333;border-radius:12px;padding:12px 14px;margin:8px 0}a span{color:#ff9a3d;font-weight:800}</style></head><body><script>try{var q=location.search.match(/[?&]plan=(pro|free)/);if(q)localStorage.setItem("nx_plan",q[1]);var pl=localStorage.getItem("nx_plan");if(!q)localStorage.setItem("nx_plan","pro");}catch(e){}</script><h1>NEXORA Claude自動化講座<br><span style="font-size:15px;color:#ffb066">✳ Pro版（Claude Code）</span></h1><p style="color:#ccc;font-size:14px">コピペなしで、Claudeがパソコンの中でファイルを作って動かしてくれる進め方です。<br><a href="../f/index.html?plan=free" style="color:#888;font-size:12px">無料版で進める人はこちら</a></p>
-<script>var os=(function(){try{var q=location.search.match(/[?&]os=(win|mac)/);if(q){localStorage.setItem("nx_os",q[1]);return q[1]}var s=localStorage.getItem("nx_os");if(s==="win"||s==="mac")return s}catch(e){}var u=navigator.userAgent;if(/Macintosh/.test(u)&&!('ontouchend' in document))return "mac";return "win"})();var t=["準備","AIにプログラムを書いてもらう","伝わる頼み方","自分用メモを作る","Threadsを自動投稿","インスタを自動投稿","動画を自動編集","自分だけのAI「ジャービス」"];t.forEach(function(x,i){if(i===4)document.write('<h2 style="margin-top:26px;font-size:18px">応用編（STEP4クリアで開く・好きな順でOK）</h2>');document.write('<a href="step'+(i+1)+'-'+os+'.html" style="margin-top:14px">'+(i<4?'STEP'+(i+1):'応用'+(i-3))+'｜'+x+'<span>›</span></a>')});["楽天アフィリエイト","CapCutで動画を自動編集","Canvaで画像を作る","AI社員で自分会社を作る"].forEach(function(x,i){document.write('<a href="a'+(i+1)+'.html" style="margin-top:14px">応用'+(i+5)+'｜'+x+'<span>›</span></a>')});document.write('<p style="margin-top:28px;text-align:center;font-size:12px;color:#666">'+(os==="win"?"Windows":"Mac")+'用のページです・<span onclick="try{localStorage.setItem(\'nx_os\',\''+(os==="win"?"mac":"win")+'\')}catch(e){};location.replace(location.pathname+location.search.replace(/([?&])os=(win|mac)&?/,\'$1\'))" style="text-decoration:underline;cursor:pointer">'+(os==="win"?"Mac":"Windows")+'の人はこちら</span></p>')</script><script src="https://static.line-scdn.net/liff/edge/2/sdk.js"></script><script>liff.init({liffId:"2012700328-ixoZeXYW"}).catch(function(){})</script></body></html>
+<style>
+*{box-sizing:border-box;margin:0;padding:0}body{font-family:"Hiragino Sans","Noto Sans JP",sans-serif;background:#0b0b0d;color:#fff;max-width:560px;margin:0 auto;padding-bottom:40px}
+a{color:inherit;text-decoration:none}.or{color:#ff9a3d}.mute{color:#9a9aa3}
+.hero{position:relative;height:210px;background:url(../img/s1.jpg) center/cover}.hero:after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(11,11,13,0) 40%,#0b0b0d)}
+.ht{position:absolute;left:18px;bottom:8px;z-index:2}.ht h1{font-size:22px}.ht p{font-size:12px;color:#ffb066;font-weight:800}
+.prog{margin:14px 16px;padding:16px;border:1.5px solid #3a2a1c;border-radius:18px;background:#141012;display:flex;gap:16px;align-items:center}
+.ring{flex:0 0 84px;width:84px;height:84px;border-radius:50%;display:grid;place-items:center}.ring div{width:66px;height:66px;border-radius:50%;background:#141012;display:grid;place-items:center;font-weight:900;font-size:20px}
+.next{display:block;margin:0 16px 14px;border:2px solid #ff8a24;border-radius:18px;overflow:hidden;background:#1d140b;box-shadow:0 0 24px rgba(255,138,36,.35)}.next img{width:100%;height:150px;object-fit:cover;display:block}.next .b{padding:12px 14px}.next small{color:#ffb066;font-weight:800;font-size:12px}.next b{display:block;font-size:17px;margin-top:2px}.go{margin-top:10px;background:linear-gradient(135deg,#ffb04a,#ff5a00);border-radius:12px;padding:12px;text-align:center;font-weight:900;box-shadow:0 0 18px rgba(255,106,0,.5)}
+h2{font-size:15px;margin:18px 16px 8px}h2 span{font-size:11px;color:#9a9aa3;font-weight:700;margin-left:6px}
+.it{margin:8px 16px;display:flex;gap:12px;align-items:center;padding:10px;border-radius:14px;background:#17171b;border:1px solid #26262c}.it img{width:64px;height:44px;object-fit:cover;border-radius:8px;flex:0 0 64px}.it .t{flex:1;font-size:14px;font-weight:700}.it .t small{display:block;color:#ff9a3d;font-size:11px}.it.done{border-color:#ff7a12}.it.now{border:2px solid #ff8a24}.st{font-size:12px;font-weight:900;white-space:nowrap}.it.lock{opacity:.45}
+.links{display:flex;gap:8px;flex-wrap:wrap;margin:14px 16px 0}.links a{font-size:12px;font-weight:800;border:1px solid #5a3415;color:#ffb066;border-radius:99px;padding:7px 12px}.links a.sw{border-color:#444;color:#999}
+.osn{margin:22px 16px 0;text-align:center;font-size:12px;color:#666}.osn u{cursor:pointer}
+</style></head><body><script>try{var q=location.search.match(/[?&]plan=(pro|free)/);if(q)localStorage.setItem("nx_plan",q[1]);if(!q)localStorage.setItem("nx_plan","pro");}catch(e){}</script>
+<div class="hero"><div class="ht"><p id="badge">✳ Pro版（Claude Code）</p><h1>Claude自動化講座</h1></div></div>
+<div class="prog"><div class="ring" id="ring"><div id="cnt">0/12</div></div><div><b style="font-size:16px" id="pt"></b><div class="mute" style="font-size:12px;margin-top:4px" id="ps"></div></div></div>
+<a class="next" id="next"><img id="nimg" alt=""><div class="b"><small id="nlab">▶ 次にやること</small><b id="ntit"></b><div class="go" id="ngo">はじめる ▶</div></div></a>
+<h2>基本編<span>STEP1〜4</span></h2><div id="basic"></div>
+<h2>応用編<span>STEP4のあと・好きな順でOK</span></h2><div id="adv"></div>
+<div class="links"><a href="rules.html">📕 はじめに読むルール</a><a class="sw" href="../f/index.html?plan=free">無料版で進める人はこちら</a></div>
+<div class="osn" id="osn"></div>
+<script>
+var os=(function(){try{var q=location.search.match(/[?&]os=(win|mac)/);if(q){localStorage.setItem("nx_os",q[1]);return q[1]}var s=localStorage.getItem("nx_os");if(s==="win"||s==="mac")return s}catch(e){}var u=navigator.userAgent;if(/Macintosh/.test(u)&&!('ontouchend' in document))return "mac";return "win"})();
+var IT=[["s1","STEP1","準備"],["s2","STEP2","AIにプログラムを書いてもらう"],["s3","STEP3","伝わる頼み方"],["s4","STEP4","自分用メモを作る"],["s5","応用1","Threadsを自動投稿"],["s6","応用2","インスタを自動投稿"],["s7","応用3","動画を自動編集"],["s8","応用4","自分だけのAI「ジャービス」"],["a1","応用5","楽天アフィリエイト"],["a2","応用6","CapCutで動画を自動編集"],["a3","応用7","Canvaで画像を作る"],["a4","応用8","AI社員で自分会社を作る"]];
+function href(k){return k[0]==="s"?"step"+k.slice(1)+"-"+os+".html":k+".html"}
+function img(k){return "../img/"+(k[0]==="s"?"s"+k.slice(1):(k==="a4"?"x5":"x"+k.slice(1)))+".jpg"}
+function st(k){var key=k[0]==="s"?"nx_"+k+os:"nx_"+k,a=[];try{a=JSON.parse(localStorage.getItem(key)||"[]")}catch(e){}var d=a.filter(function(x){return x}).length;if(a.length&&d===a.length)return 2;return d?1:0}
+var S={},done=0,nextK=null;IT.forEach(function(x){S[x[0]]=st(x[0]);if(S[x[0]]===2)done++;else if(!nextK)nextK=x[0]});
+var basicDone=["s1","s2","s3","s4"].every(function(k){return S[k]===2});
+document.getElementById("cnt").textContent=done+"/12";
+document.getElementById("ring").style.background="conic-gradient(#ff7a12 0 "+(done/12*100)+"%,#2a2a30 0)";
+document.getElementById("pt").textContent=done===12?"コンプリート！🎉":(done===0?"さあ、はじめよう！":"あと"+(12-done)+"個でコンプリート！");
+var nx=IT.filter(function(x){return x[0]===nextK})[0];
+document.getElementById("ps").textContent=nx?(done===0?"まずは STEP1 からスタート":"この調子！次は "+nx[1]+" です"):"ぜんぶクリアしました";
+if(nx){var n=document.getElementById("next");n.href=href(nx[0]);document.getElementById("nimg").src=img(nx[0]);document.getElementById("ntit").textContent=nx[1]+"｜"+nx[2];document.getElementById("ngo").textContent=(S[nx[0]]===1||done>0)?"つづきをはじめる ▶":"はじめる ▶"}else document.getElementById("next").style.display="none";
+function row(x){var k=x[0],s=S[k],lock=k!=="s1"&&k[0]==="s"&&+k.slice(1)<=4?S["s"+(+k.slice(1)-1)]!==2&&s===0:(!basicDone&&+(k.slice(1))>=1&&(k[0]==="a"||+k.slice(1)>=5)&&s===0);
+var cls=s===2?"done":(k===nextK?"now":(lock?"lock":""));var mark=s===2?'<span class="st or">✓ クリア</span>':(s===1?'<span class="st or">進行中</span>':(lock?'<span class="st">🔒</span>':'<span class="st or">›</span>'));
+return '<a class="it '+cls+'" href="'+href(k)+'"><img src="'+img(k)+'" alt=""><div class="t"><small>'+x[1]+'</small>'+x[2]+'</div>'+mark+'</a>'}
+document.getElementById("basic").innerHTML=IT.slice(0,4).map(row).join("");
+document.getElementById("adv").innerHTML=IT.slice(4).map(row).join("");
+document.getElementById("badge").textContent+="｜"+(os==="win"?"Windows":"Mac");
+document.getElementById("osn").innerHTML=(os==="win"?"Windows":"Mac")+'用のページです・<u id="oss">'+(os==="win"?"Mac":"Windows")+'の人はこちら</u>';
+document.getElementById("oss").onclick=function(){try{localStorage.setItem("nx_os",os==="win"?"mac":"win")}catch(e){}location.replace(location.pathname+location.search.replace(/([?&])os=(win|mac)&?/,"$1"))};
+</script>
+<script src="https://static.line-scdn.net/liff/edge/2/sdk.js"></script><script>try{liff.init({liffId:"2012700328-ixoZeXYW"}).catch(function(){})}catch(e){}</script>
+</body></html>
