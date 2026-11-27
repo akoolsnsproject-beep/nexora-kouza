@@ -28,7 +28,7 @@
   var lst = document.createElement('style');
   lst.textContent = '.chips{display:flex;flex-wrap:wrap;gap:6px;align-items:center;margin:14px 0 4px}.chips span{font-size:12px;color:#a89a8c}.chips a{font-size:13px;font-weight:800;color:#ffb066;text-decoration:none;border:1px solid #5a3415;border-radius:99px;padding:6px 11px;background:#15110d}a.k.lk{text-decoration:underline;text-underline-offset:3px}a.k.lk::after{content:" ↗";font-size:.85em}';
   document.head.appendChild(lst);
-  if (LK[lkey]) {
+  if (false && LK[lkey]) {  /* 使うサイトの列は表示しない（本文の文字にリンクあり） */
     var ch = document.createElement('div'); ch.className = 'chips';
     ch.innerHTML = '<span>このSTEPで使うサイト：</span>' + LK[lkey].map(function (l) { return '<a href="' + l[1] + '" target="_blank" rel="noopener">' + l[0] + ' ↗</a>'; }).join('');
     var ht = document.querySelector('.ht'); if (ht) ht.appendChild(ch);
