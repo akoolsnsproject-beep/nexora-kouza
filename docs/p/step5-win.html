@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html lang="ja"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="robots" content="noindex">
+<title>応用1｜Threadsを自動投稿（Windows・Pro）</title><style>
+*{box-sizing:border-box;margin:0;padding:0}
+body{font-family:"Hiragino Sans","Noto Sans JP","Noto Sans CJK JP",sans-serif;background:#0b0b0d;color:#fff;line-height:1.7;-webkit-text-size-adjust:100%}
+.wrap{max-width:560px;margin:0 auto}
+.top{position:sticky;top:0;z-index:5;background:#0b0b0dee;backdrop-filter:blur(6px);padding:10px 18px 8px;border-bottom:1px solid #222}
+.top .l{font-size:12px;color:#ff9a3d;font-weight:800;display:flex;justify-content:space-between}
+.bar{height:6px;background:#2a2a2e;border-radius:3px;margin-top:6px;overflow:hidden}
+.bar i{display:block;height:100%;width:0;background:linear-gradient(90deg,#ff8a1f,#ff5a00);box-shadow:0 0 10px #ff6a00;transition:width .2s}
+.hero{position:relative;background:#000}
+.hero img{width:100%;display:block;aspect-ratio:900/560;object-fit:cover;object-position:center 30%}
+.hero:after{content:"";position:absolute;inset:auto 0 0 0;height:60%;background:linear-gradient(transparent,#0b0b0d)}
+.ht{padding:0 20px 8px;margin-top:-56px;position:relative;z-index:1}
+.ht .s{color:#ff9a3d;font-weight:900;font-size:14px}
+.ht h1{font-size:26px;line-height:1.35;font-weight:900;margin:4px 0 12px}
+.chips{display:flex;gap:8px;flex-wrap:wrap}
+.chip{font-size:13px;background:#1b1b1f;border:1px solid #3a3a3a;border-radius:20px;padding:4px 12px;color:#ddd}
+.sec{padding:26px 20px 6px}
+.st{display:flex;align-items:center;gap:10px;font-weight:900;font-size:19px;margin-bottom:12px}
+.st b{background:#ff6a00;border-radius:9px;min-width:32px;height:32px;display:inline-flex;align-items:center;justify-content:center;font-size:16px;box-shadow:0 0 12px #ff6a0088}
+.tx{font-size:15.5px;color:#e4e4e4;margin-top:12px}
+.tx .k{color:#ffad5c;font-weight:800}
+.tip{margin-top:10px;font-size:13.5px;background:#1a1410;border-left:4px solid #ff7a1a;border-radius:6px;padding:8px 12px;color:#ffd9b3}
+/* illustrations */
+.shot{position:relative;width:100%;aspect-ratio:380/210;border-radius:12px;overflow:hidden;border:1px solid #3a3a3a;background:#1e1e1e}
+.stage{position:absolute;left:0;top:0;width:380px;height:210px;transform-origin:0 0;font-family:"Segoe UI","Hiragino Sans","Noto Sans JP",sans-serif;background:#1e1e1e;color:#eee}
+.ring{position:absolute;border:3px solid #ff7a1a;border-radius:9px;box-shadow:0 0 14px #ff6a00,inset 0 0 8px #ff6a0055}
+.tag{position:absolute;background:#ff6a00;color:#fff;font-weight:900;font-size:12.5px;padding:3px 9px;border-radius:8px;white-space:nowrap;box-shadow:0 2px 8px #0008}
+.desk{background:linear-gradient(160deg,#1c4a8a,#0a1a36)}
+.menu{position:absolute;background:#2b2b2b;border:1px solid #555;border-radius:8px;padding:5px 0;font-size:12.5px;color:#eee;box-shadow:0 6px 18px #0009}
+.menu div{padding:0 14px;height:26px;line-height:26px;white-space:nowrap}
+.menu .on{background:#3d3d3d}
+.folder{position:absolute;text-align:center;font-size:12px;color:#fff}
+.folder .ic{width:46px;height:36px;background:#f3c043;border-radius:3px 6px 4px 4px;margin:0 auto 4px;position:relative}
+.folder .ic:before{content:"";position:absolute;left:0;top:-6px;width:20px;height:8px;background:#f3c043;border-radius:3px 3px 0 0}
+.vs .tb{height:24px;background:#2d2d2d;display:flex;font-size:12px;color:#ccc;align-items:center;padding-left:6px;gap:12px}
+.vs .ab{position:absolute;left:0;top:24px;bottom:0;width:40px;background:#252526}
+.vs .ex{position:absolute;left:40px;top:24px;bottom:0;width:130px;background:#1f1f22;font-size:11.5px;color:#ccc;padding:6px 8px}
+.dlg{position:absolute;background:#252526;border:1px solid #555;border-radius:8px;padding:12px 14px;font-size:12px;color:#ddd;box-shadow:0 8px 24px #000a}
+.dlg .bt{display:inline-block;margin-top:8px;padding:3px 12px;border-radius:4px;background:#0e639c;color:#fff;font-weight:700}
+.cl{background:#f5f3ee;color:#222}
+.cl .box{position:absolute;left:16px;right:16px;bottom:18px;background:#fff;border:1px solid #ddd;border-radius:14px;padding:12px 50px 12px 14px;font-size:12px;line-height:1.5;color:#333;box-shadow:0 2px 8px #0001}
+.cl .send{position:absolute;right:10px;bottom:10px;width:30px;height:30px;border-radius:8px;background:#c96442;color:#fff;display:flex;align-items:center;justify-content:center;font-weight:900}
+.code{position:absolute;background:#1a1a1a;border-radius:8px;font-family:Consolas,monospace;font-size:11.5px;color:#9cdcfe;padding:26px 12px 10px;line-height:1.5}
+.code .cp{position:absolute;right:8px;top:5px;font-family:sans-serif;font-size:11px;color:#ddd;background:#333;border-radius:5px;padding:1px 8px}
+.term{background:#0c0c0c;font-family:Consolas,monospace;font-size:13px;color:#ccc;padding:30px 14px}
+.term .p{color:#7CFF8A}
+.copy{position:relative;margin-top:14px;background:#141417;border:1.5px solid #ff7a1a;border-radius:12px;padding:14px 14px 14px;font-size:14.5px;color:#eee;line-height:1.65}
+.copy button{position:absolute;right:10px;top:-15px;background:#ff6a00;color:#fff;border:0;border-radius:10px;font-weight:900;font-size:13.5px;padding:6px 14px;box-shadow:0 0 12px #ff6a0099;font-family:inherit}
+.cmd{display:flex;align-items:center;justify-content:space-between;margin-top:12px;background:#0c0c0c;border:1px solid #333;border-radius:10px;padding:10px 12px;font-family:Consolas,monospace;font-size:16px;color:#7CFF8A}
+.cmd button{background:#333;color:#fff;border:0;border-radius:8px;font-size:12.5px;padding:5px 10px;font-family:"Noto Sans JP",sans-serif}
+.goal{margin:28px 20px 0;border-radius:16px;padding:18px;background:radial-gradient(circle at 85% 0,#ff6a0055,transparent 60%),#16161a;border:1px solid #ff7a1a66;text-align:center}
+.goal .b{font-size:20px;font-weight:900}
+.help{margin:18px 20px 0;background:#16161a;border:1px solid #333;border-radius:14px;padding:16px;font-size:14.5px;color:#ddd}
+.help h3{font-size:16px;margin-bottom:6px}
+.back{display:block;margin:22px 20px 40px;background:#06c755;color:#fff;text-align:center;border-radius:14px;padding:15px 0;font-weight:900;font-size:16.5px;text-decoration:none}
+.toast{position:fixed;left:50%;bottom:24px;transform:translateX(-50%);background:#ff6a00;color:#fff;font-weight:900;padding:8px 18px;border-radius:20px;opacity:0;transition:.2s;z-index:9}
+.toast.on{opacity:1}
+
+.ht .sub{color:#bbb;font-size:14px;margin:-4px 0 12px}
+.warn{margin-top:10px;font-size:14px;background:#2a1408;border:1px solid #ff6a00;border-radius:8px;padding:8px 12px;color:#ffcf9e;font-weight:700}
+.four{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-top:10px}
+.four div{background:#16161a;border:1px solid #ff7a1a66;border-radius:10px;padding:8px 10px;font-size:13px;color:#bbb}
+.four b{display:block;color:#ffad5c;font-size:15px}
+.g2{font-size:14px;color:#ccc;margin-top:4px}
+.copy span{white-space:pre-wrap}
+.desk.mac{background:linear-gradient(160deg,#6b3fa0,#1d1640)}
+.vs{background:#1e1e1e}
+.cl{background:#f5f3ee;color:#222}
+.term{background:#0c0c0c;font-family:Consolas,Menlo,monospace;font-size:12.5px;color:#ccc;padding:30px 14px}
+.tt{position:absolute;left:0;right:0;top:0;height:22px;background:#2d2d2d;font-family:sans-serif;font-size:11px;color:#ccc;padding:3px 10px}
+.fvw{background:#202020}.fvw.mac{background:#ececec;color:#222}
+.fv-top{height:30px;background:#2b2b2b;font-size:12px;color:#ddd;padding:7px 12px}
+.fvw.mac .fv-top{background:#d8d8d8;color:#333}
+.fv{display:flex;gap:4px;padding:14px 14px}
+.fi{width:84px;text-align:center;font-size:12px}
+.fic{font-size:44px;line-height:64px}
+.br{background:#fff;color:#222}
+.url{height:26px;background:#e9e9ec;color:#555;font-size:11.5px;padding:5px 12px;border-bottom:1px solid #ccc}
+.bp{padding:12px 18px;height:184px}
+.bp.dk{background:#0d1117;color:#e6edf3}
+.bh{font-size:19px;font-weight:800;margin-bottom:6px}
+.bbtn{position:absolute;left:26px;top:140px;height:36px;line-height:36px;padding:0 18px;border-radius:8px;background:#ffd23f;color:#222;font-weight:800;font-size:14px;white-space:nowrap}
+.bp.dk ~ .bbtn,.bp.dk .bbtn{background:#2da44e;color:#fff}
+.fld{margin-top:6px;font-size:11.5px;color:#666}
+.fld div{margin-top:3px;border:1px solid #ccc;border-radius:6px;padding:5px 9px;font-size:13px;color:#222;background:#fff}
+.fld.dk{color:#aaa}.fld.dk div{background:#0d1117;border-color:#30363d;color:#e6edf3}
+.sbtn{margin-top:12px;display:inline-block;padding:7px 14px;border-radius:7px;background:#1877f2;color:#fff;font-weight:700;font-size:13px}
+.sbtn.gh{background:#238636}
+.uc{border:1px solid #ccc;border-radius:8px;padding:7px 10px;font-size:13px;margin-top:6px}
+.uc.on{border-color:#1877f2;background:#eef4ff;font-weight:700}
+.chips2{display:flex;flex-wrap:wrap;gap:5px;margin-top:4px}
+.chips2 span{background:#e7f0ff;color:#1356b8;border-radius:12px;font-size:11.5px;padding:2px 9px}
+.wbg{background:linear-gradient(160deg,#1c4a8a,#0a1a36)}
+.wbg.mac{background:linear-gradient(160deg,#6b3fa0,#1d1640)}
+.wbg.dark{background:#141418}
+.win-dlg{position:absolute;left:14px;top:12px;width:352px;height:186px;background:#f3f3f3;color:#222;border-radius:6px;padding:10px 14px;box-shadow:0 8px 24px #0008}
+.wt{font-size:11.5px;color:#555;border-bottom:1px solid #ddd;padding-bottom:4px}
+.opt{border:1px solid #ccc;background:#fff;border-radius:4px;padding:6px 10px;width:160px;font-size:13px;color:#0a58ca}
+.mac-dlg{position:absolute;left:14px;top:14px;width:250px;height:182px;background:#f2f2f2;border-radius:10px;box-shadow:0 8px 24px #0008}
+.mac-dlg .wt{padding:6px 10px}
+.mb{display:inline-block;border:1px solid #bbb;background:#fff;color:#222;border-radius:6px;font-size:12px;padding:3px 12px}
+.mb.pri{background:#0a63d6;border-color:#0a63d6;color:#fff}
+.vsico{width:64px;height:64px;border-radius:14px;background:#0a73c4;color:#fff;font-weight:900;font-size:22px;line-height:64px;margin:0 auto 4px}
+.phbg{background:linear-gradient(160deg,#1a1a1f,#0b0b0d)}
+.ph{position:absolute;left:60px;top:6px;width:214px;height:240px;background:#000;border:3px solid #444;border-radius:22px;padding:14px 10px;color:#fff}
+.pt{font-size:11px;color:#aaa;text-align:center}
+.ph2{font-size:14px;font-weight:800;margin:6px 0 8px}
+.pr{display:flex;justify-content:space-between;font-size:12px;height:30px;line-height:30px;border-bottom:1px solid #222}
+.pr span{color:#666}
+.ghside{width:136px;background:#0d1117;border-right:1px solid #30363d;padding:8px 6px;font-size:11.5px;color:#aaa;line-height:2}
+.ghside .on{color:#fff;font-weight:700}.ghside .on2{color:#fff;background:#1f2937;border-radius:5px}
+.ghb{border:1px solid #30363d;border-radius:6px;padding:2px 10px;font-size:12px;background:#21262d}
+.np{position:absolute;left:14px;top:10px;width:352px;height:190px;background:#fff;color:#222;border-radius:6px;box-shadow:0 8px 24px #0008;overflow:hidden}
+.npt{background:#eee;font-size:11.5px;padding:4px 10px;color:#444}
+.npm{font-size:11.5px;padding:3px 10px;border-bottom:1px solid #ddd;color:#333}
+.npb{padding:8px 12px;font-size:12px;line-height:1.55}
+.sm{position:absolute;left:60px;top:12px;width:262px;height:186px;background:#202020ee;border-radius:10px;padding:12px;box-shadow:0 8px 24px #0008}
+.sms{background:#2d2d2d;border-radius:16px;padding:5px 12px;font-size:13px}
+.smr{display:flex;gap:10px;align-items:center;margin-top:12px;background:#333;border-radius:8px;padding:8px;font-size:13px}
+.ubub{position:absolute;right:14px;top:36px;max-width:260px;background:#e8e3d8;border-radius:12px;padding:6px 10px;font-size:12px}
+.abub{position:absolute;left:14px;top:108px;width:350px;font-size:12px;line-height:1.55;color:#333}
+.vid{position:absolute;left:30px;top:12px;width:110px;height:186px;background:linear-gradient(160deg,#334,#112);border-radius:10px;overflow:hidden}
+.vsub{position:absolute;left:4px;right:4px;bottom:44px;text-align:center;font-weight:900;font-size:12px;color:#fff;text-shadow:0 0 3px #000,0 0 3px #000}
+.vbar{position:absolute;left:8px;right:8px;bottom:14px;height:4px;background:#555;border-radius:2px}
+.vbar i{display:block;width:40%;height:100%;background:#ff7a1a}
+.jv{position:absolute;left:0;right:0;top:26px;bottom:0;background:#02040a;display:flex;flex-direction:column;align-items:center;justify-content:center}
+.jc{width:76px;height:76px;border-radius:50%;border:4px solid #39b6ff;box-shadow:0 0 22px #39b6ff,inset 0 0 18px #39b6ff}
+.jt{color:#9fdcff;font-size:12px;margin-top:12px}
+.perm{position:absolute;right:10px;top:32px;width:220px;background:#fff;color:#222;border-radius:8px;padding:8px 10px;font-size:11px;box-shadow:0 6px 18px #000a}
+.cmdl{margin-top:16px;display:flex;justify-content:space-between;background:#f6f6f6;border:1px solid #ddd;border-radius:6px;padding:7px 9px;font-family:Menlo,monospace;font-size:10.5px}
+
+.hx{display:inline-block}
+.th{width:64px;height:52px;border-radius:6px;margin:6px auto 4px}
+.fvw.mac .fi{color:#222}
+.appf{width:60px;height:60px;border-radius:12px;background:linear-gradient(135deg,#5ac8fa,#007aff);color:#fff;font-size:30px;font-weight:900;line-height:60px;margin:0 auto 4px}
+.bbtn{position:static;display:inline-block}
+.bbtn.g{background:#2da44e;color:#fff}
+.sbtn.rw{background:#21262d;border:1px solid #444;color:#fff}
+.cl .box{padding-right:50px}
+.cl .box .send{right:8px;bottom:8px}
+.ex .hx{padding:0 2px}
+.folder{color:#fff}
+.dlg .bt{display:inline-block}
+.ghside .hx{display:block}
+.fv .hx{display:flex}
+.fi.hx{display:block}
+
+.sms.hx{display:block}.smr.hx{display:flex}
+.abub{top:80px}
+.ubub{top:30px}
+.jv{justify-content:flex-start;align-items:flex-start;padding:30px 0 0 24px}
+.perm{width:170px;top:40px}
+
+.sm{top:40px;height:160px}
+.perm{top:120px}
+.chips2 span{margin-bottom:3px}
+</style></head><body><div class="wrap">
+<div class="top"><div class="l"><span>応用1 ｜ Windows</span><span id="pc">0 / 9</span></div><div class="bar"><i id="pb"></i></div></div>
+<div class="hero"><img src="../img/s5.jpg" alt=""></div>
+<div class="ht"><div class="s">応用1 ｜ Windows ｜ Pro</div><h1>Threadsを<br>自動投稿</h1><div class="sub">毎日きまった時間に投稿（PCを閉じててもOK）</div>
+<div class="chips"><span class="chip">⏱ 40分</span><span class="chip">🎯 Threadsに自動で投稿されたらOK</span><span class="chip">📋 9ステップ</span></div><div style="margin:12px 0 0;padding:10px 14px;border-radius:12px;border:1.5px solid #c96442;background:#1d120d;color:#ffd2b8;font-size:13.5px;line-height:1.6">✳ <b>Pro版（Claude Code）</b>のページです。コピペなしで、Claudeがファイルを作って動かしてくれます。</div></div>
+<div class="sec" data-n="1"><div class="st"><b>1</b>Metaでアプリを作る</div><div class="tx"><span class="k">developers.facebook.com/apps</span> にログイン →「アプリを作成」→ 使い道で「<span class="k">Threads APIにアクセス</span>」を選びます。</div></div>
+<div class="sec" data-n="2"><div class="st"><b>2</b>自分をテスターにする</div><div class="tx">アプリの「役割」で自分のThreadsアカウントを「Threadsテスター」に追加。Threadsアプリの「設定」→「アカウント」→「ウェブサイトのアクセス許可」で招待を承認します。</div></div>
+<div class="sec" data-n="3"><div class="st"><b>3</b>トークンをもらう</div><div class="tx">「ユーザートークン生成ツール」でトークンを作ってコピーします。</div><div class="tip">⚠️ トークンは合いカギ。Claude・LINE・コードには貼らない！</div></div>
+<div class="sec" data-n="4"><div class="st"><b>4</b>GitHubに置き場所を作る</div><div class="tx"><span class="k">github.com/new</span> で名前を <span class="k">threads-bot</span>、<span class="k">Private</span> を選んで作ります。</div></div>
+<div class="sec" data-n="5"><div class="st"><b>5</b>トークンを金庫に入れる</div><div class="tx">作った threads-bot の「Settings」→「Secrets and variables」→「Actions」→「New repository secret」。名前を <span class="k">THREADS_TOKEN</span> にして、トークンを貼って保存。<br>ここは自分でやります（Claudeにトークンを見せないため）。</div></div>
+<div class="sec" data-n="6"><div class="st"><b>6</b>Claude Codeに作ってもらう</div><div class="shot"><div class="stage cl"><div style="position:absolute;left:16px;top:12px;font-weight:800;font-size:14px;color:#c96442">✳ Claude<span style="margin-left:10px;color:#888;font-weight:600">Chat</span><span style="margin-left:8px;background:#c96442;color:#fff;border-radius:6px;padding:1px 8px">Code</span></div><div style="position:absolute;left:16px;top:44px;font-size:13px;color:#666">📁 ai-kouza ・ Local</div><div class="hx box" data-t="① 送信" data-p="t">ThreadsにGitHub Actionsで毎日自動投稿…<div class="send">↑</div></div></div></div><div class="tx">ai-kouza を開いたClaude Codeに、下の文を送ります。投稿の時間や文の中身は書きかえてOK。</div><div class="copy"><button onclick="cp(this)">コピー</button><span>初心者です。Threadsに、GitHub Actionsで毎日自動投稿する仕組みを作ってください。
+・作る場所：このフォルダの中に threads-bot フォルダ
+・投稿する文：posts.csv の上から順番に1日1つ
+・投稿の時間：毎日 朝8時（日本時間）
+・トークン：GitHubのSecretsに入れた THREADS_TOKEN を使う（コードには書かない）
+・できたら、私が作ったGitHubの threads-bot（Private）にアップロードしてください
+GitHubへのログインなど、私がやる操作があれば1つずつ教えてください。</span></div></div>
+<div class="sec" data-n="7"><div class="st"><b>7</b>GitHubにつなぐ</div><div class="tx">はじめてのときは、ClaudeがGitHubへのログインを案内してくれます。ブラウザが開いたら、自分でログインして「許可」を押します。Claudeが「ファイルを作っていい？」「コマンドを動かしていい？」と聞いてきたら、内容を見て［許可］（Allow / Accept）を押します。よく分からないときは「これは何をするの？」と聞いてからでOK。</div></div>
+<div class="sec" data-n="8"><div class="st"><b>8</b>ためしに動かす</div><div class="tx">github.com の threads-bot →「Actions」→ 作ったワークフロー →「Run workflow」。Threadsに投稿されたらクリア！<br>❌（赤）が出たら、Claude Codeに「GitHub Actionsのエラーを見て直して」と送ればOK。</div></div>
+<div class="sec" data-n="9"><div class="st"><b>9</b>時間を変える・止める</div><div class="tx">Claude Codeに頼むだけで直してアップロードまでしてくれます。</div><div class="copy"><button onclick="cp(this)">コピー</button><span>threads-bot の投稿時間を 毎日 夜9時（日本時間）に変えて、GitHubにアップロードしてください。</span></div></div>
+
+<div class="goal"><div class="b">🎉 応用1クリア！</div></div>
+<div class="help"><h3>🆘 うまくいかないとき</h3>Claude Codeに「エラーが出た。原因を一言で教えて、直して」と送ればOK。画面がちがうときはスクショを貼って「次どこを押す？」と聞いてね。<br>それでもダメなら、右下の［🆘 困った］から相談してね。</div>
+<a class="back" href="#" onclick="history.length>1?history.back():window.close();return false">LINEにもどる</a>
+</div><div class="toast" id="t">コピーしました</div>
+<script>function cp(b){var t=b.parentNode.querySelector('span').innerText;var d=function(){var e=document.getElementById('t');e.classList.add('on');setTimeout(function(){e.classList.remove('on')},1200)};
+if(navigator.clipboard&&navigator.clipboard.writeText){navigator.clipboard.writeText(t).then(d,function(){f(t);d()})}else{f(t);d()}}
+function f(t){var a=document.createElement('textarea');a.value=t;a.style.position='fixed';a.style.opacity='0';document.body.appendChild(a);a.select();try{document.execCommand('copy')}catch(e){}a.remove()}
+var secs=[].slice.call(document.querySelectorAll('.sec'));
+function upd(){var n=0;secs.forEach(function(s){if(s.getBoundingClientRect().top<window.innerHeight*0.55)n=+s.dataset.n});
+document.getElementById('pb').style.width=(n/9*100)+'%';document.getElementById('pc').textContent=n+' / 9'}
+function place(st){[].forEach.call(st.querySelectorAll('.auto'),function(e){e.remove()});var W=380,Hh=210,used=[];
+[].forEach.call(st.querySelectorAll('.hx'),function(el){var x=0,y=0,e=el;while(e&&e!==st){x+=e.offsetLeft;y+=e.offsetTop;e=e.offsetParent}var w=el.offsetWidth,h=el.offsetHeight,p=4;var R={x:x-p,y:y-p,w:w+2*p,h:h+2*p};
+var r=document.createElement('div');r.className='ring auto';r.style.cssText='left:'+R.x+'px;top:'+R.y+'px;width:'+R.w+'px;height:'+R.h+'px';st.appendChild(r);
+var t=document.createElement('div');t.className='tag auto';t.textContent=el.dataset.t;st.appendChild(t);var tw=t.offsetWidth,th=t.offsetHeight,g=6;
+var cy=Math.max(2,Math.min(Hh-th-2,R.y+R.h/2-th/2)),cx=Math.max(2,Math.min(W-tw-2,R.x+R.w/2-tw/2));var C={r:[R.x+R.w+g,cy],l:[R.x-g-tw,cy],b:[cx,R.y+R.h+g],t:[cx,R.y-g-th]};var order=[el.dataset.p||'r','r','b','t','l'];var best=null;
+function ok(c){if(c[0]<2||c[1]<2||c[0]+tw>W-2||c[1]+th>Hh-2)return false;for(var i=0;i<used.length;i++){var u=used[i];if(c[0]<u[0]+u[2]&&c[0]+tw>u[0]&&c[1]<u[1]+u[3]&&c[1]+th>u[1])return false}return true}
+for(var i=0;i<order.length;i++){var c=C[order[i]];if(ok(c)){best=c;break}}
+if(!best){var c=C[order[0]];best=[Math.max(2,Math.min(W-tw-2,c[0])),Math.max(2,Math.min(Hh-th-2,c[1]))]}
+t.style.left=best[0]+'px';t.style.top=best[1]+'px';used.push([best[0],best[1],tw,th])})}
+function fit(){[].forEach.call(document.querySelectorAll('.shot'),function(s){var st=s.firstElementChild;st.style.transform='scale('+(s.clientWidth/380)+')';if(!st.dataset.pl){place(st);st.dataset.pl=1}})}
+window.addEventListener('scroll',upd,{passive:true});window.addEventListener('resize',fit);if(document.fonts&&document.fonts.ready){document.fonts.ready.then(function(){[].forEach.call(document.querySelectorAll('.stage'),function(st){place(st)})})}fit();upd();</script><script src="kouza.js?v=7"></script></body></html>
