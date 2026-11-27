@@ -21,7 +21,7 @@ h2{font-size:15px;margin:18px 16px 8px}h2 span{font-size:11px;color:#9a9aa3;font
 <div class="osn" id="osn"></div>
 <script>
 var os=(function(){try{var q=location.search.match(/[?&]os=(win|mac)/);if(q){localStorage.setItem("nx_os",q[1]);return q[1]}var s=localStorage.getItem("nx_os");if(s==="win"||s==="mac")return s}catch(e){}var u=navigator.userAgent;if(/Macintosh/.test(u)&&!('ontouchend' in document))return "mac";return "win"})();
-var IT=[["s1","STEP1","準備"],["s2","STEP2","AIにプログラムを書いてもらう"],["s3","STEP3","伝わる頼み方"],["s4","STEP4","自分用メモを作る"],["s5","応用1","Threadsを自動投稿"],["s6","応用2","インスタを自動投稿"],["s7","応用3","動画を自動編集"],["s8","応用4","自分だけのAI「ジャービス」"],["a1","応用5","楽天アフィリエイト"],["a2","応用6","CapCutで動画を自動編集"],["a3","応用7","Canvaで画像を作る"],["a4","応用8","AI社員で自分会社を作る"]];
+var IT=[["s1","STEP1","準備"],["s2","STEP2","AIにプログラムを書いてもらう"],["s3","STEP3","伝わる頼み方"],["s4","STEP4","自分用メモを作る"],["s5","応用1","Threadsを自動投稿"],["s6","応用2","インスタを自動投稿"],["s7","応用3","動画を自動編集"],["s8","応用4","自分だけのAI「ジャービス」"],["a1","応用5","楽天アフィリエイト"],["a2","応用6","CapCutで動画を仕上げる"],["a3","応用7","画像をまとめて作る"],["a4","応用8","AI社員で自分会社を作る"]];
 function href(k){return k[0]==="s"?"step"+k.slice(1)+"-"+os+".html":k+".html"}
 function img(k){return "../img/"+(k[0]==="s"?"s"+k.slice(1):(k==="a4"?"x5":"x"+k.slice(1)))+".jpg"}
 function st(k){var key=k[0]==="s"?"nx_"+k+os:"nx_"+k,a=[];try{a=JSON.parse(localStorage.getItem(key)||"[]")}catch(e){}var d=a.filter(function(x){return x}).length;if(a.length&&d===a.length)return 2;return d?1:0}
