@@ -14,6 +14,28 @@
   var NM = {s1:'STEP1',s2:'STEP2',s3:'STEP3',s4:'STEP4',s5:'応用1',s6:'応用2',s7:'応用3',s8:'応用4',a1:'応用5',a2:'応用6',a3:'応用7',a4:'応用8'};
   var ID = m ? 's' + n : (ma ? 'a' + n : '');
   if (NM[ID]) { LBL = NM[ID]; MSG = '✅ ' + LBL + 'クリア' + (os === 'mac' ? '！' : ''); }
+
+  /* 前のSTEPをクリアしていないと開かない（応用編はSTEP4のあと好きな順） */
+  (function () {
+    if (!ID || ID === 's1') return;
+    var pv = (ID[0] === 's' && n <= 4) ? 's' + (n - 1) : 's4';
+    function cl(k) { var a = []; try { a = JSON.parse(localStorage.getItem(k) || '[]'); } catch (e) {} return a.length > 0 && a.every(function (x) { return x; }); }
+    var ok = cl('nx_' + pv + 'win') || cl('nx_' + pv + 'mac');
+    try { if (localStorage.getItem('nx_ok_' + ID)) ok = true; } catch (e) {}
+    if (ok) return;
+    var so = os; try { so = so || localStorage.getItem('nx_os') || 'win'; } catch (e) { so = so || 'win'; }
+    var ph = 'step' + pv.slice(1) + '-' + so + '.html', pn = NM[pv];
+    var l = document.createElement('div');
+    l.style.cssText = 'position:fixed;inset:0;z-index:9999;background:rgba(5,5,8,.96);display:flex;align-items:center;justify-content:center;padding:24px;font-family:inherit';
+    l.innerHTML = '<div style="max-width:340px;width:100%;text-align:center;color:#fff;background:#141012;border:2px solid #ff8a24;border-radius:20px;padding:26px 20px;box-shadow:0 0 30px rgba(255,138,36,.35)">' +
+      '<div style="font-size:44px">🔒</div><b style="display:block;font-size:19px;margin:6px 0 10px">' + LBL + ' はまだ開いていません</b>' +
+      '<p style="font-size:14.5px;color:#ddd;line-height:1.7;margin:0 0 18px">先に「' + pn + '」を終わらせてね。' + (pv === 's4' ? '<br>応用編は、STEP4までクリアすると好きな順に進められます。' : '') + '</p>' +
+      '<a href="' + ph + '" style="display:block;background:linear-gradient(135deg,#ffb04a,#ff5a00);color:#fff;font-weight:900;font-size:17px;text-decoration:none;border-radius:14px;padding:15px;box-shadow:0 0 20px rgba(255,106,0,.55)">▶ ' + pn + ' をひらく</a>' +
+      '<a href="index.html" style="display:block;margin-top:14px;color:#ffb066;font-size:14px;font-weight:800">講座トップにもどる</a>' +
+      '<u id="nxlk" style="display:block;margin-top:18px;color:#777;font-size:12px;cursor:pointer">別のスマホ・パソコンでもう終わらせた人はこちら</u></div>';
+    document.body.appendChild(l); document.documentElement.style.overflow = 'hidden';
+    document.getElementById('nxlk').onclick = function () { try { localStorage.setItem('nx_ok_' + ID, '1'); } catch (e) {} l.remove(); document.documentElement.style.overflow = ''; };
+  })();
   /* パソコンの種類をおぼえて、応用1〜4は自分のパソコン用ページへ */
   try {
     if (m && n <= 4) localStorage.setItem('nx_os', os);
