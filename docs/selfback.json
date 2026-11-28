@@ -1,1 +1,875 @@
-{"updated": "2026-11-28 19:40", "video": "", "items": [{"name": "エコエネハウス（太陽光・蓄電池）", "reward": "150,000円", "reward_num": 150000, "condition": "太陽光・蓄電池の新規契約完了（設置費用がかかる）", "category": "暮らし", "free": false, "easy": false, "prev_reward_num": 20000}, {"name": "SAKIYOMIスクール（SNS仕事スクール）", "reward": "100,000円", "reward_num": 100000, "condition": "スクールに新規入会・成約（受講料がかかる）", "category": "学び", "free": false, "easy": false}, {"name": "auひかり", "reward": "60,000円", "reward_num": 60000, "condition": "auひかりの新規開通", "category": "通信", "free": false, "easy": false, "prev_reward_num": 10000}, {"name": "SoftBank Air", "reward": "48,500円", "reward_num": 48500, "condition": "置くだけWi-Fiの新規開通", "category": "通信", "free": false, "easy": false, "prev_reward_num": 10000}, {"name": "SoftBank 光（正規代理店NEXT）", "reward": "41,000円", "reward_num": 41000, "condition": "光回線の新規開通", "category": "通信", "free": false, "easy": false, "prev_reward_num": 7500}, {"name": "NURO 光", "reward": "40,000円（一戸建て）", "reward_num": 40000, "condition": "新規回線開通（アパート・マンションは30,000円）", "category": "通信", "free": false, "easy": false, "prev_reward_num": 14000}, {"name": "ドコモ光キャンペーン", "reward": "37,593円", "reward_num": 37593, "condition": "ドコモ光の新規利用開始", "category": "通信", "free": false, "easy": false, "prev_reward_num": 10387}, {"name": "ビッグローブ光", "reward": "33,000円", "reward_num": 33000, "condition": "新規開通または他社からの転用", "category": "通信", "free": false, "easy": false, "prev_reward_num": 5500}, {"name": "車買取ソコカラ", "reward": "30,000円", "reward_num": 30000, "condition": "車の売却成約（売る車が必要）", "category": "車", "free": false, "easy": false, "prev_reward_num": 17000}, {"name": "カーネクスト（中古車買取）", "reward": "30,000円", "reward_num": 30000, "condition": "電話で無料査定→売却成約（売る車が必要）", "category": "車", "free": false, "easy": false, "prev_reward_num": 18000}, {"name": "Locca（水道直結ウォーターサーバー）", "reward": "28,000円", "reward_num": 28000, "condition": "新規設置（月額料金がかかる）", "category": "暮らし", "free": false, "easy": false, "prev_reward_num": 7519}, {"name": "GMOあおぞらネット銀行 法人口座", "reward": "23,100円", "reward_num": 23100, "condition": "法人口座の新規開設＋初回ログイン（法人・個人事業主向け）", "category": "口座開設", "free": false, "easy": false, "prev_reward_num": 6700}, {"name": "三井住友銀行 法人ネット口座 Trunk", "reward": "23,000円", "reward_num": 23000, "condition": "法人口座の新規開設（法人向け）", "category": "口座開設", "free": false, "easy": false, "prev_reward_num": 5000}, {"name": "みんなのFX", "reward": "22,000円", "reward_num": 22000, "condition": "新規口座開設＋取引（FXの取引が必要）", "category": "FX", "free": false, "easy": false, "prev_reward_num": 3000}, {"name": "JCB Biz ONE（個人事業主向けカード）", "reward": "21,500円", "reward_num": 21500, "condition": "新規カード発行", "category": "カード", "free": false, "easy": false, "prev_reward_num": 7000}, {"name": "ahamo（乗り換え）", "reward": "20,000円", "reward_num": 20000, "condition": "他社からの乗り換え（MNP）で開通完了", "category": "通信", "free": false, "easy": false, "prev_reward_num": 3000}, {"name": "エネワンでんき", "reward": "20,000円", "reward_num": 20000, "condition": "電気の切り替えで新規供給開始", "category": "暮らし", "free": false, "easy": false, "prev_reward_num": 4500}, {"name": "ウェルスコーチ（不動産投資の面談）", "reward": "18,000円", "reward_num": 18000, "condition": "不動産投資の新規面談（条件あり）", "category": "投資", "free": false, "easy": false, "prev_reward_num": 15000}, {"name": "LIGHT FX", "reward": "18,000円", "reward_num": 18000, "condition": "新規口座開設＋取引（FXの取引が必要）", "category": "FX", "free": false, "easy": false, "prev_reward_num": 3000}, {"name": "JCBオリジナルシリーズ【W】【WL】", "reward": "17,500円", "reward_num": 17500, "condition": "新規カード発行（年会費無料）", "category": "カード", "free": true, "easy": false, "prev_reward_num": 2700}, {"name": "ヒロセ通商 FX", "reward": "15,000円", "reward_num": 15000, "condition": "新規口座開設＋取引（FXの取引が必要）", "category": "FX", "free": false, "easy": false, "prev_reward_num": 2000}, {"name": "三菱UFJカード", "reward": "15,000円", "reward_num": 15000, "condition": "新規カードの受け取り完了", "category": "カード", "free": true, "easy": false, "prev_reward_num": 3000}, {"name": "三菱UFJカード ゴールド", "reward": "15,000円", "reward_num": 15000, "condition": "新規カードの受け取り完了（年会費あり）", "category": "カード", "free": false, "easy": false, "prev_reward_num": 4500}, {"name": "プロミスVisaカード", "reward": "15,000円", "reward_num": 15000, "condition": "新規キャッシング利用（借入が必要）", "category": "カード", "free": false, "easy": false, "prev_reward_num": 5000}, {"name": "三井住友カード Trunkオーナーズ", "reward": "15,000円", "reward_num": 15000, "condition": "新規カード発券＋パートナーカード追加申込（事業者向け）", "category": "カード", "free": false, "easy": false, "prev_reward_num": 3000}, {"name": "三井住友銀行 Olive口座開設", "reward": "14,500円", "reward_num": 14500, "condition": "新規口座開設完了", "category": "口座開設", "free": true, "easy": true, "prev_reward_num": 2000}, {"name": "楽天銀行スーパーローン", "reward": "14,500円", "reward_num": 14500, "condition": "新規カード発行（ローン審査あり）", "category": "カード", "free": true, "easy": false, "prev_reward_num": 3000}, {"name": "JCBカード S", "reward": "14,000円", "reward_num": 14000, "condition": "新規カード発行（年会費無料）", "category": "カード", "free": true, "easy": false, "prev_reward_num": 2700}, {"name": "みずほ銀行 普通預金口座", "reward": "13,500円", "reward_num": 13500, "condition": "WEBで口座開設＋みずほダイレクト初回登録", "category": "口座開設", "free": true, "easy": true, "prev_reward_num": 1500}, {"name": "ヴィーナスウォーカー（モニターサイト）", "reward": "13,500円", "reward_num": 13500, "condition": "オンラインセミナー参加＋モニター案件申込", "category": "モニター", "free": true, "easy": false, "prev_reward_num": 3000}, {"name": "スマモ二（お試しサイト）", "reward": "12,000円", "reward_num": 12000, "condition": "オンラインセミナー参加＋モニター案件申込", "category": "モニター", "free": true, "easy": false, "prev_reward_num": 6000}, {"name": "三井住友カード ゴールド（NL）", "reward": "12,000円", "reward_num": 12000, "condition": "初回カード発行（条件で年会費無料）", "category": "カード", "free": true, "easy": false, "prev_reward_num": 3000}, {"name": "FPカフェ（お金の無料相談）", "reward": "11,700円", "reward_num": 11700, "condition": "FPとの新規面談完了（相談は無料）", "category": "相談", "free": true, "easy": false}, {"name": "三井住友カード（NL）", "reward": "11,500円", "reward_num": 11500, "condition": "初回カード発行（年会費永年無料）", "category": "カード", "free": true, "easy": false, "prev_reward_num": 3000}, {"name": "SBI証券", "reward": "11,000円", "reward_num": 11000, "condition": "証券口座の開設完了", "category": "口座開設", "free": true, "easy": true, "prev_reward_num": 2250}, {"name": "エポスカード", "reward": "10,000円", "reward_num": 10000, "condition": "新規カード発行（年会費永久無料）", "category": "カード", "free": true, "easy": false, "prev_reward_num": 2600}, {"name": "リショップナビ（リフォーム無料見積もり）", "reward": "10,000円", "reward_num": 10000, "condition": "リフォームの無料一括見積もり申込（持ち家向け）", "category": "暮らし", "free": true, "easy": false}, {"name": "三菱UFJ eスマート証券", "reward": "10,000円", "reward_num": 10000, "condition": "証券口座開設＋新規取引", "category": "口座開設", "free": false, "easy": false}, {"name": "SBI証券 iDeCo", "reward": "9,000円", "reward_num": 9000, "condition": "iDeCoの新規口座開設（毎月の掛金が必要）", "category": "投資", "free": false, "easy": false, "prev_reward_num": 388}, {"name": "パルシステム（生協の宅配）", "reward": "8,000円", "reward_num": 8000, "condition": "WEBで新規入会完了", "category": "宅配", "free": true, "easy": false, "prev_reward_num": 6500}, {"name": "SHElikes（WEBスクール）", "reward": "7,500円", "reward_num": 7500, "condition": "無料体験レッスンの受講", "category": "学び", "free": true, "easy": true, "prev_reward_num": 1500}, {"name": "保険の無料相談 ガーデン", "reward": "7,500円", "reward_num": 7500, "condition": "保険の無料相談で初回面談", "category": "相談", "free": true, "easy": false}, {"name": "SBI FXトレード", "reward": "7,000円", "reward_num": 7000, "condition": "新規口座開設完了", "category": "FX", "free": true, "easy": true, "prev_reward_num": 4000}, {"name": "コスモ・ザ・カード・オーパス", "reward": "6,000円", "reward_num": 6000, "condition": "新規カード発行（年会費無料）", "category": "カード", "free": true, "easy": false, "prev_reward_num": 2000}, {"name": "ファンモニ（モニターサイト）", "reward": "5,900円", "reward_num": 5900, "condition": "新規モニター申込", "category": "モニター", "free": true, "easy": false, "prev_reward_num": 1776}, {"name": "楽天カード", "reward": "5,750円", "reward_num": 5750, "condition": "新規カード発行完了（年会費永年無料）", "category": "カード", "free": true, "easy": false, "prev_reward_num": 953}, {"name": "S STACIAカード", "reward": "5,350円", "reward_num": 5350, "condition": "新規カード発行（年会費永年無料）", "category": "カード", "free": true, "easy": false, "prev_reward_num": 1500}, {"name": "フランチャイズの窓口（資料請求）", "reward": "5,263円", "reward_num": 5263, "condition": "独立・開業の資料請求", "category": "資料請求", "free": true, "easy": true, "prev_reward_num": 1500}, {"name": "GMOクリック証券 FXネオ", "reward": "5,000円", "reward_num": 5000, "condition": "新規口座開設＋取引（FXの取引が必要）", "category": "FX", "free": false, "easy": false}, {"name": "リクルートカード", "reward": "4,800円", "reward_num": 4800, "condition": "新規カード発行（年会費無料）", "category": "カード", "free": true, "easy": false, "prev_reward_num": 1600}, {"name": "エネチェンジ（電力比較）", "reward": "4,000円", "reward_num": 4000, "condition": "電力会社の新規切り替え", "category": "暮らし", "free": true, "easy": true, "prev_reward_num": 1000}, {"name": "X-mobile 格安SIM（グリーンプラン）", "reward": "4,000円", "reward_num": 4000, "condition": "格安SIMの新規開通（月額料金あり）", "category": "通信", "free": false, "easy": false, "prev_reward_num": 1500}, {"name": "三菱UFJ銀行 普通預金口座", "reward": "4,000円", "reward_num": 4000, "condition": "新規口座開設", "category": "口座開設", "free": true, "easy": true}, {"name": "Funds（ファンズ）", "reward": "3,600円", "reward_num": 3600, "condition": "資産運用サービスの新規口座開設", "category": "口座開設", "free": true, "easy": true, "prev_reward_num": 1700}, {"name": "ほけんのAI（無料オンラインFP相談）", "reward": "3,000円", "reward_num": 3000, "condition": "オンラインのFP無料相談", "category": "相談", "free": true, "easy": false}, {"name": "dカード", "reward": "3,000円", "reward_num": 3000, "condition": "新規カード発行（年会費無料）", "category": "カード", "free": true, "easy": false, "prev_reward_num": 500}, {"name": "FXTF", "reward": "3,000円", "reward_num": 3000, "condition": "新規口座開設＋取引（FXの取引が必要）", "category": "FX", "free": false, "easy": false}, {"name": "PayPayカード", "reward": "2,150円", "reward_num": 2150, "condition": "新規カード発券（年会費永年無料）", "category": "カード", "free": true, "easy": false}, {"name": "エストレ（SNSマーケティングスクール）", "reward": "2,000円", "reward_num": 2000, "condition": "無料カウンセリングに参加", "category": "学び", "free": true, "easy": true}, {"name": "U-NEXT 31日間無料トライアル", "reward": "1,665円", "reward_num": 1665, "condition": "無料トライアル申込み（期間内に解約すれば0円）", "category": "サブスク", "free": true, "easy": true}, {"name": "SBI新生銀行", "reward": "1,500円", "reward_num": 1500, "condition": "新規口座開設完了", "category": "口座開設", "free": true, "easy": true}, {"name": "Oh!ya（投資アンケート）", "reward": "1,000円", "reward_num": 1000, "condition": "60秒のアンケートに回答", "category": "アンケート", "free": true, "easy": true, "prev_reward_num": 600}, {"name": "おうちコープ（資料請求）", "reward": "1,000円", "reward_num": 1000, "condition": "生協の資料請求", "category": "資料請求", "free": true, "easy": true}, {"name": "松井証券", "reward": "1,000円", "reward_num": 1000, "condition": "新規口座開設", "category": "口座開設", "free": true, "easy": true}, {"name": "スマートフォンモニター（iOS/Android）", "reward": "1,000円", "reward_num": 1000, "condition": "モニターに無料登録", "category": "モニター", "free": true, "easy": true}, {"name": "コープデリ（資料請求）", "reward": "800円", "reward_num": 800, "condition": "生協の資料請求", "category": "資料請求", "free": true, "easy": true}, {"name": "Club toto", "reward": "700円", "reward_num": 700, "condition": "無料会員登録", "category": "無料登録", "free": true, "easy": true}, {"name": "フルーツメール", "reward": "700円", "reward_num": 700, "condition": "会員登録＋ポイント獲得", "category": "無料登録", "free": true, "easy": true}, {"name": "dアニメストア 31日間無料", "reward": "550円", "reward_num": 550, "condition": "新規会員登録（期間内に解約すれば0円）", "category": "サブスク", "free": true, "easy": true}, {"name": "DMMプレミアム（DMM TV）14日間無料", "reward": "550円", "reward_num": 550, "condition": "初回登録（期間内に解約すれば0円）", "category": "サブスク", "free": true, "easy": true}, {"name": "マネーフォワード クラウド確定申告", "reward": "500円", "reward_num": 500, "condition": "無料会員登録", "category": "無料登録", "free": true, "easy": true}, {"name": "リサーチパネル", "reward": "450円", "reward_num": 450, "condition": "会員登録＋ポイント獲得", "category": "アンケート", "free": true, "easy": true}, {"name": "ちょびリッチ（ポイントサイト）", "reward": "400円", "reward_num": 400, "condition": "新規会員登録", "category": "無料登録", "free": true, "easy": true, "prev_reward_num": 200}, {"name": "Ipsos iSay（アンケート）", "reward": "350円", "reward_num": 350, "condition": "新規会員登録", "category": "アンケート", "free": true, "easy": true, "prev_reward_num": 160}, {"name": "Toluna（アンケート）", "reward": "300円", "reward_num": 300, "condition": "新規会員登録", "category": "アンケート", "free": true, "easy": true, "prev_reward_num": 275}, {"name": "通信制大学特集（資料請求）", "reward": "300円", "reward_num": 300, "condition": "通信制大学の資料請求", "category": "資料請求", "free": true, "easy": true}, {"name": "「載ってほしいお店」かんたんアンケート", "reward": "100円", "reward_num": 100, "condition": "5問のアンケートに回答", "category": "アンケート", "free": true, "easy": true, "prev_reward_num": 50}]}
+{
+ "updated": "2026-11-28 21:45",
+ "video": "",
+ "items": [
+  {
+   "name": "エコエネハウス（太陽光・蓄電池）",
+   "reward": "150,000円",
+   "reward_num": 150000,
+   "condition": "太陽光・蓄電池の新規契約完了（設置費用がかかる）",
+   "category": "暮らし",
+   "free": false,
+   "easy": false,
+   "prev_reward_num": 20000
+  },
+  {
+   "name": "SAKIYOMIスクール（SNS仕事スクール）",
+   "reward": "100,000円",
+   "reward_num": 100000,
+   "condition": "スクールに新規入会・成約（受講料がかかる）",
+   "category": "学び",
+   "free": false,
+   "easy": false
+  },
+  {
+   "name": "auひかり",
+   "reward": "60,000円",
+   "reward_num": 60000,
+   "condition": "auひかりの新規開通",
+   "category": "通信",
+   "free": false,
+   "easy": false,
+   "prev_reward_num": 10000
+  },
+  {
+   "name": "エンキロ（距離で払うカーリース）",
+   "reward": "52,632円",
+   "reward_num": 52632,
+   "condition": "カーリースの新規契約（月額料金・審査あり）",
+   "category": "車",
+   "free": false,
+   "easy": false
+  },
+  {
+   "name": "ニコノリ（カーリース）",
+   "reward": "51,000円",
+   "reward_num": 51000,
+   "condition": "カーリースの新規契約（月額料金・審査あり）",
+   "category": "車",
+   "free": false,
+   "easy": false
+  },
+  {
+   "name": "RIZAPゴルフ",
+   "reward": "50,000円",
+   "reward_num": 50000,
+   "condition": "ゴルフスクールに新規入会（受講料がかかる）",
+   "category": "学び",
+   "free": false,
+   "easy": false
+  },
+  {
+   "name": "UPSIDER BANK by MIZUHO 法人口座",
+   "reward": "50,000円",
+   "reward_num": 50000,
+   "condition": "法人口座の新規開設（法人向け）",
+   "category": "口座開設",
+   "free": false,
+   "easy": false,
+   "prev_reward_num": 3000
+  },
+  {
+   "name": "SoftBank Air",
+   "reward": "48,500円",
+   "reward_num": 48500,
+   "condition": "置くだけWi-Fiの新規開通",
+   "category": "通信",
+   "free": false,
+   "easy": false,
+   "prev_reward_num": 10000
+  },
+  {
+   "name": "SoftBank 光（正規代理店NEXT）",
+   "reward": "41,000円",
+   "reward_num": 41000,
+   "condition": "光回線の新規開通",
+   "category": "通信",
+   "free": false,
+   "easy": false
+  },
+  {
+   "name": "NURO 光",
+   "reward": "40,000円",
+   "reward_num": 40000,
+   "condition": "新規回線開通（アパート・マンションは30,000円）",
+   "category": "通信",
+   "free": false,
+   "easy": false,
+   "prev_reward_num": 14000
+  },
+  {
+   "name": "RIZAP イングリッシュ",
+   "reward": "38,000円",
+   "reward_num": 38000,
+   "condition": "英語コーチングに新規入会（受講料がかかる）",
+   "category": "学び",
+   "free": false,
+   "easy": false
+  },
+  {
+   "name": "ドコモ光キャンペーン",
+   "reward": "37,593円",
+   "reward_num": 37593,
+   "condition": "ドコモ光の新規利用開始",
+   "category": "通信",
+   "free": false,
+   "easy": false,
+   "prev_reward_num": 10387
+  },
+  {
+   "name": "ビッグローブ光",
+   "reward": "33,000円",
+   "reward_num": 33000,
+   "condition": "新規開通または他社からの転用",
+   "category": "通信",
+   "free": false,
+   "easy": false,
+   "prev_reward_num": 5500
+  },
+  {
+   "name": "車買取ソコカラ",
+   "reward": "30,000円",
+   "reward_num": 30000,
+   "condition": "車の売却成約（売る車が必要）",
+   "category": "車",
+   "free": false,
+   "easy": false,
+   "prev_reward_num": 17000
+  },
+  {
+   "name": "カーネクスト（中古車買取）",
+   "reward": "30,000円",
+   "reward_num": 30000,
+   "condition": "電話で無料査定→売却成約（売る車が必要）",
+   "category": "車",
+   "free": false,
+   "easy": false,
+   "prev_reward_num": 18000
+  },
+  {
+   "name": "Locca（水道直結ウォーターサーバー）",
+   "reward": "28,000円",
+   "reward_num": 28000,
+   "condition": "新規設置（月額料金がかかる）",
+   "category": "暮らし",
+   "free": false,
+   "easy": false,
+   "prev_reward_num": 7519
+  },
+  {
+   "name": "dカード GOLD",
+   "reward": "28,000円",
+   "reward_num": 28000,
+   "condition": "新規カード発行（年会費あり）",
+   "category": "カード",
+   "free": false,
+   "easy": false,
+   "prev_reward_num": 1000
+  },
+  {
+   "name": "マネカツ（お金の個別相談）",
+   "reward": "26,000円",
+   "reward_num": 26000,
+   "condition": "新規個別相談（条件あり・有料講座の案内あり）",
+   "category": "相談",
+   "free": false,
+   "easy": false,
+   "prev_reward_num": 19500
+  },
+  {
+   "name": "GMOあおぞらネット銀行 法人口座",
+   "reward": "23,100円",
+   "reward_num": 23100,
+   "condition": "法人口座の新規開設＋初回ログイン（法人・個人事業主向け）",
+   "category": "口座開設",
+   "free": false,
+   "easy": false,
+   "prev_reward_num": 6700
+  },
+  {
+   "name": "三井住友銀行 法人ネット口座 Trunk",
+   "reward": "23,000円",
+   "reward_num": 23000,
+   "condition": "法人口座の新規開設（法人向け）",
+   "category": "口座開設",
+   "free": false,
+   "easy": false,
+   "prev_reward_num": 5000
+  },
+  {
+   "name": "みんなのFX",
+   "reward": "22,000円",
+   "reward_num": 22000,
+   "condition": "新規口座開設＋取引（FXの取引が必要）",
+   "category": "FX",
+   "free": false,
+   "easy": false,
+   "prev_reward_num": 3000
+  },
+  {
+   "name": "FANTAS study（税金対策セミナー）",
+   "reward": "22,000円",
+   "reward_num": 22000,
+   "condition": "オンラインセミナー参加＋個別相談（条件あり）",
+   "category": "相談",
+   "free": false,
+   "easy": false
+  },
+  {
+   "name": "JCB Biz ONE（個人事業主向けカード）",
+   "reward": "21,500円",
+   "reward_num": 21500,
+   "condition": "新規カード発行（事業者向け）",
+   "category": "カード",
+   "free": false,
+   "easy": false,
+   "prev_reward_num": 7000
+  },
+  {
+   "name": "ahamo（乗り換え）",
+   "reward": "20,000円",
+   "reward_num": 20000,
+   "condition": "他社からの乗り換え（MNP）で開通完了",
+   "category": "通信",
+   "free": false,
+   "easy": false,
+   "prev_reward_num": 3000
+  },
+  {
+   "name": "エネワンでんき",
+   "reward": "20,000円",
+   "reward_num": 20000,
+   "condition": "電気の切り替えで新規供給開始",
+   "category": "暮らし",
+   "free": false,
+   "easy": false,
+   "prev_reward_num": 4500
+  },
+  {
+   "name": "三菱UFJ eスマート証券 FX",
+   "reward": "20,000円",
+   "reward_num": 20000,
+   "condition": "FX口座開設＋新規取引（FXの取引が必要）",
+   "category": "FX",
+   "free": false,
+   "easy": false
+  },
+  {
+   "name": "ウェルスコーチ（不動産投資の面談）",
+   "reward": "18,000円",
+   "reward_num": 18000,
+   "condition": "不動産投資の新規面談（条件あり）",
+   "category": "投資",
+   "free": false,
+   "easy": false,
+   "prev_reward_num": 15000
+  },
+  {
+   "name": "LIGHT FX",
+   "reward": "18,000円",
+   "reward_num": 18000,
+   "condition": "新規口座開設＋取引（FXの取引が必要）",
+   "category": "FX",
+   "free": false,
+   "easy": false,
+   "prev_reward_num": 3000
+  },
+  {
+   "name": "JCBオリジナルシリーズ【W】【WL】",
+   "reward": "17,500円",
+   "reward_num": 17500,
+   "condition": "新規カード発行（年会費無料）",
+   "category": "カード",
+   "free": true,
+   "easy": false,
+   "prev_reward_num": 2700
+  },
+  {
+   "name": "JCBゴールド",
+   "reward": "16,500円",
+   "reward_num": 16500,
+   "condition": "新規カード発行（年会費あり）",
+   "category": "カード",
+   "free": false,
+   "easy": false,
+   "prev_reward_num": 2700
+  },
+  {
+   "name": "アメリカン・エキスプレス（限定）",
+   "reward": "16,000円",
+   "reward_num": 16000,
+   "condition": "新規カードの受け取り完了（年会費あり・審査あり）",
+   "category": "カード",
+   "free": false,
+   "easy": false,
+   "prev_reward_num": 4500
+  },
+  {
+   "name": "ヒロセ通商 FX",
+   "reward": "15,000円",
+   "reward_num": 15000,
+   "condition": "新規口座開設＋取引（FXの取引が必要）",
+   "category": "FX",
+   "free": false,
+   "easy": false,
+   "prev_reward_num": 2000
+  },
+  {
+   "name": "三菱UFJカード",
+   "reward": "15,000円",
+   "reward_num": 15000,
+   "condition": "新規カードの受け取り完了",
+   "category": "カード",
+   "free": true,
+   "easy": false,
+   "prev_reward_num": 3000
+  },
+  {
+   "name": "三菱UFJカード ゴールド",
+   "reward": "15,000円",
+   "reward_num": 15000,
+   "condition": "新規カードの受け取り完了（年会費あり）",
+   "category": "カード",
+   "free": false,
+   "easy": false,
+   "prev_reward_num": 4500
+  },
+  {
+   "name": "プロミスVisaカード",
+   "reward": "15,000円",
+   "reward_num": 15000,
+   "condition": "新規キャッシング利用（借入が必要）",
+   "category": "カード",
+   "free": false,
+   "easy": false,
+   "prev_reward_num": 5000
+  },
+  {
+   "name": "三井住友カード Trunkオーナーズ",
+   "reward": "15,000円",
+   "reward_num": 15000,
+   "condition": "新規カード発券＋パートナーカード追加申込（事業者向け）",
+   "category": "カード",
+   "free": false,
+   "easy": false,
+   "prev_reward_num": 3000
+  },
+  {
+   "name": "三井住友銀行 Olive口座開設",
+   "reward": "14,500円",
+   "reward_num": 14500,
+   "condition": "新規口座開設完了",
+   "category": "口座開設",
+   "free": true,
+   "easy": true,
+   "prev_reward_num": 2000
+  },
+  {
+   "name": "楽天銀行スーパーローン",
+   "reward": "14,500円",
+   "reward_num": 14500,
+   "condition": "新規カード発行（ローン審査あり）",
+   "category": "カード",
+   "free": true,
+   "easy": false,
+   "prev_reward_num": 3000
+  },
+  {
+   "name": "JCBカード S",
+   "reward": "14,000円",
+   "reward_num": 14000,
+   "condition": "新規カード発行（年会費無料）",
+   "category": "カード",
+   "free": true,
+   "easy": false,
+   "prev_reward_num": 2700
+  },
+  {
+   "name": "みずほ銀行 普通預金口座",
+   "reward": "13,500円",
+   "reward_num": 13500,
+   "condition": "WEBで口座開設＋みずほダイレクト初回登録",
+   "category": "口座開設",
+   "free": true,
+   "easy": true,
+   "prev_reward_num": 1500
+  },
+  {
+   "name": "ヴィーナスウォーカー（モニターサイト）",
+   "reward": "13,000円",
+   "reward_num": 13000,
+   "condition": "オンラインセミナー参加＋モニター案件申込",
+   "category": "モニター",
+   "free": true,
+   "easy": false,
+   "prev_reward_num": 3000
+  },
+  {
+   "name": "JFX",
+   "reward": "13,000円",
+   "reward_num": 13000,
+   "condition": "新規口座開設＋取引（FXの取引が必要）",
+   "category": "FX",
+   "free": false,
+   "easy": false,
+   "prev_reward_num": 3000
+  },
+  {
+   "name": "スマモ二（お試しサイト）",
+   "reward": "12,000円",
+   "reward_num": 12000,
+   "condition": "オンラインセミナー参加＋モニター案件申込",
+   "category": "モニター",
+   "free": true,
+   "easy": false,
+   "prev_reward_num": 6000
+  },
+  {
+   "name": "三井住友カード ゴールド（NL）",
+   "reward": "12,000円",
+   "reward_num": 12000,
+   "condition": "初回カード発行（条件で年会費無料）",
+   "category": "カード",
+   "free": true,
+   "easy": false,
+   "prev_reward_num": 3000
+  },
+  {
+   "name": "FPカフェ（お金の無料相談）",
+   "reward": "11,700円",
+   "reward_num": 11700,
+   "condition": "FPとの新規面談完了（相談は無料）",
+   "category": "相談",
+   "free": true,
+   "easy": false
+  },
+  {
+   "name": "三井住友カード（NL）",
+   "reward": "11,500円",
+   "reward_num": 11500,
+   "condition": "初回カード発行（年会費永年無料）",
+   "category": "カード",
+   "free": true,
+   "easy": false,
+   "prev_reward_num": 3000
+  },
+  {
+   "name": "SBI証券",
+   "reward": "11,000円",
+   "reward_num": 11000,
+   "condition": "証券口座の開設完了",
+   "category": "口座開設",
+   "free": true,
+   "easy": true,
+   "prev_reward_num": 2250
+  },
+  {
+   "name": "エポスカード",
+   "reward": "10,000円",
+   "reward_num": 10000,
+   "condition": "新規カード発行（年会費永年無料）",
+   "category": "カード",
+   "free": true,
+   "easy": false,
+   "prev_reward_num": 2600
+  },
+  {
+   "name": "リショップナビ（リフォーム無料見積もり）",
+   "reward": "10,000円",
+   "reward_num": 10000,
+   "condition": "リフォームの無料一括見積もり申込（持ち家向け）",
+   "category": "暮らし",
+   "free": true,
+   "easy": false
+  },
+  {
+   "name": "三菱UFJ eスマート証券",
+   "reward": "10,000円",
+   "reward_num": 10000,
+   "condition": "証券口座開設＋新規取引",
+   "category": "口座開設",
+   "free": false,
+   "easy": false
+  },
+  {
+   "name": "SBI証券 iDeCo",
+   "reward": "9,000円",
+   "reward_num": 9000,
+   "condition": "iDeCoの新規口座開設（毎月の掛金が必要）",
+   "category": "投資",
+   "free": false,
+   "easy": false,
+   "prev_reward_num": 388
+  },
+  {
+   "name": "三井住友カード（CL）",
+   "reward": "8,500円",
+   "reward_num": 8500,
+   "condition": "新規カード発行（年会費永年無料）",
+   "category": "カード",
+   "free": true,
+   "easy": false,
+   "prev_reward_num": 3000
+  },
+  {
+   "name": "パルシステム（生協の宅配）",
+   "reward": "8,000円",
+   "reward_num": 8000,
+   "condition": "WEBで新規入会完了",
+   "category": "宅配",
+   "free": true,
+   "easy": false,
+   "prev_reward_num": 6500
+  },
+  {
+   "name": "オクトパスエナジー（電気）",
+   "reward": "8,000円",
+   "reward_num": 8000,
+   "condition": "電気の切り替えで新規供給開始",
+   "category": "暮らし",
+   "free": true,
+   "easy": false
+  },
+  {
+   "name": "SHElikes（WEBスクール）",
+   "reward": "7,500円",
+   "reward_num": 7500,
+   "condition": "無料体験レッスンの受講",
+   "category": "学び",
+   "free": true,
+   "easy": true,
+   "prev_reward_num": 1500
+  },
+  {
+   "name": "保険の無料相談 ガーデン",
+   "reward": "7,500円",
+   "reward_num": 7500,
+   "condition": "保険の無料相談で初回面談",
+   "category": "相談",
+   "free": true,
+   "easy": false
+  },
+  {
+   "name": "SBI FXトレード",
+   "reward": "7,000円",
+   "reward_num": 7000,
+   "condition": "新規口座開設完了",
+   "category": "FX",
+   "free": true,
+   "easy": true,
+   "prev_reward_num": 4000
+  },
+  {
+   "name": "コスモ・ザ・カード・オーパス",
+   "reward": "6,000円",
+   "reward_num": 6000,
+   "condition": "新規カード発行（年会費無料）",
+   "category": "カード",
+   "free": true,
+   "easy": false,
+   "prev_reward_num": 2000
+  },
+  {
+   "name": "ファンモニ（モニターサイト）",
+   "reward": "5,900円",
+   "reward_num": 5900,
+   "condition": "新規モニター申込",
+   "category": "モニター",
+   "free": true,
+   "easy": false,
+   "prev_reward_num": 1776
+  },
+  {
+   "name": "楽天カード",
+   "reward": "5,750円",
+   "reward_num": 5750,
+   "condition": "新規カード発行完了（年会費永年無料）",
+   "category": "カード",
+   "free": true,
+   "easy": false,
+   "prev_reward_num": 953
+  },
+  {
+   "name": "S STACIAカード",
+   "reward": "5,350円",
+   "reward_num": 5350,
+   "condition": "新規カード発行（年会費永年無料）",
+   "category": "カード",
+   "free": true,
+   "easy": false,
+   "prev_reward_num": 1500
+  },
+  {
+   "name": "フランチャイズの窓口（資料請求）",
+   "reward": "5,263円",
+   "reward_num": 5263,
+   "condition": "独立・開業の資料請求",
+   "category": "資料請求",
+   "free": true,
+   "easy": true,
+   "prev_reward_num": 1500
+  },
+  {
+   "name": "GMOクリック証券 FXネオ",
+   "reward": "5,000円",
+   "reward_num": 5000,
+   "condition": "新規口座開設＋取引（FXの取引が必要）",
+   "category": "FX",
+   "free": false,
+   "easy": false
+  },
+  {
+   "name": "リクルートカード",
+   "reward": "4,800円",
+   "reward_num": 4800,
+   "condition": "新規カード発行（年会費無料）",
+   "category": "カード",
+   "free": true,
+   "easy": false,
+   "prev_reward_num": 1600
+  },
+  {
+   "name": "エネチェンジ（電力比較）",
+   "reward": "4,000円",
+   "reward_num": 4000,
+   "condition": "電力会社の新規切り替え",
+   "category": "暮らし",
+   "free": true,
+   "easy": true,
+   "prev_reward_num": 1000
+  },
+  {
+   "name": "X-mobile 格安SIM（グリーンプラン）",
+   "reward": "4,000円",
+   "reward_num": 4000,
+   "condition": "格安SIMの新規開通（月額料金あり）",
+   "category": "通信",
+   "free": false,
+   "easy": false,
+   "prev_reward_num": 1500
+  },
+  {
+   "name": "三菱UFJ銀行 普通預金口座",
+   "reward": "4,000円",
+   "reward_num": 4000,
+   "condition": "新規口座開設",
+   "category": "口座開設",
+   "free": true,
+   "easy": true
+  },
+  {
+   "name": "Funds（ファンズ）",
+   "reward": "3,600円",
+   "reward_num": 3600,
+   "condition": "資産運用サービスの新規口座開設",
+   "category": "口座開設",
+   "free": true,
+   "easy": true,
+   "prev_reward_num": 1700
+  },
+  {
+   "name": "ほけんのAI（無料オンラインFP相談）",
+   "reward": "3,000円",
+   "reward_num": 3000,
+   "condition": "オンラインのFP無料相談",
+   "category": "相談",
+   "free": true,
+   "easy": false
+  },
+  {
+   "name": "dカード",
+   "reward": "3,000円",
+   "reward_num": 3000,
+   "condition": "新規カード発行（年会費無料）",
+   "category": "カード",
+   "free": true,
+   "easy": false,
+   "prev_reward_num": 500
+  },
+  {
+   "name": "FXTF",
+   "reward": "3,000円",
+   "reward_num": 3000,
+   "condition": "新規口座開設＋取引（FXの取引が必要）",
+   "category": "FX",
+   "free": false,
+   "easy": false
+  },
+  {
+   "name": "PayPayカード",
+   "reward": "2,150円",
+   "reward_num": 2150,
+   "condition": "新規カード発券（年会費永年無料）",
+   "category": "カード",
+   "free": true,
+   "easy": false
+  },
+  {
+   "name": "エストレ（SNSマーケティングスクール）",
+   "reward": "2,000円",
+   "reward_num": 2000,
+   "condition": "無料カウンセリングに参加",
+   "category": "学び",
+   "free": true,
+   "easy": true
+  },
+  {
+   "name": "U-NEXT 31日間無料トライアル",
+   "reward": "1,665円",
+   "reward_num": 1665,
+   "condition": "無料トライアル申込み（期間内に解約すれば0円）",
+   "category": "サブスク",
+   "free": true,
+   "easy": true
+  },
+  {
+   "name": "SBI新生銀行",
+   "reward": "1,500円",
+   "reward_num": 1500,
+   "condition": "新規口座開設完了",
+   "category": "口座開設",
+   "free": true,
+   "easy": true
+  },
+  {
+   "name": "Oh!ya（投資アンケート）",
+   "reward": "1,000円",
+   "reward_num": 1000,
+   "condition": "60秒のアンケートに回答",
+   "category": "アンケート",
+   "free": true,
+   "easy": true,
+   "prev_reward_num": 600
+  },
+  {
+   "name": "おうちコープ（資料請求）",
+   "reward": "1,000円",
+   "reward_num": 1000,
+   "condition": "生協の資料請求",
+   "category": "資料請求",
+   "free": true,
+   "easy": true
+  },
+  {
+   "name": "松井証券",
+   "reward": "1,000円",
+   "reward_num": 1000,
+   "condition": "新規口座開設",
+   "category": "口座開設",
+   "free": true,
+   "easy": true
+  },
+  {
+   "name": "スマートフォンモニター（iOS/Android）",
+   "reward": "1,000円",
+   "reward_num": 1000,
+   "condition": "モニターに無料登録",
+   "category": "モニター",
+   "free": true,
+   "easy": true
+  },
+  {
+   "name": "コープデリ（資料請求）",
+   "reward": "800円",
+   "reward_num": 800,
+   "condition": "生協の資料請求",
+   "category": "資料請求",
+   "free": true,
+   "easy": true
+  },
+  {
+   "name": "Club toto",
+   "reward": "700円",
+   "reward_num": 700,
+   "condition": "無料会員登録",
+   "category": "無料登録",
+   "free": true,
+   "easy": true
+  },
+  {
+   "name": "フルーツメール",
+   "reward": "700円",
+   "reward_num": 700,
+   "condition": "会員登録＋ポイント獲得",
+   "category": "無料登録",
+   "free": true,
+   "easy": true
+  },
+  {
+   "name": "dアニメストア 31日間無料",
+   "reward": "550円",
+   "reward_num": 550,
+   "condition": "新規会員登録（期間内に解約すれば0円）",
+   "category": "サブスク",
+   "free": true,
+   "easy": true
+  },
+  {
+   "name": "DMMプレミアム（DMM TV）14日間無料",
+   "reward": "550円",
+   "reward_num": 550,
+   "condition": "初回登録（期間内に解約すれば0円）",
+   "category": "サブスク",
+   "free": true,
+   "easy": true
+  },
+  {
+   "name": "マネーフォワード クラウド確定申告",
+   "reward": "500円",
+   "reward_num": 500,
+   "condition": "無料会員登録",
+   "category": "無料登録",
+   "free": true,
+   "easy": true
+  },
+  {
+   "name": "ちょびリッチ（ポイントサイト）",
+   "reward": "400円",
+   "reward_num": 400,
+   "condition": "新規会員登録",
+   "category": "無料登録",
+   "free": true,
+   "easy": true,
+   "prev_reward_num": 200
+  },
+  {
+   "name": "Ipsos iSay（アンケート）",
+   "reward": "350円",
+   "reward_num": 350,
+   "condition": "新規会員登録",
+   "category": "アンケート",
+   "free": true,
+   "easy": true,
+   "prev_reward_num": 160
+  },
+  {
+   "name": "Toluna（アンケート）",
+   "reward": "300円",
+   "reward_num": 300,
+   "condition": "新規会員登録",
+   "category": "アンケート",
+   "free": true,
+   "easy": true,
+   "prev_reward_num": 275
+  },
+  {
+   "name": "通信制大学特集（資料請求）",
+   "reward": "300円",
+   "reward_num": 300,
+   "condition": "通信制大学の資料請求",
+   "category": "資料請求",
+   "free": true,
+   "easy": true
+  },
+  {
+   "name": "「載ってほしいお店」かんたんアンケート",
+   "reward": "100円",
+   "reward_num": 100,
+   "condition": "5問のアンケートに回答",
+   "category": "アンケート",
+   "free": true,
+   "easy": true,
+   "prev_reward_num": 50
+  }
+ ]
+}
