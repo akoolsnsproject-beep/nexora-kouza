@@ -1,3 +1,22 @@
+/* 📝 わたしの設定：頼み文に自動で入れる */
+function nxMeGet() { try { var o = JSON.parse(localStorage.getItem('nx_me') || 'null'); return o && o.v ? o.v : null; } catch (e) { return null; } }
+function nxMeOn() { var v = nxMeGet(); return !!(v && ['do', 'who', 'chara', 'goal', 'sns'].some(function (k) { return (v[k] || '').trim(); })); }
+function nxMeFill(t) {
+  var v = nxMeGet(); if (!nxMeOn()) return t;
+  var d = v.do || '', c = v.chara || '';
+  var R = [['□朝の時短□', d], ['□今日のテーマ□', d], ['□AIで時短する方法□', d], ['□自分のジャンルや目的□', d], ['□短く、ていねい□', c], ['□やさしくて前向き□', c],
+           ['□AIの使い方を短い動画で発信して、フォロワーを増やす□', d + (v.goal ? '（目標：' + v.goal + '）' : '')]];
+  R.forEach(function (r) { if (r[1]) t = t.split(r[0]).join(r[1]); });
+  return t;
+}
+function nxMeHead(s4) {
+  var v = nxMeGet(); if (!nxMeOn()) return '';
+  var L = [['do', 'やりたいこと'], ['who', '届けたい人'], ['chara', 'キャラ・口調'], ['goal', '目標'], ['sns', '使うSNS']], h = '【わたしの設定】\n';
+  L.forEach(function (x) { if ((v[x[0]] || '').trim()) h += x[1] + '：' + v[x[0]].trim() + '\n'; });
+  return h + (s4 ? '（この設定も CLAUDE.md に書いておいてください）\n\n' : '（このあとの□のところや例は、この設定に合わせて考えてください）\n\n');
+}
+var nxMeUse = false, nxMeS4 = false;
+function nxMeWrap(t) { return nxMeUse ? nxMeHead(nxMeS4) + nxMeFill(t) : t; }
 /* 無料版(f)とPro版(p)の切りかえ：?plan=pro / ?plan=free で記憶。Pro版の人が無料版のページを開いたらPro版へ */
 (function () {
   try {
@@ -54,6 +73,34 @@
       g.parentNode.insertBefore(d, g);
     }
     if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', put); else put();
+  })();
+
+  /* 📝 わたしの設定：このページの頼み文に入れる＋上に案内 */
+  (function () {
+    if (!(ID && (ID[0] === 'a' || (ID[0] === 's' && n >= 3)))) return;
+    nxMeUse = true; nxMeS4 = ID === 's4';
+    function go() {
+      var st = document.createElement('style');
+      st.textContent = '.mebar{margin:10px 0 4px;padding:10px 12px;border-radius:12px;font-size:13px;line-height:1.6}' +
+        '.mebar.on{background:#0d2017;border:1.5px solid #22c55e;color:#e6ffe9}.mebar.off{background:#1c160f;border:1.5px dashed #ff8a24;color:#ffcf9e}' +
+        '.mebar a{color:#7dffa6;font-weight:900;margin-left:6px}.mebar.off a{color:#ffb066}.mebar b{color:#ffe08a}' +
+        '.copy .mhd{display:block;font-style:normal;color:#7dffa6;font-size:.92em;border-bottom:1px dashed #2e6b45;margin-bottom:6px;padding-bottom:6px;white-space:pre-wrap}';
+      document.head.appendChild(st);
+      var on = nxMeOn(), v = nxMeGet() || {};
+      var bar = document.createElement('div'); bar.className = 'mebar ' + (on ? 'on' : 'off');
+      bar.innerHTML = on ? '✅ <b>わたしの設定</b>が頼み文に入っています（' + String(v.do || v.who || '').replace(/[&<>]/g, '') + '）<a href="index.html#me">変える ›</a>'
+                         : '📝 講座トップで<b>「わたしの設定」</b>を入れると、このページの頼み文があなた用になります<a href="index.html#me">入れる ›</a>';
+      var ht = document.querySelector('.ht'); if (ht) ht.appendChild(bar);
+      if (!on) return;
+      var head = nxMeHead(nxMeS4);
+      [].forEach.call(document.querySelectorAll('.copy > span:not(.mko)'), function (sp) {
+        if (sp.querySelector('.mhd')) return;
+        var w = document.createTreeWalker(sp, NodeFilter.SHOW_TEXT), nd;
+        while ((nd = w.nextNode())) { var f = nxMeFill(nd.nodeValue); if (f !== nd.nodeValue) nd.nodeValue = f; }
+        var i = document.createElement('i'); i.className = 'mhd'; i.textContent = head; sp.insertBefore(i, sp.firstChild);
+      });
+    }
+    if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', go); else go();
   })();
   if (NM[ID]) { LBL = NM[ID]; MSG = '✅ ' + LBL + 'クリア' + (os === 'mac' ? '！' : ''); }
 
@@ -234,7 +281,7 @@
     liff.init({ liffId: LIFF_ID }).then(function () { ready = true; }).catch(function () {});
   };
   document.head.appendChild(sdk);
-  var nxs = document.createElement('script'); nxs.src = '../nxsync.js?v=2'; document.head.appendChild(nxs);
+  var nxs = document.createElement('script'); nxs.src = '../nxsync.js?v=3'; document.head.appendChild(nxs);
 })();
 
 /* ✏️ カスタマイズ枠：入力すると頼み文が自動で変わる */
@@ -258,7 +305,7 @@
     function upd() {
       var t = tpl;
       ins.forEach(function (i) { var v = (i.value || '').trim() || i.getAttribute('placeholder') || ''; t = t.split('{' + i.getAttribute('data-k') + '}').join(v); });
-      out.textContent = t;
+      out.textContent = nxMeWrap(t);
     }
     ins.forEach(function (i) { i.addEventListener('input', upd); i.addEventListener('change', upd); });
     upd();
