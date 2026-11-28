@@ -1,21 +1,45 @@
-/* 📝 わたしの設定：頼み文に自動で入れる */
-function nxMeGet() { try { var o = JSON.parse(localStorage.getItem('nx_me') || 'null'); return o && o.v ? o.v : null; } catch (e) { return null; } }
-function nxMeOn() { var v = nxMeGet(); return !!(v && ['do', 'who', 'chara', 'goal', 'sns'].some(function (k) { return (v[k] || '').trim(); })); }
+/* ✏️ このSTEPの設定：共通3つ（前のページから引きつぎ）＋ページ専用。頼み文に自動で入れる */
+var NXC = [['do', 'やりたいこと', '🎯', ['AIで時短を発信', '占い・スピリチュアル', '美容・スキンケア', '子育て', '副業・お金'], '例：子育てママ向けに、AIで家事を時短する方法を発信'],
+           ['who', '届けたい人', '👥', ['忙しい20〜30代の女性', '子育て中のママ', '副業を始めたい会社員', '50代からのチャレンジ'], '例：0〜6歳の子どもがいる、忙しいママ'],
+           ['chara', 'キャラ・口調', '🎭', ['明るくて親しみやすい先輩', 'ていねいでやさしい先生', '元気な友だち', '落ち着いた大人'], '例：明るくて親しみやすい先輩']];
+var NXF = {
+  s3: [['topic', '練習したいお題', '📝', ['投稿文', '商品の紹介文', 'あいさつ文', 'ブログの見出し']]],
+  s4: [['goal', '目標', '🏁', ['月3万円', '月10万円', 'フォロワー1000人']], ['sns', '使うSNS', '📱', ['Threads', 'Instagram', 'TikTok', 'YouTube'], 1]],
+  s5: [['time', '投稿する時間', '⏰', ['朝7時', '昼12時', '夜21時']], ['num', '作る本数', '🔢', ['30本', '60本']]],
+  s6: [['form', '投稿の形', '🖼', ['画像1枚', 'カルーセル（数枚）', 'リール動画']], ['time', '投稿する時間', '⏰', ['朝7時', '昼12時', '夜21時']]],
+  s7: [['len', '動画の長さ', '⏱', ['15秒', '30秒', '60秒']], ['where', '出す場所', '📱', ['Instagramリール', 'TikTok', 'YouTubeショート'], 1]],
+  s8: [['job', '手伝ってほしいこと', '💼', ['今日やることの整理', '投稿ネタ出し', '英会話の練習', '勉強の質問']]],
+  a1: [['genre', '紹介する商品のジャンル', '🛒', ['時短家電', '子ども用品', 'コスメ', '食品', '本']], ['num', '紹介する数', '📦', ['5個', '10個', '20個']]],
+  a2: [['theme', '動画のテーマ', '🎬', ['朝の時短ルーティン', 'おすすめ商品の紹介', 'やってみた']], ['cap', '字幕の雰囲気', '🔤', ['大きく読みやすく', 'かわいく', 'シンプル']]],
+  a3: [['look', '色・雰囲気', '🎨', ['やさしいパステル', '黒×オレンジ', '白でシンプル', 'ポップでカラフル']], ['num', '作る枚数', '🔢', ['5枚', '10枚', '20枚']]],
+  a4: [['goal', '目標', '🏁', ['月3万円', '月10万円', 'フォロワー1000人']], ['dept', '最初に作る部署', '🏢', ['SNS部', '動画部', '画像部']]],
+  a5: []
+};
+var NX_PID = '', nxMeUse = false, nxMeS4 = false;
+function nxJ(k) { try { return JSON.parse(localStorage.getItem(k) || 'null'); } catch (e) { return null; } }
+function nxMeShared() { var o = nxJ('nx_me'); return o && o.v ? o.v : {}; }
+function nxMePage() { var o = NX_PID ? nxJ('nx_mp_' + NX_PID) : null; return o && o.v ? o.v : {}; }
+function nxMeGet() {
+  var s = nxMeShared(), p = nxMePage(), r = {};
+  NXC.forEach(function (c) { r[c[0]] = (p[c[0]] != null && p[c[0]] !== '') ? p[c[0]] : (s[c[0]] || ''); });
+  (NXF[NX_PID] || []).forEach(function (f) { r[f[0]] = p[f[0]] || ''; });
+  return r;
+}
+function nxMeOn() { var v = nxMeGet(); return Object.keys(v).some(function (k) { return (v[k] || '').trim(); }); }
 function nxMeFill(t) {
-  var v = nxMeGet(); if (!nxMeOn()) return t;
-  var d = v.do || '', c = v.chara || '';
+  if (!nxMeOn()) return t;
+  var v = nxMeGet(), d = v.do || '', c = v.chara || '';
   var R = [['□朝の時短□', d], ['□今日のテーマ□', d], ['□AIで時短する方法□', d], ['□自分のジャンルや目的□', d], ['□短く、ていねい□', c], ['□やさしくて前向き□', c],
            ['□AIの使い方を短い動画で発信して、フォロワーを増やす□', d + (v.goal ? '（目標：' + v.goal + '）' : '')]];
   R.forEach(function (r) { if (r[1]) t = t.split(r[0]).join(r[1]); });
   return t;
 }
 function nxMeHead(s4) {
-  var v = nxMeGet(); if (!nxMeOn()) return '';
-  var L = [['do', 'やりたいこと'], ['who', '届けたい人'], ['chara', 'キャラ・口調'], ['goal', '目標'], ['sns', '使うSNS']], h = '【わたしの設定】\n';
-  L.forEach(function (x) { if ((v[x[0]] || '').trim()) h += x[1] + '：' + v[x[0]].trim() + '\n'; });
+  if (!nxMeOn()) return '';
+  var v = nxMeGet(), h = '【このSTEPの設定】\n';
+  NXC.concat(NXF[NX_PID] || []).forEach(function (x) { if ((v[x[0]] || '').trim()) h += x[1] + '：' + v[x[0]].trim() + '\n'; });
   return h + (s4 ? '（この設定も CLAUDE.md に書いておいてください）\n\n' : '（このあとの□のところや例は、この設定に合わせて考えてください）\n\n');
 }
-var nxMeUse = false, nxMeS4 = false;
 function nxMeWrap(t) { return nxMeUse ? nxMeHead(nxMeS4) + nxMeFill(t) : t; }
 /* 無料版(f)とPro版(p)の切りかえ：?plan=pro / ?plan=free で記憶。Pro版の人が無料版のページを開いたらPro版へ */
 (function () {
@@ -76,30 +100,101 @@ function nxMeWrap(t) { return nxMeUse ? nxMeHead(nxMeS4) + nxMeFill(t) : t; }
     if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', put); else put();
   })();
 
-  /* 📝 わたしの設定：このページの頼み文に入れる＋上に案内 */
+  /* 🆘 うまくいかないとき：タップで開く */
+  (function () {
+    function go() {
+      [].forEach.call(document.querySelectorAll('.help'), function (h) {
+        var t = h.querySelector('h3'); if (!t || h.getAttribute('data-fold')) return; h.setAttribute('data-fold', '1');
+        var body = document.createElement('div'); body.className = 'hb';
+        while (t.nextSibling) body.appendChild(t.nextSibling);
+        h.appendChild(body);
+        var em = document.createElement('em'); em.textContent = 'タップで開く ▼'; t.appendChild(em);
+        t.onclick = function () { var o = h.classList.toggle('op'); em.textContent = o ? 'とじる ▲' : 'タップで開く ▼'; };
+      });
+      var st = document.createElement('style');
+      st.textContent = '.help h3{display:flex;align-items:center;justify-content:space-between;gap:8px;cursor:pointer;margin:0;-webkit-tap-highlight-color:transparent}' +
+        '.help h3 em{font-style:normal;font-size:12px;font-weight:800;background:#3a1414;color:#ffd0d0;border-radius:99px;padding:4px 10px;white-space:nowrap}' +
+        '.help .hb{display:none;margin-top:8px}.help.op .hb{display:block}';
+      document.head.appendChild(st);
+    }
+    if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', go); else go();
+  })();
+  /* ✏️ このSTEPの設定（ページのいちばん上） */
   (function () {
     if (!(ID && (ID[0] === 'a' || (ID[0] === 's' && n >= 3)))) return;
-    nxMeUse = true; nxMeS4 = ID === 's4';
+    NX_PID = ID; nxMeUse = true; nxMeS4 = ID === 's4';
+    function esc(s) { return String(s).replace(/[&<>"]/g, function (c) { return { '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[c]; }); }
     function go() {
       var st = document.createElement('style');
-      st.textContent = '.mebar{margin:10px 0 4px;padding:10px 12px;border-radius:12px;font-size:13px;line-height:1.6}' +
-        '.mebar.on{background:#0d2017;border:1.5px solid #22c55e;color:#e6ffe9}.mebar.off{background:#1c160f;border:1.5px dashed #ff8a24;color:#ffcf9e}' +
-        '.mebar a{color:#7dffa6;font-weight:900;margin-left:6px}.mebar.off a{color:#ffb066}.mebar b{color:#ffe08a}' +
+      st.textContent = '.nxs{margin:12px 0 4px;background:#15110d;border:2px solid #ff8a24;border-radius:14px;padding:12px;box-shadow:0 0 16px rgba(255,138,36,.22)}' +
+        '.nxs h4{margin:0;color:#ffb066;font-size:16px;display:flex;justify-content:space-between;align-items:center;gap:6px}.nxs h4 em{font-style:normal;font-size:11px;background:#22190f;color:#ffcf9e;border:1px solid #6b4a26;border-radius:99px;padding:3px 9px;white-space:nowrap}' +
+        '.nxs .ns{font-size:12px;color:#aaa;margin:4px 0 4px;line-height:1.5}.nxs label{display:block;margin:10px 0 3px}.nxs label span{font-size:12.5px;color:#ddd;font-weight:800}' +
+        '.nxs label i{font-style:normal;font-size:11px;font-weight:700;margin-left:6px}.nxs label i.pv{color:#7dffa6}.nxs label i.ch{color:#ffb066}' +
+        '.nxs input{width:100%;box-sizing:border-box;background:#0b0b0d;color:#fff;border:1.5px solid #555;border-radius:9px;padding:9px 10px;font-size:15px;font-family:inherit}.nxs input:focus{outline:none;border-color:#ff8a24}' +
+        '.nxs .cx{display:flex;flex-wrap:wrap;gap:5px;margin-top:5px}.nxs .cx b{font-weight:400;background:#22190f;color:#ffcf9e;border:1px solid #6b4a26;border-radius:99px;padding:4px 10px;font-size:12px;cursor:pointer}.nxs .cx b.on{background:#ff8a24;color:#111;font-weight:800}' +
+        '.nxs .own{border-top:1px dashed #5a4026;margin-top:12px;padding-top:4px}.nxs .own .tg{font-size:12px;color:#ff8a24;font-weight:900;margin-top:6px}' +
+        '.nxs .us{background:none;border:0;color:#7dffa6;font-size:11px;font-weight:800;text-decoration:underline;padding:0;margin-left:6px;font-family:inherit}' +
+        '.nxs .nw{margin-top:10px;font-size:11px;color:#ffb066;line-height:1.5}' +
         '.copy .mhd{display:block;font-style:normal;color:#7dffa6;font-size:.92em;border-bottom:1px dashed #2e6b45;margin-bottom:6px;padding-bottom:6px;white-space:pre-wrap}';
       document.head.appendChild(st);
-      var on = nxMeOn(), v = nxMeGet() || {};
-      var bar = document.createElement('div'); bar.className = 'mebar ' + (on ? 'on' : 'off');
-      bar.innerHTML = on ? '✅ <b>わたしの設定</b>が頼み文に入っています（' + String(v.do || v.who || '').replace(/[&<>]/g, '') + '）<a href="index.html#me">変える ›</a>'
-                         : '📝 講座トップで<b>「わたしの設定」</b>を入れると、このページの頼み文があなた用になります<a href="index.html#me">入れる ›</a>';
-      var ht = document.querySelector('.ht'); if (ht) ht.appendChild(bar);
-      if (!on) return;
-      var head = nxMeHead(nxMeS4);
-      [].forEach.call(document.querySelectorAll('.copy > span:not(.mko)'), function (sp) {
-        if (sp.querySelector('.mhd')) return;
-        var w = document.createTreeWalker(sp, NodeFilter.SHOW_TEXT), nd;
-        while ((nd = w.nextNode())) { var f = nxMeFill(nd.nodeValue); if (f !== nd.nodeValue) nd.nodeValue = f; }
-        var i = document.createElement('i'); i.className = 'mhd'; i.textContent = head; sp.insertBefore(i, sp.firstChild);
+      var own = NXF[ID] || [];
+      function fld(c, sh) {
+        return '<label><span>' + c[2] + ' ' + c[1] + '</span><i data-tag="' + c[0] + '"></i></label><input data-nx="' + c[0] + '"' + (sh ? ' data-sh="1"' : '') + ' placeholder="' + esc(typeof c[4] === 'string' ? c[4] : ('例：' + (c[3][0] || ''))) + '">' +
+          (c[3].length ? '<div class="cx" data-for="' + c[0] + '"' + (c[4] === 1 || (sh ? 0 : c[4]) ? ' data-multi="1"' : '') + '>' + c[3].map(function (x) { return '<b>' + esc(x) + '</b>'; }).join('') + '</div>' : '');
+      }
+      var box = document.createElement('div'); box.className = 'nxs';
+      box.innerHTML = '<h4>✏️ このSTEPの設定<em>入れると頼み文が変わる</em></h4><div class="ns" id="nxsns"></div>' +
+        NXC.map(function (c) { return fld(c, 1); }).join('') +
+        (own.length ? '<div class="own"><div class="tg">このページだけの設定</div>' + own.map(function (c) { return fld(c, 0); }).join('') + '</div>' : '') +
+        '<div class="nw">⚠️ キャラや口調は自由。でも経歴・資格・実績はうそを書かない</div>';
+      var ht = document.querySelector('.ht'); if (!ht) return; ht.appendChild(box);
+      var spans = [].slice.call(document.querySelectorAll('.copy > span:not(.mko)'));
+      spans.forEach(function (sp) { sp.__o = sp.innerHTML; });
+      function save(k, val, sh) {
+        var p = nxMePage(); p[k] = val;
+        try { localStorage.setItem('nx_mp_' + ID, JSON.stringify({ v: p, t: Date.now() })); } catch (e) {}
+        if (sh) { var s = nxMeShared(); if (!(s[k] || '').trim() && val.trim()) { s[k] = val; try { localStorage.setItem('nx_me', JSON.stringify({ v: s, t: Date.now() })); } catch (e) {} } }
+        if (window.nxSync) nxSync.push();
+      }
+      function tags() {
+        var s = nxMeShared(), p = nxMePage(), any = false;
+        NXC.forEach(function (c) {
+          var k = c[0], t = box.querySelector('[data-tag="' + k + '"]'), pv = (p[k] || '').trim(), sv = (s[k] || '').trim();
+          if (!pv && sv) { t.className = 'pv'; t.innerHTML = '← 前のページから'; any = true; }
+          else if (pv && sv && pv !== sv) { t.className = 'ch'; t.innerHTML = '✏️ このページだけ変更<button type="button" class="us" data-use="' + k + '">ほかのページでも使う</button>'; }
+          else { t.className = ''; t.innerHTML = ''; }
+        });
+        box.querySelector('#nxsns').textContent = any ? '前のページで入れた内容が入っています。変えたいところだけ書きかえてね（このページだけに反映）' : '例ボタンを押すだけでもOK。入れた内容は、次のページにも引きつがれます';
+        [].forEach.call(box.querySelectorAll('.cx'), function (g) {
+          var inp = box.querySelector('[data-nx="' + g.getAttribute('data-for') + '"]'), cur = inp.value;
+          [].forEach.call(g.querySelectorAll('b'), function (b) { b.classList.toggle('on', g.getAttribute('data-multi') ? cur.split('・').indexOf(b.textContent) >= 0 : cur === b.textContent); });
+        });
+      }
+      function render() {
+        var on = nxMeOn(), head = nxMeHead(nxMeS4);
+        spans.forEach(function (sp) {
+          sp.innerHTML = sp.__o; if (!on) return;
+          var w = document.createTreeWalker(sp, NodeFilter.SHOW_TEXT), nd, list = [];
+          while ((nd = w.nextNode())) list.push(nd);
+          list.forEach(function (x) { var f = nxMeFill(x.nodeValue); if (f !== x.nodeValue) x.nodeValue = f; });
+          var i = document.createElement('i'); i.className = 'mhd'; i.textContent = head; sp.insertBefore(i, sp.firstChild);
+        });
+        [].forEach.call(document.querySelectorAll('.mk'), function (mk) { var f = mk.querySelector('[data-k]'); if (f) f.dispatchEvent(new Event('input')); });
+      }
+      var v = nxMeGet();
+      [].forEach.call(box.querySelectorAll('[data-nx]'), function (i) {
+        var k = i.getAttribute('data-nx'), sh = !!i.getAttribute('data-sh'); i.value = v[k] || '';
+        i.addEventListener('input', function () { save(k, i.value.trim().slice(0, 120), sh); tags(); render(); });
       });
+      box.addEventListener('click', function (e) {
+        var u = e.target.closest('[data-use]');
+        if (u) { var k = u.getAttribute('data-use'), s = nxMeShared(); s[k] = nxMePage()[k]; try { localStorage.setItem('nx_me', JSON.stringify({ v: s, t: Date.now() })); } catch (x) {} if (window.nxSync) nxSync.push(); tags(); return; }
+        var b = e.target.closest('.cx b'); if (!b) return;
+        var g = b.parentNode, inp = box.querySelector('[data-nx="' + g.getAttribute('data-for') + '"]'), t = b.textContent;
+        if (g.getAttribute('data-multi')) { var a = inp.value.split('・').filter(Boolean), q = a.indexOf(t); if (q >= 0) a.splice(q, 1); else a.push(t); inp.value = a.join('・'); } else inp.value = t;
+        inp.dispatchEvent(new Event('input'));
+      });
+      tags(); render();
     }
     if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', go); else go();
   })();
@@ -282,7 +377,7 @@ function nxMeWrap(t) { return nxMeUse ? nxMeHead(nxMeS4) + nxMeFill(t) : t; }
     liff.init({ liffId: LIFF_ID }).then(function () { ready = true; }).catch(function () {});
   };
   document.head.appendChild(sdk);
-  var nxs = document.createElement('script'); nxs.src = '../nxsync.js?v=3'; document.head.appendChild(nxs);
+  var nxs = document.createElement('script'); nxs.src = '../nxsync.js?v=4'; document.head.appendChild(nxs);
 })();
 
 /* ✏️ カスタマイズ枠：入力すると頼み文が自動で変わる */

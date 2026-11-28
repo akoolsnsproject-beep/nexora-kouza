@@ -28,21 +28,6 @@ h2{font-size:15px;margin:18px 16px 8px}h2 span{font-size:11px;color:#9a9aa3;font
 </style></head><body><script>try{var q=location.search.match(/[?&]plan=(pro|free)/);if(q)localStorage.setItem("nx_plan",q[1]);if(!q)localStorage.setItem("nx_plan","pro");}catch(e){}</script>
 <div class="hero"><img src="../img/s1.jpg" alt=""><div class="ht"><p id="badge">✳ Pro版（Claude Code）</p><h1>Claude自動化講座</h1></div></div>
 <div class="prog"><div class="ring" id="ring"><div id="cnt">0/12</div></div><div><b style="font-size:16px" id="pt"></b><div class="mute" style="font-size:12px;margin-top:4px" id="ps"></div></div></div>
-<div class="me" id="me"><div class="meh"><b>📝 わたしの設定</b><button type="button" id="metg">変える</button></div>
-<div class="mes" id="mesum"></div>
-<div class="mef" id="mef"><div class="mesub">ここに入れたことが、<b>全部のページの頼み文</b>に自動で入ります。例ボタンを押すだけでもOK（あとから変えられます）</div>
-<label><span>🎯 やりたいこと（発信のテーマ）</span><input data-m="do" placeholder="例：子育てママ向けに、AIで家事を時短する方法を発信"></label>
-<div class="mex" data-for="do"><i>AIで時短する方法を発信</i><i>占い・スピリチュアル</i><i>美容・スキンケア</i><i>子育て</i><i>料理・作りおき</i><i>副業・お金</i></div>
-<label><span>👥 届けたい人</span><input data-m="who" placeholder="例：0〜6歳の子どもがいる、忙しいママ"></label>
-<div class="mex" data-for="who"><i>忙しい20〜30代の女性</i><i>子育て中のママ</i><i>副業を始めたい会社員</i><i>50代からのチャレンジ</i></div>
-<label><span>🎭 キャラ・口調</span><input data-m="chara" placeholder="例：明るくて親しみやすい先輩"></label>
-<div class="mex" data-for="chara"><i>明るくて親しみやすい先輩</i><i>ていねいでやさしい先生</i><i>元気な友だち</i><i>落ち着いた大人</i><i>関西弁でおもしろい</i></div>
-<label><span>🏁 目標</span><input data-m="goal" placeholder="例：月3万円"></label>
-<div class="mex" data-for="goal"><i>月3万円</i><i>月10万円</i><i>フォロワー1000人</i><i>まずは1円かせぐ</i></div>
-<label><span>📱 使うSNS</span><input data-m="sns" placeholder="例：Threads・Instagram"></label>
-<div class="mex" data-for="sns" data-multi="1"><i>Threads</i><i>Instagram</i><i>TikTok</i><i>YouTube</i><i>X</i></div>
-<div class="mewarn">⚠️ キャラや口調は自由に決めてOK。でも<b>経歴・資格・実績はうそを書かない</b>（はじめに読むルールと同じ）</div>
-<button type="button" class="meok" id="meok">これで決定 ✓</button></div></div>
 <h2>基本編<span>STEP1〜4</span></h2><div id="basic"></div>
 <h2>応用編<span>STEP4のあと・好きな順でOK</span></h2><div id="adv"></div>
 <div class="links"><a href="rules.html">📕 はじめに読むルール</a><a class="sw" href="../f/index.html?plan=free">無料版で進める人はこちら</a></div>
@@ -128,29 +113,5 @@ document.getElementById("badge").textContent+="｜"+(os==="win"?"Windows":"Mac")
 document.getElementById("osn").innerHTML=(os==="win"?"Windows":"Mac")+'用のページです・<u id="oss">'+(os==="win"?"Mac":"Windows")+'の人はこちら</u>';
 document.getElementById("oss").onclick=function(){try{localStorage.setItem("nx_os",os==="win"?"mac":"win")}catch(e){}location.replace(location.pathname+location.search.replace(/([?&])os=(win|mac)&?/,"$1"))};
 </script>
-<script src="https://static.line-scdn.net/liff/edge/2/sdk.js"></script><script>try{liff.init({liffId:"2012700328-ixoZeXYW"}).catch(function(){})}catch(e){}</script><script>(function(){
-var K=["do","who","chara","goal","sns"],box=document.getElementById("me");if(!box)return;
-function load(){try{var o=JSON.parse(localStorage.getItem("nx_me")||"null");return o&&o.v?o.v:{}}catch(e){return {}}}
-var v=load();
-function save(){try{localStorage.setItem("nx_me",JSON.stringify({v:v,t:Date.now()}))}catch(e){}if(window.nxSync)nxSync.push()}
-function has(){return K.some(function(k){return (v[k]||"").trim()})}
-var T={s1:"Claudeで「{do}」を始める準備",s2:"{who}に役立つ小さなアプリを作る",s3:"{who}に伝わる頼み方",s4:"「{do}」をClaudeに覚えてもらう",s5:"「{do}」の投稿を毎朝Threadsへ",s6:"{who}が保存したくなる投稿を毎日",s7:"「{do}」の短い動画を自動で",s8:"{chara}な相棒AIを作る",a1:"{who}に役立つ商品を紹介",a2:"「{do}」の動画を仕上げる",a3:"「{do}」の画像を10枚まとめて",a4:"「{do}」を回すAI会社",a5:"{chara}キャラのスタンプ"};
-function esc(s){return String(s).replace(/[&<>"]/g,function(c){return{"&":"&amp;","<":"&lt;",">":"&gt;","\"":"&quot;"}[c]})}
-function draw(){
- var s=document.getElementById("mesum");
- s.innerHTML=has()?K.map(function(k){var L={do:"やりたいこと",who:"届けたい人",chara:"キャラ",goal:"目標",sns:"SNS"}[k];return L+"：<b>"+esc(v[k]||"—")+"</b>"}).join("<br>"):'<span class="em">まだ入っていません。入れると、全部のページの頼み文があなた用になります → 「変える」から</span>';
- [].forEach.call(document.querySelectorAll(".yr"),function(e){var k=e.getAttribute("data-k"),t=T[k];if(!t||!has()){e.textContent="";return}
-  var need=(t.match(/\{(\w+)\}/g)||[]).every(function(x){return (v[x.slice(1,-1)]||"").trim()});
-  e.textContent=need?"→ "+t.replace(/\{(\w+)\}/g,function(_,x){return v[x]}):""});
- [].forEach.call(box.querySelectorAll(".mex"),function(g){var k=g.getAttribute("data-for"),cur=(v[k]||"");[].forEach.call(g.querySelectorAll("i"),function(i){i.classList.toggle("on",g.getAttribute("data-multi")?cur.split("・").indexOf(i.textContent)>=0:cur===i.textContent)})});
-}
-[].forEach.call(box.querySelectorAll("[data-m]"),function(i){var k=i.getAttribute("data-m");i.value=v[k]||"";i.addEventListener("input",function(){v[k]=i.value.trim().slice(0,120);save();draw()})});
-[].forEach.call(box.querySelectorAll(".mex"),function(g){g.addEventListener("click",function(e){var i=e.target.closest("i");if(!i)return;var k=g.getAttribute("data-for"),inp=box.querySelector('[data-m="'+k+'"]'),t=i.textContent;
- if(g.getAttribute("data-multi")){var a=(inp.value||"").split("・").filter(Boolean),p=a.indexOf(t);if(p>=0)a.splice(p,1);else a.push(t);inp.value=a.join("・")}else inp.value=t;
- inp.dispatchEvent(new Event("input"))})});
-document.getElementById("metg").onclick=function(){box.classList.toggle("open");this.textContent=box.classList.contains("open")?"とじる":"変える"};
-document.getElementById("meok").onclick=function(){box.classList.remove("open");document.getElementById("metg").textContent="変える";box.scrollIntoView({behavior:"smooth",block:"start"})};
-if(!has()||location.hash==="#me"){box.classList.add("open");document.getElementById("metg").textContent="とじる";if(location.hash==="#me")setTimeout(function(){box.scrollIntoView({block:"start"})},300)}
-draw();window.nxMeRedraw=function(){v=load();[].forEach.call(box.querySelectorAll("[data-m]"),function(i){i.value=v[i.getAttribute("data-m")]||""});draw()};
-})();</script><script src="../nxsync.js?v=3"></script>
+<script src="https://static.line-scdn.net/liff/edge/2/sdk.js"></script><script>try{liff.init({liffId:"2012700328-ixoZeXYW"}).catch(function(){})}catch(e){}</script><script src="../nxsync.js?v=4"></script>
 </body></html>
