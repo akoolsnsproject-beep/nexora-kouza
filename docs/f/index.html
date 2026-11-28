@@ -86,8 +86,8 @@ function img(k){return "../img/"+(k[0]==="s"?"s"+k.slice(1):(k==="a4"?"x5":(k===
 function st(k){var key=k[0]==="s"?"nx_"+k+os:"nx_"+k,a=[];try{a=JSON.parse(localStorage.getItem(key)||"[]")}catch(e){}var d=a.filter(function(x){return x}).length;if(a.length&&d===a.length)return 2;return d?1:0}
 var S={},done=0,nextK=null;IT.forEach(function(x){S[x[0]]=st(x[0]);if(S[x[0]]===2)done++;else if(!nextK)nextK=x[0]});
 var basicDone=["s1","s2","s3","s4"].every(function(k){return S[k]===2});
-nxCount(null,done,function(v,e){document.getElementById("cnt").textContent=v+"/12";document.getElementById("ring").style.background="conic-gradient(#ff7a12 0 "+(done/12*100*e)+"%,#2a2a30 0)"});
-document.getElementById("pt").textContent=done===12?"コンプリート！🎉":(done===0?"さあ、はじめよう！":"あと"+(12-done)+"個でコンプリート！");
+nxCount(null,done,function(v,e){document.getElementById("cnt").textContent=v+"/"+IT.length;document.getElementById("ring").style.background="conic-gradient(#ff7a12 0 "+(done/IT.length*100*e)+"%,#2a2a30 0)"});
+document.getElementById("pt").textContent=done===IT.length?"コンプリート！🎉":(done===0?"さあ、はじめよう！":"あと"+(IT.length-done)+"個でコンプリート！");
 var nx=IT.filter(function(x){return x[0]===nextK})[0];
 document.getElementById("ps").textContent=nx?(done===0?"まずは STEP1 からスタート":"この調子！次は "+nx[1]+" です"):"ぜんぶクリアしました";
 function row(x){var k=x[0],s=S[k],lock=k!=="s1"&&k[0]==="s"&&+k.slice(1)<=4?S["s"+(+k.slice(1)-1)]!==2&&s===0:(!basicDone&&+(k.slice(1))>=1&&(k[0]==="a"||+k.slice(1)>=5)&&s===0);
