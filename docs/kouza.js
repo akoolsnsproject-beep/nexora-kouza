@@ -13,6 +13,35 @@
   /* 表示名：STEP5〜8は応用1〜4、応用1〜4は応用5〜8 */
   var NM = {s1:'STEP1',s2:'STEP2',s3:'STEP3',s4:'STEP4',s5:'応用1',s6:'応用2',s7:'応用3',s8:'応用4',a1:'応用5',a2:'応用6',a3:'応用7',a4:'応用8',a5:'応用9'};
   var ID = m ? 's' + n : (ma ? 'a' + n : '');
+
+  /* 🔍 応用編：もっと深掘りしたいときは Claude にどんどん聞こう */
+  (function () {
+    if (!(ID && (ID[0] === 'a' || (ID[0] === 's' && n >= 5)))) return;
+    function put() {
+      var g = document.querySelector('.fin') || document.querySelector('.goal'); if (!g || document.getElementById('deep')) return;
+      var pro = /\/p\//.test(location.pathname);
+      var h = document.querySelector('h1'), tt = h ? h.textContent.replace(/\s+/g, '') : LBL;
+      var who = pro ? 'Claude Code（または Claude のチャット）' : 'Claude';
+      var qs = [
+        '「' + tt + '」について、もっとくわしく知りたいです。初心者にも分かるように、次にやるとよいことを3つ、手順つきで教えてください。',
+        '「' + tt + '」を、私の場合（□自分のジャンルや目的□）に合わせるなら、どこをどう変えればいいですか？',
+        '「' + tt + '」でうまくいっている人は、どんな工夫をしていますか？私がまねできることを5つ教えてください。'
+      ];
+      var st = document.createElement('style');
+      st.textContent = '#deep{margin:18px 0 8px;padding:16px 14px;border-radius:16px;background:linear-gradient(135deg,#0f1a2a,#0b1220);border:2px solid #3b82f6;box-shadow:0 0 18px rgba(59,130,246,.25)}' +
+        '#deep h3{margin:0 0 6px;font-size:17px;color:#9cc3ff}#deep p{margin:0 0 10px;font-size:13.5px;line-height:1.7;color:#dbe7ff}' +
+        '#deep .dl{font-size:12.5px;font-weight:800;color:#9cc3ff;margin:10px 0 4px}#deep .copy{margin-top:6px}';
+      document.head.appendChild(st);
+      var d = document.createElement('div'); d.id = 'deep';
+      d.innerHTML = '<h3>🔍 もっと深掘りしたいときは</h3>' +
+        '<p>ここに書いてあるのは<b>はじめの一歩</b>です。「もっとくわしく知りたい」「自分の場合はどうする？」と思ったら、<b>' + who + 'にどんどん聞いていこう</b>。<br>' +
+        '何回聞いてもOK。分からない言葉が出てきたら「それってどういう意味？」と聞き返せば、やさしく教えてくれます。</p>' +
+        '<div class="dl">聞き方の例（□は自分のことに書きかえてね）</div>' +
+        qs.map(function (q) { return '<div class="copy"><button onclick="cp(this)">コピー</button><span>' + q.replace(/[&<>]/g, function (c) { return { '&': '&amp;', '<': '&lt;', '>': '&gt;' }[c]; }) + '</span></div>'; }).join('');
+      g.parentNode.insertBefore(d, g);
+    }
+    if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', put); else put();
+  })();
   if (NM[ID]) { LBL = NM[ID]; MSG = '✅ ' + LBL + 'クリア' + (os === 'mac' ? '！' : ''); }
 
   /* 前のSTEPをクリアしていないと開かない（応用編はSTEP4のあと好きな順） */
