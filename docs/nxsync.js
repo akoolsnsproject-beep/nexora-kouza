@@ -4,6 +4,7 @@
   if (window.nxSync) return;
   var API = 'https://script.google.com/macros/s/AKfycbxOW333dnjNRBwgaA5tfYlCBuHk7FGs2BbI1lt6JHLcbVtYh0x12CzqupkbvTxewyhb/exec';
   var RE = /^nx_(s[1-8](win|mac)|a[1-9]|rules)$/;
+  var ORE = /^nx_(me|mp_(s[1-8]|a[1-9]))$/;
   var busy = false, again = false, tm = null;
 
   function local() {
@@ -16,16 +17,22 @@
         if (Array.isArray(a)) o[k] = a.map(function (x) { return x ? 1 : 0; });
       }
     } catch (e) {}
-    try { var me = JSON.parse(localStorage.getItem('nx_me') || 'null'); if (me && me.v && me.t) o.nx_me = me; } catch (e) {}
+    try {
+      for (var j = 0; j < localStorage.length; j++) {
+        var kk = localStorage.key(j); if (!ORE.test(kk)) continue;
+        var me = JSON.parse(localStorage.getItem(kk) || 'null'); if (me && me.v && me.t) o[kk] = me;
+      }
+    } catch (e) {}
     return o;
   }
   /* サーバーの記録を手元に入れる。変わったら true */
   function apply(d) {
     var ch = false;
-    if (d && d.nx_me && d.nx_me.v) {
-      var cur0 = null; try { cur0 = JSON.parse(localStorage.getItem('nx_me') || 'null'); } catch (e) {}
-      if (!cur0 || !cur0.t || d.nx_me.t > cur0.t) { try { localStorage.setItem('nx_me', JSON.stringify(d.nx_me)); ch = true; } catch (e) {} }
-    }
+    Object.keys(d || {}).forEach(function (k) {
+      if (!ORE.test(k) || !d[k] || !d[k].v) return;
+      var cur0 = null; try { cur0 = JSON.parse(localStorage.getItem(k) || 'null'); } catch (e) {}
+      if (!cur0 || !cur0.t || d[k].t > cur0.t) { try { localStorage.setItem(k, JSON.stringify(d[k])); ch = true; } catch (e) {} }
+    });
     Object.keys(d || {}).forEach(function (k) {
       if (!RE.test(k)) return;
       var cur = [];
