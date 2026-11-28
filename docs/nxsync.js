@@ -16,11 +16,16 @@
         if (Array.isArray(a)) o[k] = a.map(function (x) { return x ? 1 : 0; });
       }
     } catch (e) {}
+    try { var me = JSON.parse(localStorage.getItem('nx_me') || 'null'); if (me && me.v && me.t) o.nx_me = me; } catch (e) {}
     return o;
   }
   /* サーバーの記録を手元に入れる。変わったら true */
   function apply(d) {
     var ch = false;
+    if (d && d.nx_me && d.nx_me.v) {
+      var cur0 = null; try { cur0 = JSON.parse(localStorage.getItem('nx_me') || 'null'); } catch (e) {}
+      if (!cur0 || !cur0.t || d.nx_me.t > cur0.t) { try { localStorage.setItem('nx_me', JSON.stringify(d.nx_me)); ch = true; } catch (e) {} }
+    }
     Object.keys(d || {}).forEach(function (k) {
       if (!RE.test(k)) return;
       var cur = [];
