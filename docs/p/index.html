@@ -80,9 +80,9 @@ function nxCount(el, to, step) {
 </script>
 <script>
 var os=(function(){try{var q=location.search.match(/[?&]os=(win|mac)/);if(q){localStorage.setItem("nx_os",q[1]);return q[1]}var s=localStorage.getItem("nx_os");if(s==="win"||s==="mac")return s}catch(e){}var u=navigator.userAgent;if(/Macintosh/.test(u)&&!('ontouchend' in document))return "mac";return "win"})();
-var IT=[["s1","STEP1","準備"],["s2","STEP2","AIにプログラムを書いてもらう"],["s3","STEP3","伝わる頼み方"],["s4","STEP4","自分用メモを作る"],["s5","応用1","Threadsを自動投稿"],["s6","応用2","インスタを自動投稿"],["s7","応用3","動画を自動編集"],["s8","応用4","自分だけのAI「ジャービス」"],["a1","応用5","楽天アフィリエイト"],["a2","応用6","CapCutで動画を仕上げる"],["a3","応用7","画像をまとめて作る"],["a4","応用8","AI社員で自分会社を作る"]];
+var IT=[["s1","STEP1","準備"],["s2","STEP2","AIにプログラムを書いてもらう"],["s3","STEP3","伝わる頼み方"],["s4","STEP4","自分用メモを作る"],["s5","応用1","Threadsを自動投稿"],["s6","応用2","インスタを自動投稿"],["s7","応用3","動画を自動編集"],["s8","応用4","自分だけのAI「ジャービス」"],["a1","応用5","楽天アフィリエイト"],["a2","応用6","CapCutで動画を仕上げる"],["a3","応用7","画像をまとめて作る"],["a4","応用8","AI社員で自分会社を作る"],["a5","応用9","LINEスタンプを作って売る"]];
 function href(k){return k[0]==="s"?"step"+k.slice(1)+"-"+os+".html":k+".html"}
-function img(k){return "../img/"+(k[0]==="s"?"s"+k.slice(1):(k==="a4"?"x5":"x"+k.slice(1)))+".jpg"}
+function img(k){return "../img/"+(k[0]==="s"?"s"+k.slice(1):(k==="a4"?"x5":(k==="a5"?"x6":"x"+k.slice(1))))+".jpg"}
 function st(k){var key=k[0]==="s"?"nx_"+k+os:"nx_"+k,a=[];try{a=JSON.parse(localStorage.getItem(key)||"[]")}catch(e){}var d=a.filter(function(x){return x}).length;if(a.length&&d===a.length)return 2;return d?1:0}
 var S={},done=0,nextK=null;IT.forEach(function(x){S[x[0]]=st(x[0]);if(S[x[0]]===2)done++;else if(!nextK)nextK=x[0]});
 var basicDone=["s1","s2","s3","s4"].every(function(k){return S[k]===2});
@@ -99,5 +99,5 @@ document.getElementById("badge").textContent+="｜"+(os==="win"?"Windows":"Mac")
 document.getElementById("osn").innerHTML=(os==="win"?"Windows":"Mac")+'用のページです・<u id="oss">'+(os==="win"?"Mac":"Windows")+'の人はこちら</u>';
 document.getElementById("oss").onclick=function(){try{localStorage.setItem("nx_os",os==="win"?"mac":"win")}catch(e){}location.replace(location.pathname+location.search.replace(/([?&])os=(win|mac)&?/,"$1"))};
 </script>
-<script src="https://static.line-scdn.net/liff/edge/2/sdk.js"></script><script>try{liff.init({liffId:"2012700328-ixoZeXYW"}).catch(function(){})}catch(e){}</script><script src="../nxsync.js?v=1"></script>
+<script src="https://static.line-scdn.net/liff/edge/2/sdk.js"></script><script>try{liff.init({liffId:"2012700328-ixoZeXYW"}).catch(function(){})}catch(e){}</script><script src="../nxsync.js?v=2"></script>
 </body></html>
