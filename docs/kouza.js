@@ -48,15 +48,16 @@ function nxMeWrap(t) { return nxMeUse ? nxMeHead(nxMeS4) + nxMeFill(t) : t; }
       ];
       var st = document.createElement('style');
       st.textContent = '#deep{margin:18px 0 8px;padding:16px 14px;border-radius:16px;background:linear-gradient(135deg,#0f1a2a,#0b1220);border:2px solid #3b82f6;box-shadow:0 0 18px rgba(59,130,246,.25)}' +
-        '#deep h3{margin:0 0 6px;font-size:17px;color:#9cc3ff}#deep p{margin:0 0 10px;font-size:13.5px;line-height:1.7;color:#dbe7ff}' +
+        '#deep h3{margin:0;font-size:17px;color:#9cc3ff;display:flex;align-items:center;justify-content:space-between;cursor:pointer;-webkit-tap-highlight-color:transparent}#deep h3 em{font-style:normal;font-size:12px;font-weight:800;background:#1e3a66;color:#cfe0ff;border-radius:99px;padding:4px 10px}#deep .db{display:none;margin-top:10px}#deep.op .db{display:block}#deep h3:after{content:""}#deep p{margin:0 0 10px;font-size:13.5px;line-height:1.7;color:#dbe7ff}' +
         '#deep .dl{font-size:12.5px;font-weight:800;color:#9cc3ff;margin:10px 0 4px}#deep .copy{margin-top:6px}';
       document.head.appendChild(st);
       var d = document.createElement('div'); d.id = 'deep';
-      d.innerHTML = '<h3>🔍 もっと深掘りしたいときは</h3>' +
+      d.innerHTML = '<h3>🔍 もっと深掘りしたいときは<em>タップで開く ▼</em></h3><div class="db">' +
         '<p>ここに書いてあるのは<b>はじめの一歩</b>です。「もっとくわしく知りたい」「自分の場合はどうする？」と思ったら、<b>' + who + 'にどんどん聞いていこう</b>。<br>' +
         '何回聞いてもOK。分からない言葉が出てきたら「それってどういう意味？」と聞き返せば、やさしく教えてくれます。</p>' +
         '<div class="dl">聞き方の例（□は自分のことに書きかえてね）</div>' +
-        qs.map(function (q) { return '<div class="copy"><button onclick="cp(this)">コピー</button><span>' + q.replace(/[&<>]/g, function (c) { return { '&': '&amp;', '<': '&lt;', '>': '&gt;' }[c]; }) + '</span></div>'; }).join('');
+        qs.map(function (q) { return '<div class="copy"><button onclick="cp(this)">コピー</button><span>' + q.replace(/[&<>]/g, function (c) { return { '&': '&amp;', '<': '&lt;', '>': '&gt;' }[c]; }) + '</span></div>'; }).join('') + '</div>';
+      d.querySelector('h3').onclick = function () { var o = d.classList.toggle('op'); this.querySelector('em').textContent = o ? 'とじる ▲' : 'タップで開く ▼'; };
       g.parentNode.insertBefore(d, g);
     }
     if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', put); else put();
