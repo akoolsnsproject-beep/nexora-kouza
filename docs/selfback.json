@@ -10,7 +10,8 @@
    "category": "暮らし",
    "free": false,
    "easy": false,
-   "prev_reward_num": 20000
+   "prev_reward_num": 20000,
+   "id": "s00000027330001"
   },
   {
    "name": "SAKIYOMIスクール（SNS仕事スクール）",
@@ -19,7 +20,8 @@
    "condition": "スクールに新規入会・成約（受講料がかかる）",
    "category": "学び",
    "free": false,
-   "easy": false
+   "easy": false,
+   "id": "s00000026519001"
   },
   {
    "name": "auひかり",
@@ -29,7 +31,8 @@
    "category": "通信",
    "free": false,
    "easy": false,
-   "prev_reward_num": 10000
+   "prev_reward_num": 10000,
+   "id": "s00000014546021"
   },
   {
    "name": "エンキロ（距離で払うカーリース）",
@@ -38,7 +41,8 @@
    "condition": "カーリースの新規契約（月額料金・審査あり）",
    "category": "車",
    "free": false,
-   "easy": false
+   "easy": false,
+   "id": "s00000026472001"
   },
   {
    "name": "ニコノリ（カーリース）",
@@ -47,7 +51,8 @@
    "condition": "カーリースの新規契約（月額料金・審査あり）",
    "category": "車",
    "free": false,
-   "easy": false
+   "easy": false,
+   "id": "s00000022169001"
   },
   {
    "name": "RIZAPゴルフ",
@@ -56,7 +61,8 @@
    "condition": "ゴルフスクールに新規入会（受講料がかかる）",
    "category": "学び",
    "free": false,
-   "easy": false
+   "easy": false,
+   "id": "s00000001671069"
   },
   {
    "name": "UPSIDER BANK by MIZUHO 法人口座",
@@ -66,7 +72,8 @@
    "category": "口座開設",
    "free": false,
    "easy": false,
-   "prev_reward_num": 3000
+   "prev_reward_num": 3000,
+   "id": "s00000027583001"
   },
   {
    "name": "SoftBank Air",
@@ -76,7 +83,8 @@
    "category": "通信",
    "free": false,
    "easy": false,
-   "prev_reward_num": 10000
+   "prev_reward_num": 10000,
+   "id": "s00000014546016"
   },
   {
    "name": "SoftBank 光（正規代理店NEXT）",
@@ -85,7 +93,8 @@
    "condition": "光回線の新規開通",
    "category": "通信",
    "free": false,
-   "easy": false
+   "easy": false,
+   "id": "s00000014546008"
   },
   {
    "name": "NURO 光",
@@ -95,7 +104,8 @@
    "category": "通信",
    "free": false,
    "easy": false,
-   "prev_reward_num": 14000
+   "prev_reward_num": 14000,
+   "id": "s00000013431001"
   },
   {
    "name": "RIZAP イングリッシュ",
@@ -104,7 +114,8 @@
    "condition": "英語コーチングに新規入会（受講料がかかる）",
    "category": "学び",
    "free": false,
-   "easy": false
+   "easy": false,
+   "id": "s00000001671071"
   },
   {
    "name": "ドコモ光キャンペーン",
@@ -114,7 +125,8 @@
    "category": "通信",
    "free": false,
    "easy": false,
-   "prev_reward_num": 10387
+   "prev_reward_num": 10387,
+   "id": "s00000027586001"
   },
   {
    "name": "ビッグローブ光",
@@ -124,7 +136,8 @@
    "category": "通信",
    "free": false,
    "easy": false,
-   "prev_reward_num": 5500
+   "prev_reward_num": 5500,
+   "id": "s00000014546010"
   },
   {
    "name": "車買取ソコカラ",
@@ -134,7 +147,8 @@
    "category": "車",
    "free": false,
    "easy": false,
-   "prev_reward_num": 17000
+   "prev_reward_num": 17000,
+   "id": "s00000027197001"
   },
   {
    "name": "カーネクスト（中古車買取）",
@@ -144,7 +158,8 @@
    "category": "車",
    "free": false,
    "easy": false,
-   "prev_reward_num": 18000
+   "prev_reward_num": 18000,
+   "id": "s00000014380003"
   },
   {
    "name": "Locca（水道直結ウォーターサーバー）",
@@ -154,7 +169,8 @@
    "category": "暮らし",
    "free": false,
    "easy": false,
-   "prev_reward_num": 7519
+   "prev_reward_num": 7519,
+   "id": "s00000021525001"
   },
   {
    "name": "dカード GOLD",
@@ -164,7 +180,8 @@
    "category": "カード",
    "free": false,
    "easy": false,
-   "prev_reward_num": 1000
+   "prev_reward_num": 1000,
+   "id": "s00000013470009"
   },
   {
    "name": "マネカツ（お金の個別相談）",
@@ -174,7 +191,8 @@
    "category": "相談",
    "free": false,
    "easy": false,
-   "prev_reward_num": 19500
+   "prev_reward_num": 19500,
+   "id": "s00000027123001"
   },
   {
    "name": "GMOあおぞらネット銀行 法人口座",
@@ -184,7 +202,8 @@
    "category": "口座開設",
    "free": false,
    "easy": false,
-   "prev_reward_num": 6700
+   "prev_reward_num": 6700,
+   "id": "s00000019242004"
   },
   {
    "name": "三井住友銀行 法人ネット口座 Trunk",
@@ -194,7 +213,8 @@
    "category": "口座開設",
    "free": false,
    "easy": false,
-   "prev_reward_num": 5000
+   "prev_reward_num": 5000,
+   "id": "s00000026885001"
   },
   {
    "name": "みんなのFX",
@@ -204,7 +224,8 @@
    "category": "FX",
    "free": false,
    "easy": false,
-   "prev_reward_num": 3000
+   "prev_reward_num": 3000,
+   "id": "s00000018633001"
   },
   {
    "name": "FANTAS study（税金対策セミナー）",
@@ -213,7 +234,8 @@
    "condition": "オンラインセミナー参加＋個別相談（条件あり）",
    "category": "相談",
    "free": false,
-   "easy": false
+   "easy": false,
+   "id": "s00000027123002"
   },
   {
    "name": "JCB Biz ONE（個人事業主向けカード）",
@@ -223,7 +245,8 @@
    "category": "カード",
    "free": false,
    "easy": false,
-   "prev_reward_num": 7000
+   "prev_reward_num": 7000,
+   "id": "s00000004802049"
   },
   {
    "name": "ahamo（乗り換え）",
@@ -233,7 +256,8 @@
    "category": "通信",
    "free": false,
    "easy": false,
-   "prev_reward_num": 3000
+   "prev_reward_num": 3000,
+   "id": "s00000027900001"
   },
   {
    "name": "エネワンでんき",
@@ -243,7 +267,8 @@
    "category": "暮らし",
    "free": false,
    "easy": false,
-   "prev_reward_num": 4500
+   "prev_reward_num": 4500,
+   "id": "s00000025632001"
   },
   {
    "name": "三菱UFJ eスマート証券 FX",
@@ -252,7 +277,8 @@
    "condition": "FX口座開設＋新規取引（FXの取引が必要）",
    "category": "FX",
    "free": false,
-   "easy": false
+   "easy": false,
+   "id": "s00000022398001"
   },
   {
    "name": "ウェルスコーチ（不動産投資の面談）",
@@ -262,7 +288,8 @@
    "category": "投資",
    "free": false,
    "easy": false,
-   "prev_reward_num": 15000
+   "prev_reward_num": 15000,
+   "id": "s00000007478007"
   },
   {
    "name": "LIGHT FX",
@@ -272,7 +299,8 @@
    "category": "FX",
    "free": false,
    "easy": false,
-   "prev_reward_num": 3000
+   "prev_reward_num": 3000,
+   "id": "s00000019554001"
   },
   {
    "name": "JCBオリジナルシリーズ【W】【WL】",
@@ -282,7 +310,8 @@
    "category": "カード",
    "free": true,
    "easy": false,
-   "prev_reward_num": 2700
+   "prev_reward_num": 2700,
+   "id": "s00000015299006"
   },
   {
    "name": "JCBゴールド",
@@ -292,7 +321,8 @@
    "category": "カード",
    "free": false,
    "easy": false,
-   "prev_reward_num": 2700
+   "prev_reward_num": 2700,
+   "id": "s00000015299027"
   },
   {
    "name": "アメリカン・エキスプレス（限定）",
@@ -302,7 +332,8 @@
    "category": "カード",
    "free": false,
    "easy": false,
-   "prev_reward_num": 4500
+   "prev_reward_num": 4500,
+   "id": "s00000026219006"
   },
   {
    "name": "ヒロセ通商 FX",
@@ -322,7 +353,8 @@
    "category": "カード",
    "free": true,
    "easy": false,
-   "prev_reward_num": 3000
+   "prev_reward_num": 3000,
+   "id": "s00000026219001"
   },
   {
    "name": "三菱UFJカード ゴールド",
@@ -332,7 +364,8 @@
    "category": "カード",
    "free": false,
    "easy": false,
-   "prev_reward_num": 4500
+   "prev_reward_num": 4500,
+   "id": "s00000026219002"
   },
   {
    "name": "プロミスVisaカード",
@@ -342,7 +375,8 @@
    "category": "カード",
    "free": false,
    "easy": false,
-   "prev_reward_num": 5000
+   "prev_reward_num": 5000,
+   "id": "s00000024441001"
   },
   {
    "name": "三井住友カード Trunkオーナーズ",
@@ -352,7 +386,8 @@
    "category": "カード",
    "free": false,
    "easy": false,
-   "prev_reward_num": 3000
+   "prev_reward_num": 3000,
+   "id": "s00000023355006"
   },
   {
    "name": "三井住友銀行 Olive口座開設",
@@ -362,7 +397,8 @@
    "category": "口座開設",
    "free": true,
    "easy": true,
-   "prev_reward_num": 2000
+   "prev_reward_num": 2000,
+   "id": "s00000026269001"
   },
   {
    "name": "楽天銀行スーパーローン",
@@ -372,7 +408,8 @@
    "category": "カード",
    "free": true,
    "easy": false,
-   "prev_reward_num": 3000
+   "prev_reward_num": 3000,
+   "id": "s00000026836001"
   },
   {
    "name": "JCBカード S",
@@ -382,7 +419,8 @@
    "category": "カード",
    "free": true,
    "easy": false,
-   "prev_reward_num": 2700
+   "prev_reward_num": 2700,
+   "id": "s00000015299030"
   },
   {
    "name": "みずほ銀行 普通預金口座",
@@ -392,7 +430,8 @@
    "category": "口座開設",
    "free": true,
    "easy": true,
-   "prev_reward_num": 1500
+   "prev_reward_num": 1500,
+   "id": "s00000027107001"
   },
   {
    "name": "ヴィーナスウォーカー（モニターサイト）",
@@ -402,7 +441,8 @@
    "category": "モニター",
    "free": true,
    "easy": false,
-   "prev_reward_num": 3000
+   "prev_reward_num": 3000,
+   "id": "s00000024438001"
   },
   {
    "name": "JFX",
@@ -412,7 +452,8 @@
    "category": "FX",
    "free": false,
    "easy": false,
-   "prev_reward_num": 3000
+   "prev_reward_num": 3000,
+   "id": "s00000010019001"
   },
   {
    "name": "スマモ二（お試しサイト）",
@@ -422,7 +463,8 @@
    "category": "モニター",
    "free": true,
    "easy": false,
-   "prev_reward_num": 6000
+   "prev_reward_num": 6000,
+   "id": "s00000026581001"
   },
   {
    "name": "三井住友カード ゴールド（NL）",
@@ -432,7 +474,8 @@
    "category": "カード",
    "free": true,
    "easy": false,
-   "prev_reward_num": 3000
+   "prev_reward_num": 3000,
+   "id": "s00000023355004"
   },
   {
    "name": "FPカフェ（お金の無料相談）",
@@ -441,7 +484,8 @@
    "condition": "FPとの新規面談完了（相談は無料）",
    "category": "相談",
    "free": true,
-   "easy": false
+   "easy": false,
+   "id": "s00000027294001"
   },
   {
    "name": "三井住友カード（NL）",
@@ -451,7 +495,8 @@
    "category": "カード",
    "free": true,
    "easy": false,
-   "prev_reward_num": 3000
+   "prev_reward_num": 3000,
+   "id": "s00000023355003"
   },
   {
    "name": "SBI証券",
@@ -461,7 +506,8 @@
    "category": "口座開設",
    "free": true,
    "easy": true,
-   "prev_reward_num": 2250
+   "prev_reward_num": 2250,
+   "id": "s00000002072001"
   },
   {
    "name": "エポスカード",
@@ -471,7 +517,8 @@
    "category": "カード",
    "free": true,
    "easy": false,
-   "prev_reward_num": 2600
+   "prev_reward_num": 2600,
+   "id": "s00000015110001"
   },
   {
    "name": "リショップナビ（リフォーム無料見積もり）",
@@ -480,7 +527,8 @@
    "condition": "リフォームの無料一括見積もり申込（持ち家向け）",
    "category": "暮らし",
    "free": true,
-   "easy": false
+   "easy": false,
+   "id": "s00000013511007"
   },
   {
    "name": "三菱UFJ eスマート証券",
@@ -489,7 +537,8 @@
    "condition": "証券口座開設＋新規取引",
    "category": "口座開設",
    "free": false,
-   "easy": false
+   "easy": false,
+   "id": "s00000021432001"
   },
   {
    "name": "SBI証券 iDeCo",
@@ -509,7 +558,8 @@
    "category": "カード",
    "free": true,
    "easy": false,
-   "prev_reward_num": 3000
+   "prev_reward_num": 3000,
+   "id": "s00000023355005"
   },
   {
    "name": "パルシステム（生協の宅配）",
@@ -519,7 +569,8 @@
    "category": "宅配",
    "free": true,
    "easy": false,
-   "prev_reward_num": 6500
+   "prev_reward_num": 6500,
+   "id": "s00000000064011"
   },
   {
    "name": "オクトパスエナジー（電気）",
@@ -528,7 +579,8 @@
    "condition": "電気の切り替えで新規供給開始",
    "category": "暮らし",
    "free": true,
-   "easy": false
+   "easy": false,
+   "id": "s00000026570001"
   },
   {
    "name": "SHElikes（WEBスクール）",
@@ -538,7 +590,8 @@
    "category": "学び",
    "free": true,
    "easy": true,
-   "prev_reward_num": 1500
+   "prev_reward_num": 1500,
+   "id": "s00000021637001"
   },
   {
    "name": "保険の無料相談 ガーデン",
@@ -557,7 +610,8 @@
    "category": "FX",
    "free": true,
    "easy": true,
-   "prev_reward_num": 4000
+   "prev_reward_num": 4000,
+   "id": "s00000023007001"
   },
   {
    "name": "コスモ・ザ・カード・オーパス",
@@ -567,7 +621,8 @@
    "category": "カード",
    "free": true,
    "easy": false,
-   "prev_reward_num": 2000
+   "prev_reward_num": 2000,
+   "id": "s00000027665001"
   },
   {
    "name": "ファンモニ（モニターサイト）",
@@ -577,7 +632,8 @@
    "category": "モニター",
    "free": true,
    "easy": false,
-   "prev_reward_num": 1776
+   "prev_reward_num": 1776,
+   "id": "s00000023234001"
   },
   {
    "name": "楽天カード",
@@ -587,7 +643,8 @@
    "category": "カード",
    "free": true,
    "easy": false,
-   "prev_reward_num": 953
+   "prev_reward_num": 953,
+   "id": "s00000026826001"
   },
   {
    "name": "S STACIAカード",
@@ -597,7 +654,8 @@
    "category": "カード",
    "free": true,
    "easy": false,
-   "prev_reward_num": 1500
+   "prev_reward_num": 1500,
+   "id": "s00000023355025"
   },
   {
    "name": "フランチャイズの窓口（資料請求）",
@@ -607,7 +665,8 @@
    "category": "資料請求",
    "free": true,
    "easy": true,
-   "prev_reward_num": 1500
+   "prev_reward_num": 1500,
+   "id": "s00000007478014"
   },
   {
    "name": "GMOクリック証券 FXネオ",
@@ -616,7 +675,8 @@
    "condition": "新規口座開設＋取引（FXの取引が必要）",
    "category": "FX",
    "free": false,
-   "easy": false
+   "easy": false,
+   "id": "s00000004526003"
   },
   {
    "name": "リクルートカード",
@@ -626,7 +686,8 @@
    "category": "カード",
    "free": true,
    "easy": false,
-   "prev_reward_num": 1600
+   "prev_reward_num": 1600,
+   "id": "s00000013107008"
   },
   {
    "name": "エネチェンジ（電力比較）",
@@ -636,7 +697,8 @@
    "category": "暮らし",
    "free": true,
    "easy": true,
-   "prev_reward_num": 1000
+   "prev_reward_num": 1000,
+   "id": "s00000020286001"
   },
   {
    "name": "X-mobile 格安SIM（グリーンプラン）",
@@ -655,7 +717,8 @@
    "condition": "新規口座開設",
    "category": "口座開設",
    "free": true,
-   "easy": true
+   "easy": true,
+   "id": "s00000026445001"
   },
   {
    "name": "Funds（ファンズ）",
@@ -665,7 +728,8 @@
    "category": "口座開設",
    "free": true,
    "easy": true,
-   "prev_reward_num": 1700
+   "prev_reward_num": 1700,
+   "id": "s00000027236001"
   },
   {
    "name": "ほけんのAI（無料オンラインFP相談）",
@@ -674,7 +738,8 @@
    "condition": "オンラインのFP無料相談",
    "category": "相談",
    "free": true,
-   "easy": false
+   "easy": false,
+   "id": "s00000025154001"
   },
   {
    "name": "dカード",
@@ -684,7 +749,8 @@
    "category": "カード",
    "free": true,
    "easy": false,
-   "prev_reward_num": 500
+   "prev_reward_num": 500,
+   "id": "s00000013470002"
   },
   {
    "name": "FXTF",
@@ -693,7 +759,8 @@
    "condition": "新規口座開設＋取引（FXの取引が必要）",
    "category": "FX",
    "free": false,
-   "easy": false
+   "easy": false,
+   "id": "s00000019746001"
   },
   {
    "name": "PayPayカード",
@@ -702,7 +769,8 @@
    "condition": "新規カード発券（年会費永年無料）",
    "category": "カード",
    "free": true,
-   "easy": false
+   "easy": false,
+   "id": "s00000015104001"
   },
   {
    "name": "エストレ（SNSマーケティングスクール）",
@@ -711,7 +779,8 @@
    "condition": "無料カウンセリングに参加",
    "category": "学び",
    "free": true,
-   "easy": true
+   "easy": true,
+   "id": "s00000026481001"
   },
   {
    "name": "U-NEXT 31日間無料トライアル",
@@ -720,7 +789,8 @@
    "condition": "無料トライアル申込み（期間内に解約すれば0円）",
    "category": "サブスク",
    "free": true,
-   "easy": true
+   "easy": true,
+   "id": "s00000014274001"
   },
   {
    "name": "SBI新生銀行",
@@ -729,7 +799,8 @@
    "condition": "新規口座開設完了",
    "category": "口座開設",
    "free": true,
-   "easy": true
+   "easy": true,
+   "id": "s00000027734001"
   },
   {
    "name": "Oh!ya（投資アンケート）",
@@ -739,7 +810,8 @@
    "category": "アンケート",
    "free": true,
    "easy": true,
-   "prev_reward_num": 600
+   "prev_reward_num": 600,
+   "id": "s00000023754006"
   },
   {
    "name": "おうちコープ（資料請求）",
@@ -748,7 +820,8 @@
    "condition": "生協の資料請求",
    "category": "資料請求",
    "free": true,
-   "easy": true
+   "easy": true,
+   "id": "s00000022218001"
   },
   {
    "name": "松井証券",
@@ -757,7 +830,8 @@
    "condition": "新規口座開設",
    "category": "口座開設",
    "free": true,
-   "easy": true
+   "easy": true,
+   "id": "s00000018318001"
   },
   {
    "name": "スマートフォンモニター（iOS/Android）",
@@ -766,7 +840,8 @@
    "condition": "モニターに無料登録",
    "category": "モニター",
    "free": true,
-   "easy": true
+   "easy": true,
+   "id": "s00000017030002"
   },
   {
    "name": "コープデリ（資料請求）",
@@ -775,7 +850,8 @@
    "condition": "生協の資料請求",
    "category": "資料請求",
    "free": true,
-   "easy": true
+   "easy": true,
+   "id": "s00000003050001"
   },
   {
    "name": "Club toto",
@@ -784,7 +860,8 @@
    "condition": "無料会員登録",
    "category": "無料登録",
    "free": true,
-   "easy": true
+   "easy": true,
+   "id": "s00000025838001"
   },
   {
    "name": "フルーツメール",
@@ -793,7 +870,8 @@
    "condition": "会員登録＋ポイント獲得",
    "category": "無料登録",
    "free": true,
-   "easy": true
+   "easy": true,
+   "id": "s00000000368004"
   },
   {
    "name": "dアニメストア 31日間無料",
@@ -802,7 +880,8 @@
    "condition": "新規会員登録（期間内に解約すれば0円）",
    "category": "サブスク",
    "free": true,
-   "easy": true
+   "easy": true,
+   "id": "s00000017962001"
   },
   {
    "name": "DMMプレミアム（DMM TV）14日間無料",
@@ -811,7 +890,8 @@
    "condition": "初回登録（期間内に解約すれば0円）",
    "category": "サブスク",
    "free": true,
-   "easy": true
+   "easy": true,
+   "id": "s00000024593001"
   },
   {
    "name": "マネーフォワード クラウド確定申告",
@@ -820,7 +900,8 @@
    "condition": "無料会員登録",
    "category": "無料登録",
    "free": true,
-   "easy": true
+   "easy": true,
+   "id": "s00000021185002"
   },
   {
    "name": "ちょびリッチ（ポイントサイト）",
@@ -830,7 +911,8 @@
    "category": "無料登録",
    "free": true,
    "easy": true,
-   "prev_reward_num": 200
+   "prev_reward_num": 200,
+   "id": "s00000015067001"
   },
   {
    "name": "Ipsos iSay（アンケート）",
@@ -840,7 +922,8 @@
    "category": "アンケート",
    "free": true,
    "easy": true,
-   "prev_reward_num": 160
+   "prev_reward_num": 160,
+   "id": "s00000018951001"
   },
   {
    "name": "Toluna（アンケート）",
@@ -850,7 +933,8 @@
    "category": "アンケート",
    "free": true,
    "easy": true,
-   "prev_reward_num": 275
+   "prev_reward_num": 275,
+   "id": "s00000016424001"
   },
   {
    "name": "通信制大学特集（資料請求）",
@@ -859,7 +943,8 @@
    "condition": "通信制大学の資料請求",
    "category": "資料請求",
    "free": true,
-   "easy": true
+   "easy": true,
+   "id": "s00000009633007"
   },
   {
    "name": "「載ってほしいお店」かんたんアンケート",
@@ -869,7 +954,8 @@
    "category": "アンケート",
    "free": true,
    "easy": true,
-   "prev_reward_num": 50
+   "prev_reward_num": 50,
+   "id": "s00000027794001"
   }
  ]
 }
