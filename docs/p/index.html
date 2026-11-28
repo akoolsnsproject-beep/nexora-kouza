@@ -99,5 +99,5 @@ document.getElementById("badge").textContent+="｜"+(os==="win"?"Windows":"Mac")
 document.getElementById("osn").innerHTML=(os==="win"?"Windows":"Mac")+'用のページです・<u id="oss">'+(os==="win"?"Mac":"Windows")+'の人はこちら</u>';
 document.getElementById("oss").onclick=function(){try{localStorage.setItem("nx_os",os==="win"?"mac":"win")}catch(e){}location.replace(location.pathname+location.search.replace(/([?&])os=(win|mac)&?/,"$1"))};
 </script>
-<script src="https://static.line-scdn.net/liff/edge/2/sdk.js"></script><script>try{liff.init({liffId:"2012700328-ixoZeXYW"}).catch(function(){})}catch(e){}</script>
+<script src="https://static.line-scdn.net/liff/edge/2/sdk.js"></script><script>try{liff.init({liffId:"2012700328-ixoZeXYW"}).catch(function(){})}catch(e){}</script><script src="../nxsync.js?v=1"></script>
 </body></html>
