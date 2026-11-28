@@ -100,6 +100,37 @@ function nxMeWrap(t) { return nxMeUse ? nxMeHead(nxMeS4) + nxMeFill(t) : t; }
     if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', put); else put();
   })();
 
+  /* SKILL この回のスキル（サブスク版だけ） */
+  (function () {
+    var SK = { s5: ['threads-post', '🧵', '投稿文スキル', 'テーマを送るだけで投稿文3本・#PRもチェック', '投稿文づくり', 'Claude講座の宣伝を投稿したい'],
+      s6: ['threads-post', '🧵', '投稿文スキル', 'テーマを送るだけでキャプション3本・#PRもチェック', 'キャプションづくり', 'カフェ巡りの投稿を作って'],
+      s7: ['subtitle-srt', '🎬', '動画の字幕スキル', '話した文を貼るだけでSRT字幕に', '字幕づくり', 'この文を字幕にして'],
+      a2: ['subtitle-srt', '🎬', '動画の字幕スキル', '話した文を貼るだけでSRT字幕に', '字幕づくり', 'この文を字幕にして'],
+      a1: ['rakuten-room', '🛍', '楽天ROOM 紹介文スキル', 'URLを貼るだけで#PR付きの紹介文', '紹介文づくり', 'このタンブラーの紹介文を作って'],
+      a5: ['line-stamp', '🐻', 'LINEスタンプスキル', 'キャラと言葉からセリフと絵の指示をまとめて', 'スタンプの準備', 'まるいクマのスタンプを8個作りたい'] };
+    var k = SK[ID]; if (!k) return;
+    function put() {
+      var g = document.querySelector('.fin') || document.querySelector('.goal'); if (!g || document.getElementById('skc')) return;
+      var st = document.createElement('style');
+      st.textContent = '#skc{margin:12px 0 8px;padding:14px;border-radius:16px;background:linear-gradient(135deg,#1f1408,#140d06);border:2px solid #ff8a24;box-shadow:0 0 18px rgba(255,138,36,.25)}' +
+        '#skc h3{margin:0;font-size:16.5px;color:#ffb066;display:flex;align-items:center;gap:8px;cursor:pointer;-webkit-tap-highlight-color:transparent}#skc h3 em{margin-left:auto;font-style:normal;font-size:12px;font-weight:800;background:#5a3510;color:#ffd9b3;border-radius:99px;padding:4px 10px;white-space:nowrap}' +
+        '#skc .tagk{font-size:10.5px;font-weight:900;letter-spacing:.12em;color:#111;background:linear-gradient(135deg,#ffcf7a,#ff7a1a);border-radius:6px;padding:4px 7px;box-shadow:0 0 10px #ff6a0088}' +
+        '#skc .sb{display:none;margin-top:10px}#skc.op .sb{display:block}#skc p{margin:0 0 10px;font-size:13.5px;line-height:1.7;color:#ffe6cc}' +
+        '#skc .row{display:flex;align-items:center;gap:10px;background:#0d0d0d;border:1px solid #5a4026;border-radius:12px;padding:10px}#skc .row i{font-style:normal;font-size:26px}#skc .row b{display:block;font-size:14.5px;color:#fff}#skc .row small{color:#bbb;font-size:12px}' +
+        '#skc .ex{margin-top:8px;font-size:12.5px;color:#cfe0ff}#skc .go{display:block;margin-top:10px;text-align:center;background:#ff6a00;color:#fff;font-weight:900;border-radius:99px;padding:10px;font-size:14px;text-decoration:none;box-shadow:0 0 12px #ff6a0099}';
+      document.head.appendChild(st);
+      var d = document.createElement('div'); d.id = 'skc';
+      d.innerHTML = '<h3><span class="tagk">SKILL</span>この回のスキル<em>タップで開く ▼</em></h3><div class="sb">' +
+        '<p>今回の「' + k[4] + '」は、スキルを入れておくと<b>次から一言</b>ですみます。</p>' +
+        '<div class="row"><i>' + k[1] + '</i><div><b>' + k[2] + '</b><small>' + k[3] + '</small></div></div>' +
+        '<div class="ex">💬 入れたあとは「' + k[5] + '」と送るだけ</div>' +
+        '<a class="go" href="skills.html#' + k[0] + '">スキル集で入れる →</a></div>';
+      d.querySelector('h3').onclick = function () { var o = d.classList.toggle('op'); this.querySelector('em').textContent = o ? 'タップで閉じる ▲' : 'タップで開く ▼'; };
+      g.parentNode.insertBefore(d, g.nextSibling);
+    }
+    if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', put); else put();
+  })();
+
   /* 🆘 うまくいかないとき：タップで開く */
   (function () {
     function go() {

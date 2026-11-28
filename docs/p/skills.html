@@ -1,0 +1,382 @@
+<!DOCTYPE html>
+<html lang="ja"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="robots" content="noindex">
+<title>スキル集｜入れておくと便利（Pro）</title><style>
+*{box-sizing:border-box;margin:0;padding:0}
+body{font-family:"Hiragino Sans","Noto Sans JP","Noto Sans CJK JP",sans-serif;background:#0b0b0d;color:#fff;line-height:1.7;-webkit-text-size-adjust:100%}
+.wrap{max-width:560px;margin:0 auto}
+.top{position:sticky;top:0;z-index:5;background:#0b0b0dee;backdrop-filter:blur(6px);padding:10px 18px 8px;border-bottom:1px solid #222}
+.top .l{font-size:12px;color:#ff9a3d;font-weight:800;display:flex;justify-content:space-between}
+.bar{height:6px;background:#2a2a2e;border-radius:3px;margin-top:6px;overflow:hidden}
+.bar i{display:block;height:100%;width:0;background:linear-gradient(90deg,#ff8a1f,#ff5a00);box-shadow:0 0 10px #ff6a00;transition:width .2s}
+.hero{position:relative;background:#000}
+.hero img{width:100%;display:block;aspect-ratio:900/560;object-fit:cover;object-position:center 30%}
+.hero:after{content:"";position:absolute;inset:auto 0 0 0;height:60%;background:linear-gradient(transparent,#0b0b0d)}
+.ht{padding:0 20px 8px;margin-top:-56px;position:relative;z-index:1}
+.ht .s{color:#ff9a3d;font-weight:900;font-size:14px}
+.ht h1{font-size:26px;line-height:1.35;font-weight:900;margin:4px 0 12px}
+.chips{display:flex;gap:8px;flex-wrap:wrap}
+.chip{font-size:13px;background:#1b1b1f;border:1px solid #3a3a3a;border-radius:20px;padding:4px 12px;color:#ddd}
+.sec{padding:26px 20px 6px}
+.st{display:flex;align-items:center;gap:10px;font-weight:900;font-size:19px;margin-bottom:12px}
+.st b{background:#ff6a00;border-radius:9px;min-width:32px;height:32px;display:inline-flex;align-items:center;justify-content:center;font-size:16px;box-shadow:0 0 12px #ff6a0088}
+.tx{font-size:15.5px;color:#e4e4e4;margin-top:12px}
+.tx .k{color:#ffad5c;font-weight:800}
+.tip{margin-top:10px;font-size:13.5px;background:#1a1410;border-left:4px solid #ff7a1a;border-radius:6px;padding:8px 12px;color:#ffd9b3}
+/* illustrations */
+.shot{position:relative;width:100%;aspect-ratio:380/210;border-radius:12px;overflow:hidden;border:1px solid #3a3a3a;background:#1e1e1e}
+.stage{position:absolute;left:0;top:0;width:380px;height:210px;transform-origin:0 0;font-family:"Segoe UI","Hiragino Sans","Noto Sans JP",sans-serif;background:#1e1e1e;color:#eee}
+.ring{position:absolute;border:3px solid #ff7a1a;border-radius:9px;box-shadow:0 0 14px #ff6a00,inset 0 0 8px #ff6a0055}
+.tag{position:absolute;background:#ff6a00;color:#fff;font-weight:900;font-size:12.5px;padding:3px 9px;border-radius:8px;white-space:nowrap;box-shadow:0 2px 8px #0008}
+.desk{background:linear-gradient(160deg,#1c4a8a,#0a1a36)}
+.menu{position:absolute;background:#2b2b2b;border:1px solid #555;border-radius:8px;padding:5px 0;font-size:12.5px;color:#eee;box-shadow:0 6px 18px #0009}
+.menu div{padding:0 14px;height:26px;line-height:26px;white-space:nowrap}
+.menu .on{background:#3d3d3d}
+.folder{position:absolute;text-align:center;font-size:12px;color:#fff}
+.folder .ic{width:46px;height:36px;background:#f3c043;border-radius:3px 6px 4px 4px;margin:0 auto 4px;position:relative}
+.folder .ic:before{content:"";position:absolute;left:0;top:-6px;width:20px;height:8px;background:#f3c043;border-radius:3px 3px 0 0}
+.vs .tb{height:24px;background:#2d2d2d;display:flex;font-size:12px;color:#ccc;align-items:center;padding-left:6px;gap:12px}
+.vs .ab{position:absolute;left:0;top:24px;bottom:0;width:40px;background:#252526}
+.vs .ex{position:absolute;left:40px;top:24px;bottom:0;width:130px;background:#1f1f22;font-size:11.5px;color:#ccc;padding:6px 8px}
+.dlg{position:absolute;background:#252526;border:1px solid #555;border-radius:8px;padding:12px 14px;font-size:12px;color:#ddd;box-shadow:0 8px 24px #000a}
+.dlg .bt{display:inline-block;margin-top:8px;padding:3px 12px;border-radius:4px;background:#0e639c;color:#fff;font-weight:700}
+.cl{background:#f5f3ee;color:#222}
+.cl .box{position:absolute;left:16px;right:16px;bottom:18px;background:#fff;border:1px solid #ddd;border-radius:14px;padding:12px 50px 12px 14px;font-size:12px;line-height:1.5;color:#333;box-shadow:0 2px 8px #0001}
+.cl .send{position:absolute;right:10px;bottom:10px;width:30px;height:30px;border-radius:8px;background:#c96442;color:#fff;display:flex;align-items:center;justify-content:center;font-weight:900}
+.code{position:absolute;background:#1a1a1a;border-radius:8px;font-family:Consolas,monospace;font-size:11.5px;color:#9cdcfe;padding:26px 12px 10px;line-height:1.5}
+.code .cp{position:absolute;right:8px;top:5px;font-family:sans-serif;font-size:11px;color:#ddd;background:#333;border-radius:5px;padding:1px 8px}
+.term{background:#0c0c0c;font-family:Consolas,monospace;font-size:13px;color:#ccc;padding:30px 14px}
+.term .p{color:#7CFF8A}
+.copy{position:relative;margin-top:14px;background:#141417;border:1.5px solid #ff7a1a;border-radius:12px;padding:14px 14px 14px;font-size:14.5px;color:#eee;line-height:1.65}
+.copy button{position:absolute;right:10px;top:-15px;background:#ff6a00;color:#fff;border:0;border-radius:10px;font-weight:900;font-size:13.5px;padding:6px 14px;box-shadow:0 0 12px #ff6a0099;font-family:inherit}
+.cmd{display:flex;align-items:center;justify-content:space-between;margin-top:12px;background:#0c0c0c;border:1px solid #333;border-radius:10px;padding:10px 12px;font-family:Consolas,monospace;font-size:16px;color:#7CFF8A}
+.cmd button{background:#333;color:#fff;border:0;border-radius:8px;font-size:12.5px;padding:5px 10px;font-family:"Noto Sans JP",sans-serif}
+.goal{margin:28px 20px 0;border-radius:16px;padding:18px;background:radial-gradient(circle at 85% 0,#ff6a0055,transparent 60%),#16161a;border:1px solid #ff7a1a66;text-align:center}
+.goal .b{font-size:20px;font-weight:900}
+.help{margin:18px 20px 0;background:#16161a;border:1px solid #333;border-radius:14px;padding:16px;font-size:14.5px;color:#ddd}
+.help h3{font-size:16px;margin-bottom:6px}
+.back{display:block;margin:22px 20px 40px;background:#06c755;color:#fff;text-align:center;border-radius:14px;padding:15px 0;font-weight:900;font-size:16.5px;text-decoration:none}
+.toast{position:fixed;left:50%;bottom:24px;transform:translateX(-50%);background:#ff6a00;color:#fff;font-weight:900;padding:8px 18px;border-radius:20px;opacity:0;transition:.2s;z-index:9}
+.toast.on{opacity:1}
+
+.ht .sub{color:#bbb;font-size:14px;margin:-4px 0 12px}
+.warn{margin-top:10px;font-size:14px;background:#2a1408;border:1px solid #ff6a00;border-radius:8px;padding:8px 12px;color:#ffcf9e;font-weight:700}
+.four{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-top:10px}
+.four div{background:#16161a;border:1px solid #ff7a1a66;border-radius:10px;padding:8px 10px;font-size:13px;color:#bbb}
+.four b{display:block;color:#ffad5c;font-size:15px}
+.g2{font-size:14px;color:#ccc;margin-top:4px}
+.copy span{white-space:pre-wrap}
+.desk.mac{background:linear-gradient(160deg,#6b3fa0,#1d1640)}
+.vs{background:#1e1e1e}
+.cl{background:#f5f3ee;color:#222}
+.term{background:#0c0c0c;font-family:Consolas,Menlo,monospace;font-size:12.5px;color:#ccc;padding:30px 14px}
+.tt{position:absolute;left:0;right:0;top:0;height:22px;background:#2d2d2d;font-family:sans-serif;font-size:11px;color:#ccc;padding:3px 10px}
+.fvw{background:#202020}.fvw.mac{background:#ececec;color:#222}
+.fv-top{height:30px;background:#2b2b2b;font-size:12px;color:#ddd;padding:7px 12px}
+.fvw.mac .fv-top{background:#d8d8d8;color:#333}
+.fv{display:flex;gap:4px;padding:14px 14px}
+.fi{width:84px;text-align:center;font-size:12px}
+.fic{font-size:44px;line-height:64px}
+.br{background:#fff;color:#222}
+.url{height:26px;background:#e9e9ec;color:#555;font-size:11.5px;padding:5px 12px;border-bottom:1px solid #ccc}
+.bp{padding:12px 18px;height:184px}
+.bp.dk{background:#0d1117;color:#e6edf3}
+.bh{font-size:19px;font-weight:800;margin-bottom:6px}
+.bbtn{position:absolute;left:26px;top:140px;height:36px;line-height:36px;padding:0 18px;border-radius:8px;background:#ffd23f;color:#222;font-weight:800;font-size:14px;white-space:nowrap}
+.bp.dk ~ .bbtn,.bp.dk .bbtn{background:#2da44e;color:#fff}
+.fld{margin-top:6px;font-size:11.5px;color:#666}
+.fld div{margin-top:3px;border:1px solid #ccc;border-radius:6px;padding:5px 9px;font-size:13px;color:#222;background:#fff}
+.fld.dk{color:#aaa}.fld.dk div{background:#0d1117;border-color:#30363d;color:#e6edf3}
+.sbtn{margin-top:12px;display:inline-block;padding:7px 14px;border-radius:7px;background:#1877f2;color:#fff;font-weight:700;font-size:13px}
+.sbtn.gh{background:#238636}
+.uc{border:1px solid #ccc;border-radius:8px;padding:7px 10px;font-size:13px;margin-top:6px}
+.uc.on{border-color:#1877f2;background:#eef4ff;font-weight:700}
+.chips2{display:flex;flex-wrap:wrap;gap:5px;margin-top:4px}
+.chips2 span{background:#e7f0ff;color:#1356b8;border-radius:12px;font-size:11.5px;padding:2px 9px}
+.wbg{background:linear-gradient(160deg,#1c4a8a,#0a1a36)}
+.wbg.mac{background:linear-gradient(160deg,#6b3fa0,#1d1640)}
+.wbg.dark{background:#141418}
+.win-dlg{position:absolute;left:14px;top:12px;width:352px;height:186px;background:#f3f3f3;color:#222;border-radius:6px;padding:10px 14px;box-shadow:0 8px 24px #0008}
+.wt{font-size:11.5px;color:#555;border-bottom:1px solid #ddd;padding-bottom:4px}
+.opt{border:1px solid #ccc;background:#fff;border-radius:4px;padding:6px 10px;width:160px;font-size:13px;color:#0a58ca}
+.mac-dlg{position:absolute;left:14px;top:14px;width:250px;height:182px;background:#f2f2f2;border-radius:10px;box-shadow:0 8px 24px #0008}
+.mac-dlg .wt{padding:6px 10px}
+.mb{display:inline-block;border:1px solid #bbb;background:#fff;color:#222;border-radius:6px;font-size:12px;padding:3px 12px}
+.mb.pri{background:#0a63d6;border-color:#0a63d6;color:#fff}
+.vsico{width:64px;height:64px;border-radius:14px;background:#0a73c4;color:#fff;font-weight:900;font-size:22px;line-height:64px;margin:0 auto 4px}
+.phbg{background:linear-gradient(160deg,#1a1a1f,#0b0b0d)}
+.ph{position:absolute;left:60px;top:6px;width:214px;height:240px;background:#000;border:3px solid #444;border-radius:22px;padding:14px 10px;color:#fff}
+.pt{font-size:11px;color:#aaa;text-align:center}
+.ph2{font-size:14px;font-weight:800;margin:6px 0 8px}
+.pr{display:flex;justify-content:space-between;font-size:12px;height:30px;line-height:30px;border-bottom:1px solid #222}
+.pr span{color:#666}
+.ghside{width:136px;background:#0d1117;border-right:1px solid #30363d;padding:8px 6px;font-size:11.5px;color:#aaa;line-height:2}
+.ghside .on{color:#fff;font-weight:700}.ghside .on2{color:#fff;background:#1f2937;border-radius:5px}
+.ghb{border:1px solid #30363d;border-radius:6px;padding:2px 10px;font-size:12px;background:#21262d}
+.np{position:absolute;left:14px;top:10px;width:352px;height:190px;background:#fff;color:#222;border-radius:6px;box-shadow:0 8px 24px #0008;overflow:hidden}
+.npt{background:#eee;font-size:11.5px;padding:4px 10px;color:#444}
+.npm{font-size:11.5px;padding:3px 10px;border-bottom:1px solid #ddd;color:#333}
+.npb{padding:8px 12px;font-size:12px;line-height:1.55}
+.sm{position:absolute;left:60px;top:12px;width:262px;height:186px;background:#202020ee;border-radius:10px;padding:12px;box-shadow:0 8px 24px #0008}
+.sms{background:#2d2d2d;border-radius:16px;padding:5px 12px;font-size:13px}
+.smr{display:flex;gap:10px;align-items:center;margin-top:12px;background:#333;border-radius:8px;padding:8px;font-size:13px}
+.ubub{position:absolute;right:14px;top:36px;max-width:260px;background:#e8e3d8;border-radius:12px;padding:6px 10px;font-size:12px}
+.abub{position:absolute;left:14px;top:108px;width:350px;font-size:12px;line-height:1.55;color:#333}
+.vid{position:absolute;left:30px;top:12px;width:110px;height:186px;background:linear-gradient(160deg,#334,#112);border-radius:10px;overflow:hidden}
+.vsub{position:absolute;left:4px;right:4px;bottom:44px;text-align:center;font-weight:900;font-size:12px;color:#fff;text-shadow:0 0 3px #000,0 0 3px #000}
+.vbar{position:absolute;left:8px;right:8px;bottom:14px;height:4px;background:#555;border-radius:2px}
+.vbar i{display:block;width:40%;height:100%;background:#ff7a1a}
+.jv{position:absolute;left:0;right:0;top:26px;bottom:0;background:#02040a;display:flex;flex-direction:column;align-items:center;justify-content:center}
+.jc{width:76px;height:76px;border-radius:50%;border:4px solid #39b6ff;box-shadow:0 0 22px #39b6ff,inset 0 0 18px #39b6ff}
+.jt{color:#9fdcff;font-size:12px;margin-top:12px}
+.perm{position:absolute;right:10px;top:32px;width:220px;background:#fff;color:#222;border-radius:8px;padding:8px 10px;font-size:11px;box-shadow:0 6px 18px #000a}
+.cmdl{margin-top:16px;display:flex;justify-content:space-between;background:#f6f6f6;border:1px solid #ddd;border-radius:6px;padding:7px 9px;font-family:Menlo,monospace;font-size:10.5px}
+
+.hx{display:inline-block}
+.th{width:64px;height:52px;border-radius:6px;margin:6px auto 4px}
+.fvw.mac .fi{color:#222}
+.appf{width:60px;height:60px;border-radius:12px;background:linear-gradient(135deg,#5ac8fa,#007aff);color:#fff;font-size:30px;font-weight:900;line-height:60px;margin:0 auto 4px}
+.bbtn{position:static;display:inline-block}
+.bbtn.g{background:#2da44e;color:#fff}
+.sbtn.rw{background:#21262d;border:1px solid #444;color:#fff}
+.cl .box{padding-right:50px}
+.cl .box .send{right:8px;bottom:8px}
+.ex .hx{padding:0 2px}
+.folder{color:#fff}
+.dlg .bt{display:inline-block}
+.ghside .hx{display:block}
+.fv .hx{display:flex}
+.fi.hx{display:block}
+
+.sms.hx{display:block}.smr.hx{display:flex}
+.abub{top:80px}
+.ubub{top:30px}
+.jv{justify-content:flex-start;align-items:flex-start;padding:30px 0 0 24px}
+.perm{width:170px;top:40px}
+
+.sm{top:40px;height:160px}
+.perm{top:120px}
+.chips2 span{margin-bottom:3px}
+</style><style>.mk .hn{display:block;font-style:normal;font-size:11.5px;color:#9a9a9a;line-height:1.5;margin:-1px 0 5px}.exs{display:flex;flex-wrap:wrap;gap:6px;margin:-2px 0 10px}.ex{background:#22190f;color:#ffcf9e;border:1px solid #6b4a26;border-radius:99px;padding:5px 11px;font-size:12.5px;font-family:inherit}.ex.on{background:#ff8a24;color:#111;border-color:#ff8a24;font-weight:800}.grp{margin:16px 0 4px;padding-top:10px;border-top:1px dashed #5a4026;font-weight:900;color:#ff8a24;font-size:14px}.grp:first-of-type{border-top:0;padding-top:0}.stp{display:grid;grid-template-columns:repeat(4,1fr);gap:6px;margin:2px 0 12px}.stp div{background:#fff;border-radius:10px;aspect-ratio:37/32;display:flex;flex-direction:column;align-items:center;justify-content:center;font-size:10.5px;font-weight:900;color:#6b3a12;text-align:center;line-height:1.2;padding:3px;box-sizing:border-box;overflow:hidden}.stp div i{width:24px;height:24px;border-radius:50%;background:radial-gradient(circle at 35% 30%,#ffe1b8,#ff9f45);margin-bottom:3px}.stp .more{background:#2a221c;color:#ffb066}.stp p{grid-column:1/-1;margin:0;font-size:11.5px;color:#9a9a9a}</style></head><body><style>
+.tagk{display:inline-block;font-size:10.5px;font-weight:900;letter-spacing:.12em;color:#111;background:linear-gradient(135deg,#ffcf7a,#ff7a1a);border-radius:6px;padding:4px 7px;box-shadow:0 0 10px #ff6a0088;vertical-align:middle;margin-right:6px}
+.rel{margin-top:6px;font-size:12.5px;color:#ffb066}
+.dl{display:block;margin-top:12px;text-align:center;background:#ff6a00;color:#fff;font-weight:900;border-radius:99px;padding:12px;font-size:15px;text-decoration:none;box-shadow:0 0 12px #ff6a0099}
+.dl small{display:block;font-size:11px;font-weight:700;opacity:.85}
+.how{margin-top:12px;background:#121212;border:1px solid #333;border-radius:12px;padding:10px 12px}
+.tabs{display:flex;gap:6px;margin-bottom:8px}.tabs b{flex:1;text-align:center;font-size:12.5px;padding:7px 4px;border-radius:99px;background:#222;color:#bbb;cursor:pointer}.tabs b.on{background:#ff8a24;color:#111}
+.how ol{margin:0;padding-left:20px;font-size:13px;line-height:1.85;color:#ddd}.how .pn{display:none}.how .pn.on{display:block}.how p{margin:6px 0 0;font-size:12.5px;color:#aaa;line-height:1.6}
+.try{margin-top:10px;font-size:13px;color:#cfe0ff;background:#0f1a2a;border:1px solid #2b4a7a;border-radius:10px;padding:8px 10px}
+.peek{margin-top:10px;border:1px solid #333;border-radius:12px;background:#121212}.peek h4{margin:0;padding:9px 12px;font-size:13px;color:#ccc;display:flex;justify-content:space-between;cursor:pointer}.peek h4 em{font-style:normal;font-size:11.5px;color:#999}.peek .pb{display:none;padding:0 10px 10px}.peek.op .pb{display:block}.peek .copy{margin-top:16px}.peek .copy span{font-size:12px;line-height:1.55}
+.intro{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin-top:10px}.intro div{background:#1a1410;border:1px solid #5a4026;border-radius:12px;padding:10px 6px;text-align:center;font-size:12px;color:#ffd9b3;line-height:1.4}.intro div i{display:block;font-style:normal;font-size:22px;margin-bottom:4px}
+.pre{margin-top:10px;font-size:13px;background:#1a1410;border-left:4px solid #ff7a1a;border-radius:6px;padding:8px 12px;color:#ffd9b3;line-height:1.7}
+.back{display:block;margin:22px 0 10px;text-align:center;background:#06c755;color:#fff;font-weight:900;border-radius:14px;padding:14px;text-decoration:none}
+.toast{position:fixed;left:50%;bottom:24px;transform:translateX(-50%);background:#22c55e;color:#fff;font-weight:800;padding:8px 16px;border-radius:99px;font-size:13px;opacity:0;transition:.2s;pointer-events:none}.toast.on{opacity:1}
+</style><div class="wrap">
+<div class="hero"><img src="../img/s7.jpg" alt=""></div>
+<div class="ht"><div class="s"><span class="tagk">SKILL</span>サブスク限定</div><h1>入れておくと便利な<br>スキル集</h1><div class="sub">ダウンロードして入れるだけ。毎回の頼み方が一言ですむ</div>
+<div class="chips"><span class="chip">⏱ 1つ3分</span><span class="chip">🎯 1つ入れて試せたらOK</span><span class="chip">📋 5スキル</span></div></div>
+<div class="sec"><div class="st"><b>0</b>スキルってなに？</div><div class="tx">スキルは、Claude に渡す<b>「いつものやり方メモ」</b>です。一度入れておけば、毎回長い頼み文を書かなくても、<b>一言で同じ品質</b>で返してくれます。</div>
+<div class="intro"><div><i>✍️</i>頼み文を<br>毎回書かない</div><div><i>🎯</i>いつも同じ<br>品質</div><div><i>🔁</i>claude.ai でも<br>Claude Code でも</div></div>
+<div class="pre">⚙️ はじめに1回だけ：claude.ai の <b>設定 → 機能</b> で「<b>コード実行とファイルの作成</b>」をオンにしておこう（スキルはこれがオンのときに動きます）</div></div>
+<div class="sec" id="threads-post"><div class="st"><b>1</b>🧵 投稿文スキル</div>
+<div class="tx">テーマを送るだけで、あなたの口調の投稿文を3本。#PRの付け忘れや言い切りもチェック<div class="rel">🔗 使う場所：応用1 Threads・応用2 インスタ</div></div>
+<a class="dl" href="skills/threads-post.zip" download>⬇ スキルをダウンロード<small>threads-post.zip（パソコンで押してね）</small></a>
+<div class="how"><div class="tabs"><b class="on" data-p="a">claude.ai に入れる</b><b data-p="c">Claude Code で使う</b></div>
+<div class="pn on" data-p="a"><ol><li>上のボタンでZIPをダウンロード（開かずにそのままでOK）</li><li>claude.ai の左下の名前 → <b>カスタマイズ → スキル</b></li><li><b>＋</b> → <b>スキルを作成</b> → <b>スキルをアップロード</b></li><li>ダウンロードしたZIPを選ぶ → スキルが<b>オン</b>になっていればOK</li></ol></div>
+<div class="pn" data-p="c"><ol><li>まず左の「claude.ai に入れる」をやる</li><li>Claude Code を開き直すと、<b>自動で入ります</b>（<b>/skills</b> と打つと一覧で見られる）</li></ol><p>出てこないときは、下の「スキルの中身」をコピーして、Claude Code に「この内容で ~/.claude/skills/threads-post/SKILL.md を作って」と送ればOK</p></div></div>
+<div class="try">💬 ためし方：入れたあと「<b>Claude講座の宣伝を投稿したい</b>」と送るだけ</div>
+<div class="peek"><h4>📄 スキルの中身を見る<em>タップで開く ▼</em></h4><div class="pb"><div class="copy"><button type="button">コピー</button><span>---
+name: threads-post
+description: ThreadsやインスタのSNS投稿文を頼まれたときに使う。テーマから、その人の口調で投稿文を3本作り、#PR・言い切り・文字数をチェックする。
+---
+
+# Threads・インスタの投稿文スキル
+
+## 最初に確かめること
+- テーマ（何について書くか）。なければ1回だけ聞く。
+- 口調の見本：その人の過去の投稿が会話にあれば、それに合わせる。なければ、やさしい話し言葉にする。
+- 宣伝（アフィリエイト・自分の商品・頼まれた紹介）を含むかどうか。
+
+## 作り方
+1. 投稿文を **3本** 作る。それぞれ書き出しを変える（問いかけ／体験談／数字）。
+2. Threads は1本 **150文字以内**、インスタのキャプションは **300文字以内**。
+3. 絵文字は1本に1〜2個まで。改行で読みやすくする。
+4. 最後の行にハッシュタグを2〜3個（インスタは5個まで）。
+
+## かならず守るルール
+- 宣伝を含むときは、1行目か最後に **#PR** を入れる（ステマ規制）。
+- 「必ず稼げる」「絶対やせる」など、結果を言い切らない。
+- 人の写真・名前・個人情報は入れない。
+- 他人の投稿の文をそのまま使わない。
+
+## 出し方
+1本ずつ「①」「②」「③」の見出しを付けて、そのままコピーできる形で出す。
+最後に「どれが好き？直したいところがあれば一言でどうぞ」と1行だけ添える。
+</span></div></div></div>
+</div>
+<div class="sec" id="rakuten-room"><div class="st"><b>2</b>🛍 楽天ROOM 紹介文スキル</div>
+<div class="tx">商品のURLを貼るだけで、ROOMに載せる紹介文。ステマ規制のルールも守る<div class="rel">🔗 使う場所：応用5 楽天アフィリエイト</div></div>
+<a class="dl" href="skills/rakuten-room.zip" download>⬇ スキルをダウンロード<small>rakuten-room.zip（パソコンで押してね）</small></a>
+<div class="how"><div class="tabs"><b class="on" data-p="a">claude.ai に入れる</b><b data-p="c">Claude Code で使う</b></div>
+<div class="pn on" data-p="a"><ol><li>上のボタンでZIPをダウンロード（開かずにそのままでOK）</li><li>claude.ai の左下の名前 → <b>カスタマイズ → スキル</b></li><li><b>＋</b> → <b>スキルを作成</b> → <b>スキルをアップロード</b></li><li>ダウンロードしたZIPを選ぶ → スキルが<b>オン</b>になっていればOK</li></ol></div>
+<div class="pn" data-p="c"><ol><li>まず左の「claude.ai に入れる」をやる</li><li>Claude Code を開き直すと、<b>自動で入ります</b>（<b>/skills</b> と打つと一覧で見られる）</li></ol><p>出てこないときは、下の「スキルの中身」をコピーして、Claude Code に「この内容で ~/.claude/skills/rakuten-room/SKILL.md を作って」と送ればOK</p></div></div>
+<div class="try">💬 ためし方：入れたあと「<b>このタンブラーの紹介文を作って（URL）</b>」と送るだけ</div>
+<div class="peek"><h4>📄 スキルの中身を見る<em>タップで開く ▼</em></h4><div class="pb"><div class="copy"><button type="button">コピー</button><span>---
+name: rakuten-room
+description: 楽天ROOMや楽天アフィリエイトの紹介文を頼まれたときに使う。商品のURLや名前から、#PR付きでステマ規制を守った紹介文を作る。
+---
+
+# 楽天ROOM 紹介文スキル
+
+## 最初に確かめること
+- 商品のURLか商品名。URLが開けないときは、商品名・値段・特徴を貼ってもらう。
+- 使った感想があるか（あれば一番大事な材料にする）。
+
+## 作り方
+1. 1行目：**#PR** と、ひとことのキャッチ（20文字くらい）。
+2. よいところを **3つ**（・で箇条書き。1つ25文字くらい）。
+3. 気になるところ・合わない人を **1つ**（正直に書くと信用される）。
+4. 「こんな人におすすめ」を1行。
+5. 最後にハッシュタグを3〜5個（#楽天ROOM #楽天購入品 など）。
+全部で200文字くらいにする。
+
+## かならず守るルール
+- **#PR を必ず入れる**（アフィリエイトは広告。ステマ規制）。
+- 使っていないのに「使ってみた」と書かない。感想がないときは「気になっている」「口コミで評判」と書く。
+- 「必ず」「絶対」「治る」「やせる」など、効果を言い切らない（健康・美容は特に）。
+- 値段やポイント倍率は変わるので「〇月〇日時点」と書くか、書かない。
+
+## 出し方
+コピーしやすいように紹介文だけを出し、最後に「別の書き出しも作る？」と1行添える。
+</span></div></div></div>
+</div>
+<div class="sec" id="subtitle-srt"><div class="st"><b>3</b>🎬 動画の字幕スキル</div>
+<div class="tx">話した文を貼るだけで字幕ファイル（SRT）に。CapCutにそのまま入れられる<div class="rel">🔗 使う場所：応用3 動画の自動編集・応用6 CapCut</div></div>
+<a class="dl" href="skills/subtitle-srt.zip" download>⬇ スキルをダウンロード<small>subtitle-srt.zip（パソコンで押してね）</small></a>
+<div class="how"><div class="tabs"><b class="on" data-p="a">claude.ai に入れる</b><b data-p="c">Claude Code で使う</b></div>
+<div class="pn on" data-p="a"><ol><li>上のボタンでZIPをダウンロード（開かずにそのままでOK）</li><li>claude.ai の左下の名前 → <b>カスタマイズ → スキル</b></li><li><b>＋</b> → <b>スキルを作成</b> → <b>スキルをアップロード</b></li><li>ダウンロードしたZIPを選ぶ → スキルが<b>オン</b>になっていればOK</li></ol></div>
+<div class="pn" data-p="c"><ol><li>まず左の「claude.ai に入れる」をやる</li><li>Claude Code を開き直すと、<b>自動で入ります</b>（<b>/skills</b> と打つと一覧で見られる）</li></ol><p>出てこないときは、下の「スキルの中身」をコピーして、Claude Code に「この内容で ~/.claude/skills/subtitle-srt/SKILL.md を作って」と送ればOK</p></div></div>
+<div class="try">💬 ためし方：入れたあと「<b>この文を字幕にして（文を貼る）</b>」と送るだけ</div>
+<div class="peek"><h4>📄 スキルの中身を見る<em>タップで開く ▼</em></h4><div class="pb"><div class="copy"><button type="button">コピー</button><span>---
+name: subtitle-srt
+description: 動画の字幕やSRTファイルを頼まれたときに使う。話した内容（文字起こし）から、スマホで読みやすいSRT字幕を作り、subtitle.srtとして渡す。
+---
+
+# 動画の字幕（SRT）スキル
+
+## 最初に確かめること
+- 文字起こしの文。時間（タイムコード）付きならそれを使う。
+- 時間がないときは、動画の長さ（秒）を聞く。わからなければ、1秒に6文字くらいの速さで時間を割りふる。
+
+## 作り方
+1. 1つの字幕は **1行16文字まで・2行まで**。句読点や意味の切れ目で区切る。
+2. 1つの字幕は **1〜4秒** 表示する。前の字幕と時間が重ならないようにする。
+3. 「えー」「あのー」などの言いよどみは消す。言いまちがいは直す（意味は変えない）。
+4. 数字は読みやすく（3まん → 3万）。
+
+## SRTの形
+```
+1
+00:00:00,000 --&gt; 00:00:02,400
+ここに字幕の文
+
+2
+00:00:02,400 --&gt; 00:00:05,000
+次の字幕の文
+```
+
+## 出し方
+- ファイルが作れるときは **subtitle.srt**（文字コードはUTF-8）として保存して渡す。
+- 作れないときは、上の形のまま全部をコードブロックで出す。
+- 最後に「CapCut には字幕ファイルの読み込みで入れられます」と1行添える。
+</span></div></div></div>
+</div>
+<div class="sec" id="line-stamp"><div class="st"><b>4</b>🐻 LINEスタンプスキル</div>
+<div class="tx">キャラと言葉から、スタンプのセリフと絵の指示をまとめて作る。サイズのルールも合わせる<div class="rel">🔗 使う場所：応用9 LINEスタンプ</div></div>
+<a class="dl" href="skills/line-stamp.zip" download>⬇ スキルをダウンロード<small>line-stamp.zip（パソコンで押してね）</small></a>
+<div class="how"><div class="tabs"><b class="on" data-p="a">claude.ai に入れる</b><b data-p="c">Claude Code で使う</b></div>
+<div class="pn on" data-p="a"><ol><li>上のボタンでZIPをダウンロード（開かずにそのままでOK）</li><li>claude.ai の左下の名前 → <b>カスタマイズ → スキル</b></li><li><b>＋</b> → <b>スキルを作成</b> → <b>スキルをアップロード</b></li><li>ダウンロードしたZIPを選ぶ → スキルが<b>オン</b>になっていればOK</li></ol></div>
+<div class="pn" data-p="c"><ol><li>まず左の「claude.ai に入れる」をやる</li><li>Claude Code を開き直すと、<b>自動で入ります</b>（<b>/skills</b> と打つと一覧で見られる）</li></ol><p>出てこないときは、下の「スキルの中身」をコピーして、Claude Code に「この内容で ~/.claude/skills/line-stamp/SKILL.md を作って」と送ればOK</p></div></div>
+<div class="try">💬 ためし方：入れたあと「<b>まるいクマのスタンプを8個作りたい</b>」と送るだけ</div>
+<div class="peek"><h4>📄 スキルの中身を見る<em>タップで開く ▼</em></h4><div class="pb"><div class="copy"><button type="button">コピー</button><span>---
+name: line-stamp
+description: LINEスタンプを作りたいと頼まれたときに使う。キャラ・使う人・雰囲気から、セリフと絵の指示をまとめ、LINEのサイズのルールに合わせて準備する。
+---
+
+# LINEスタンプ スキル
+
+## 最初に確かめること（なければ1回でまとめて聞く）
+- どんなキャラ？（例：まるいクマ、ねこ、自分の似顔絵の動物）
+- だれが使う？（例：家族、友だち、仕事仲間）
+- 雰囲気（例：ゆるい、元気、ていねい）
+- 何個のセット？（8・16・24・32・40個。初めてなら8個がおすすめ）
+
+## 作り方
+1. 使う場面を考えて、セリフを個数ぶん作る（あいさつ・お礼・返事・気持ち・あいづち をまんべんなく）。
+2. 1個ずつ「セリフ／表情／ポーズ」を表にする。
+3. 画像が作れるときは、同じキャラで表情を変えて作る。
+   - スタンプ：よこ370×たて320 以内・偶数の大きさ・背景は透明PNG・まわりに10pxの余白・1枚1MB以下
+   - メイン画像：240×240、タブ画像：96×74
+4. タイトル（40文字以内）と説明文（160文字以内）を日本語と英語で作る。
+
+## かならず守るルール
+- **オリジナルのキャラだけ**。アニメ・ゲーム・有名キャラ、芸能人、実在の人に似せない。
+- 写真そのものは使わない。
+- 文字は太く、スマホで小さく見ても読めるようにする。
+
+## 出し方
+まずセリフの表を見せて「これでよければ絵を作ります」と聞く。OKが出たら画像づくりに進む。
+</span></div></div></div>
+</div>
+<div class="sec" id="selfback-navi"><div class="st"><b>5</b>💰 セルフバック相談スキル</div>
+<div class="tx">「無料で・スマホで・1万円以上」と言うだけで、今日のおすすめ案件をA8のIDつきで5つ<div class="rel">🔗 使う場所：セルフバック</div></div>
+<a class="dl" href="skills/selfback-navi.zip" download>⬇ スキルをダウンロード<small>selfback-navi.zip（パソコンで押してね）</small></a>
+<div class="how"><div class="tabs"><b class="on" data-p="a">claude.ai に入れる</b><b data-p="c">Claude Code で使う</b></div>
+<div class="pn on" data-p="a"><ol><li>上のボタンでZIPをダウンロード（開かずにそのままでOK）</li><li>claude.ai の左下の名前 → <b>カスタマイズ → スキル</b></li><li><b>＋</b> → <b>スキルを作成</b> → <b>スキルをアップロード</b></li><li>ダウンロードしたZIPを選ぶ → スキルが<b>オン</b>になっていればOK</li></ol></div>
+<div class="pn" data-p="c"><ol><li>まず左の「claude.ai に入れる」をやる</li><li>Claude Code を開き直すと、<b>自動で入ります</b>（<b>/skills</b> と打つと一覧で見られる）</li></ol><p>出てこないときは、下の「スキルの中身」をコピーして、Claude Code に「この内容で ~/.claude/skills/selfback-navi/SKILL.md を作って」と送ればOK</p></div></div>
+<div class="try">💬 ためし方：入れたあと「<b>無料でスマホでできる案件を教えて</b>」と送るだけ</div>
+<div class="peek"><h4>📄 スキルの中身を見る<em>タップで開く ▼</em></h4><div class="pb"><div class="copy"><button type="button">コピー</button><span>---
+name: selfback-navi
+description: A8.netのセルフバック案件を探したい・おすすめを聞かれたときに使う。条件（無料・スマホ・金額など）に合う案件を、A8で検索できるIDつきで5つ選ぶ。
+---
+
+# セルフバック相談スキル
+
+## 案件リスト
+講座のセルフバック案件リスト（毎朝更新）を読む：
+https://akoolsnsproject-beep.github.io/nexora-kouza/selfback.json
+
+- items の各案件に name（名前）・reward（報酬）・condition（条件）・category・free（無料でできる）・easy（スマホで10分くらい）・id（A8のプログラムID）がある。
+- 開けないときは、ユーザーに「LINEのリッチメニュー［💰セルフバック］を開いて、気になる案件の名前を貼ってね」とお願いする。
+
+## 選び方
+1. ユーザーの条件を読む（例：無料で、スマホで、1万円以上、カード以外）。条件がなければ「無料」「かんたん」を優先する。
+2. 条件に合う案件を報酬の高い順に **5つ** 選ぶ。
+3. 同じ種類（カードばかり など）が続かないようにする。
+
+## 出し方
+1件ずつ：
+- **名前**　報酬
+- 条件（1行）
+- A8で検索：id（idがなければ名前）
+- 注意（お金がかかる・審査がある・解約が必要 などがあれば1行）
+
+最後に「A8.netのセルフバックで検索欄にIDを貼ると見つかります。本人確認はスマホが楽です」と添える。
+
+## かならず守るルール
+- 「必ずもらえる」と言い切らない。報酬は変わることがあると伝える。
+- 借入・ギャンブルっぽい案件はすすめない。
+- 申し込みに必要な個人情報やパスワードは聞かない・預からない。
+</span></div></div></div>
+</div>
+<div class="tip">💡 自分用にしたいときは、Claude に「<b>このスキルを私の口調に直して</b>」と頼むだけ。スキルは自分でオン・オフもできます</div>
+<a class="back" href="index.html">講座の目次にもどる</a>
+</div><div class="toast">コピーしました</div><script>
+document.addEventListener('click',function(e){
+ var t=e.target.closest('.tabs b');if(t){var h=t.closest('.how');h.querySelectorAll('.tabs b,.pn').forEach(function(x){x.classList.toggle('on',x.getAttribute('data-p')===t.getAttribute('data-p'))});return}
+ var p=e.target.closest('.peek h4');if(p){var k=p.parentNode;k.classList.toggle('op');p.querySelector('em').textContent=k.classList.contains('op')?'タップで閉じる ▲':'タップで開く ▼';return}
+ var b=e.target.closest('.copy button');if(b){var s=b.parentNode.querySelector('span').textContent;function ok(){var q=document.querySelector('.toast');q.classList.add('on');setTimeout(function(){q.classList.remove('on')},1400)}
+  if(navigator.clipboard&&navigator.clipboard.writeText){navigator.clipboard.writeText(s).then(ok,fb)}else fb();function fb(){var a=document.createElement('textarea');a.value=s;document.body.appendChild(a);a.select();document.execCommand('copy');a.remove();ok()}}
+});
+if(location.hash){var el=document.getElementById(location.hash.slice(1));if(el)setTimeout(function(){el.scrollIntoView({behavior:'smooth'})},300)}
+</script></body></html>
