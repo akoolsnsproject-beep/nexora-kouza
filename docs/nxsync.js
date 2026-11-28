@@ -3,7 +3,7 @@
 (function () {
   if (window.nxSync) return;
   var API = 'https://script.google.com/macros/s/AKfycbxOW333dnjNRBwgaA5tfYlCBuHk7FGs2BbI1lt6JHLcbVtYh0x12CzqupkbvTxewyhb/exec';
-  var RE = /^nx_(s[1-8](win|mac)|a[1-4]|rules)$/;
+  var RE = /^nx_(s[1-8](win|mac)|a[1-9]|rules)$/;
   var busy = false, again = false, tm = null;
 
   function local() {
