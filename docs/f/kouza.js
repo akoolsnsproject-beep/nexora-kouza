@@ -24,7 +24,7 @@
   else if (ma) { n = +ma[1]; os = ''; osName = ''; MSG = '✅ 応用' + n + 'クリア'; KEY = 'nx_a' + n; LBL = '応用' + n; }
   else { n = 0; os = ''; osName = ''; MSG = ''; KEY = 'nx_rules'; LBL = 'ルール'; }
   /* 表示名：STEP5〜8は応用1〜4、応用1〜4は応用5〜8 */
-  var NM = {s1:'STEP1',s2:'STEP2',s3:'STEP3',s4:'STEP4',s5:'応用1',s6:'応用2',s7:'応用3',s8:'応用4',a1:'応用5',a2:'応用6',a3:'応用7',a4:'応用8'};
+  var NM = {s1:'STEP1',s2:'STEP2',s3:'STEP3',s4:'STEP4',s5:'応用1',s6:'応用2',s7:'応用3',s8:'応用4',a1:'応用5',a2:'応用6',a3:'応用7',a4:'応用8',a5:'応用9'};
   var ID = m ? 's' + n : (ma ? 'a' + n : '');
   if (NM[ID]) { LBL = NM[ID]; MSG = '✅ ' + LBL + 'クリア' + (os === 'mac' ? '！' : ''); }
 
@@ -58,7 +58,7 @@
 
 
   /* 使うサイトのリンク（上に並べる）＋本文のサイト名をリンクに */
-  var LK = {"s1": [["Python", "https://www.python.org/downloads/"], ["VS Code", "https://code.visualstudio.com/download"], ["GitHub登録", "https://github.com/signup"], ["Claude", "https://claude.ai/new"]], "s2": [["Claude 新しいチャット", "https://claude.ai/new"]], "s3": [["Claude 新しいチャット", "https://claude.ai/new"]], "s4": [["Claude プロジェクト", "https://claude.ai/projects"]], "s5": [["Meta for Developers", "https://developers.facebook.com/apps"], ["GitHub 新規作成", "https://github.com/new"], ["ntfy", "https://ntfy.sh/"]], "s6": [["Facebookページ作成", "https://www.facebook.com/pages/create"], ["Meta for Developers", "https://developers.facebook.com/apps"], ["GitHub 新規作成", "https://github.com/new"]], "s7": [["Claude 新しいチャット", "https://claude.ai/new"]], "s8": [["Ollama", "https://ollama.com/download"], ["VOICEVOX", "https://voicevox.hiroshiba.jp/"], ["Claude Code", "https://code.claude.com"]], "a1": [["楽天アフィリエイト", "https://affiliate.rakuten.co.jp/"], ["楽天ROOM", "https://room.rakuten.co.jp/"]], "a2": [["CapCut", "https://www.capcut.com/"]], "a3": [["Canva", "https://www.canva.com/"]], "a4": [["Claude プロジェクト", "https://claude.ai/projects"]]};
+  var LK = {"s1": [["Python", "https://www.python.org/downloads/"], ["VS Code", "https://code.visualstudio.com/download"], ["GitHub登録", "https://github.com/signup"], ["Claude", "https://claude.ai/new"]], "s2": [["Claude 新しいチャット", "https://claude.ai/new"]], "s3": [["Claude 新しいチャット", "https://claude.ai/new"]], "s4": [["Claude プロジェクト", "https://claude.ai/projects"]], "s5": [["Meta for Developers", "https://developers.facebook.com/apps"], ["GitHub 新規作成", "https://github.com/new"], ["ntfy", "https://ntfy.sh/"]], "s6": [["Facebookページ作成", "https://www.facebook.com/pages/create"], ["Meta for Developers", "https://developers.facebook.com/apps"], ["GitHub 新規作成", "https://github.com/new"]], "s7": [["Claude 新しいチャット", "https://claude.ai/new"]], "s8": [["Ollama", "https://ollama.com/download"], ["VOICEVOX", "https://voicevox.hiroshiba.jp/"], ["Claude Code", "https://code.claude.com"]], "a1": [["楽天アフィリエイト", "https://affiliate.rakuten.co.jp/"], ["楽天ROOM", "https://room.rakuten.co.jp/"]], "a2": [["CapCut", "https://www.capcut.com/"]], "a3": [["Canva", "https://www.canva.com/"]], "a4": [["Claude プロジェクト", "https://claude.ai/projects"]], "a5": [["LINE Creators Market", "https://creator.line.me/ja/"]]};
   var lkey = m ? 's' + n : (ma ? 'a' + n : 'rules');
   var lst = document.createElement('style');
   lst.textContent = '.chips{display:flex;flex-wrap:wrap;gap:6px;align-items:center;margin:14px 0 4px}.chips span{font-size:12px;color:#a89a8c}.chips a{font-size:13px;font-weight:800;color:#ffb066;text-decoration:none;border:1px solid #5a3415;border-radius:99px;padding:6px 11px;background:#15110d}a.k.lk{text-decoration:underline;text-underline-offset:3px}a.k.lk::after{content:" ↗";font-size:.85em}';
@@ -205,7 +205,7 @@
     liff.init({ liffId: LIFF_ID }).then(function () { ready = true; }).catch(function () {});
   };
   document.head.appendChild(sdk);
-  var nxs = document.createElement('script'); nxs.src = '../nxsync.js?v=1'; document.head.appendChild(nxs);
+  var nxs = document.createElement('script'); nxs.src = '../nxsync.js?v=2'; document.head.appendChild(nxs);
 })();
 
 /* ✏️ カスタマイズ枠：入力すると頼み文が自動で変わる */
