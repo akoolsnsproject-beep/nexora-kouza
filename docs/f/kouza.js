@@ -117,6 +117,7 @@
   function save() {
     var a = secs.map(function (s) { return s.classList.contains('done') ? 1 : 0; });
     try { localStorage.setItem(KEY, JSON.stringify(a)); } catch (e) {}
+    if (window.nxSync) nxSync.push();
   }
   function render() {
     var d = done(), all = d >= total;
@@ -204,6 +205,7 @@
     liff.init({ liffId: LIFF_ID }).then(function () { ready = true; }).catch(function () {});
   };
   document.head.appendChild(sdk);
+  var nxs = document.createElement('script'); nxs.src = '../nxsync.js?v=1'; document.head.appendChild(nxs);
 })();
 
 /* ✏️ カスタマイズ枠：入力すると頼み文が自動で変わる */
